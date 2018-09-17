@@ -5,88 +5,99 @@
 </head>
 <body>
 
-<!-- A date picker that for now does nothing. The Continue button directs the user to 
-the showCars.phtml page-->
+<!-- Inputs two date selection fields and a continue button that directs customer to 
+showCars.phtml if the given values are valid-->
 
 	<h4>Infotiv Car Rental </h4>
 	
-    <legend>Choose trip dates</legend> </br>
+    <legend>Select trip dates</legend> </br>
 		
 	<FORM NAME ="form1" METHOD ="POST" ACTION = "/infotivCarRental/html/cookies/setCookiesDate.php">
 		
 		<label for="start">Start</label>
-		<input type="date" id="start" name="start" value="" min="" max="" onselect="updateLimit()"></br>
+		<input type="date" id="start" name="start" value="" min="" max="" onchange="updateLimit()" required = "required" title="Please input a valid date" pattern="[0-9]"></br>
 		
 		<label for="end">End</label>
-		<input type="date" id="end" name="end" value="" min="" max=""></br>			
+		<input type="date" id="end" name="end" value="" min="" max="" required="required" title="Please input a valid date" pattern="[0-9]"></br>			
 		
 		<INPUT TYPE = "submit" Name = "submit" VALUE = "Continue">
 	</form>
-	
+
 	<p id="result"></p>
+
+<!-- JavaScript for inputing todays date in the date fields and sets minimum date to today, 
+and maximum to one month ahead. The function updateLimit() sets the selected start date as value for start date,
+updates end date minimum to selected date, maximum to one month from that and value to today-->
+	
 	<script>
-		/*
 		var today = new Date();
 		var dd = today.getDate();
 		var mm = today.getMonth()+1; //January is 0!
 		var yyyy = today.getFullYear();
 		
-		var oneYear = new Date(yyyy + 1, mm, dd);	
-		var yyyyYear = oneYear.getFullYear();
+		var ddPlusMonth = today.getDate();
+		var mmPlusMonth = today.getMonth()+2; //January is 0!
+		var yyyyPlusMonth = today.getFullYear();
 		
-		 if(dd<10){
+		if(dd<10){
 				dd='0'+dd
 			} 
 			if(mm<10){
 				mm='0'+mm
 			}
+		
+		if(ddPlusMonth<10){
+				ddPlusMonth='0'+ddPlusMonth
+			} 
+			if(mmPlusMonth<10){
+				mmPlusMonth='0'+mmPlusMonth
+			}
 			
-
 		today = yyyy+'-'+mm+'-'+dd;
-		oneYear = yyyyYear+'-'+mm+'-'+dd;
+		var todayPlusMonth = yyyyPlusMonth+'-'+mmPlusMonth+'-'+ddPlusMonth;
 		
 		document.getElementById("start").setAttribute("min", today);
-		document.getElementById("start").setAttribute("max", oneYear);
+		document.getElementById("start").setAttribute("max", todayPlusMonth);
 		document.getElementById("start").setAttribute("value", today);
 		
 		document.getElementById("end").setAttribute("min", today);
-		document.getElementById("end").setAttribute("max", oneYear);
+		document.getElementById("end").setAttribute("max", todayPlusMonth);
 		document.getElementById("end").setAttribute("value", today);
-		*/
-		function updateLimit(){
-		/*
-			var selectedDate = new Date(docuemnt.getElementById("start").getAttribute("value"));
-			var ddUpdate = selectedDate.getDate();
-			var mmUpdate = selectedDate.getMonth()+1; //January is 0!
-			var yyyyUpdate = selectedDate.getFullYear();
+		
+		function updateLimit(){		
 			
-			var oneYearUpdate = new Date(yyyyUpdate + 1, mmUpdate, ddUpdate);	
-			var yyyyYearUpdate = oneYear.getFullYear();
+			var today  = new Date(document.getElementById("start").value);
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
 			
-			 if(ddUpdate<10){
-					ddUpdate='0'+ddUpdate
+			var ddPlusMonth = today.getDate();
+			var mmPlusMonth = today.getMonth()+2; //January is 0!
+			var yyyyPlusMonth = today.getFullYear();
+			
+			if(dd<10){
+					dd='0'+dd
 				} 
-				if(mmUpdate<10){
-					mmUpdate='0'+mmUpdate
+				if(mm<10){
+					mm='0'+mm
+				}
+			
+			if(ddPlusMonth<10){
+					ddPlusMonth='0'+ddPlusMonth
+				} 
+				if(mmPlusMonth<10){
+					mmPlusMonth='0'+mmPlusMonth
 				}
 				
-
-			selectedDate = yyyyUpdate+'-'+mmUpdate+'-'+ddUpdate;
-			oneYearUpdate = yyyyYearUpdate+'-'+mmUpdate+'-'+ddUpdate; 
+			today = yyyy+'-'+mm+'-'+dd;
+			var todayPlusMonth = yyyyPlusMonth+'-'+mmPlusMonth+'-'+ddPlusMonth;
 			
-
-			document.getElementById("end").setAttribute("min", selectedDate);
-			document.getElementById("end").setAttribute("max", oneYearUpdate);
-			document.getElementById("end").setAttribute("value", selectedDate);
+			document.getElementById("start").setAttribute("value", today);
 			
-
-			document.getElementById("end").setAttribute("min", "2018-09-15");
-			document.getElementById("end").setAttribute("max", "2018-09-18");
-			document.getElementById("end").setAttribute("value", "2018-09-15");
-*/			
-			var x = document.getElementById("start").value;
-			document.getElementById("result").innerHTML = "You selected: " + x;
-						
+			document.getElementById("end").setAttribute("min", today);
+			document.getElementById("end").setAttribute("max", todayPlusMonth);
+			document.getElementById("end").setAttribute("value", today);
+			
 		}
 		
 	</script>
