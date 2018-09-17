@@ -36,11 +36,26 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-$conn->close();
 
-//$licenseNumbers = array_unique($licenseNumbers);
 
-print_r($licenseNumbers);
+$licenseNumbers = array_unique($licenseNumbers);
+
+//print_r($licenseNumbers);
+
+$arrayKeys = array_keys($licenseNumbers);
+$lastArrayKey = array_pop($arrayKeys);
+
+$sqlCars = "SELECT DISTINCT FROM cars WHERE NOT licenseNumber IN ('";
+
+foreach ($licenseNumbers as $key => $value) {
+    if($key == $lastArrayKey){
+		$sqlCars .= $value . "');";
+	}else{
+		$sqlCars .= $value . "','";
+	}
+}
+
+echo $sqlCars;
 
 function check_in_range($start_date, $end_date, $start_from_user, $end_from_user)
 {
