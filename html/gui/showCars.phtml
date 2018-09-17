@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Selection</title>
+</head>
+<body>
+
+<!-- Inputs a html table with headers-->
+<h4>Select your desired car model</h4>
+
+<table style="width:40%">
+
+<tbody>
+
+<!-- Embedded php script to populate the started html table-->
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "infotiv2018";
+$dbname = "fleet_information";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+//A query for selecting all unique car models in the db that are available
+$sql = "SELECT DISTINCT make, model FROM cars WHERE availability = 1 ORDER BY make";
+$result = $conn->query($sql);
+
+//Loops trough the result of the query and populates the html table
+//on the page. On each row it also adds the image corresponding to the model, or a stock img if model is not known. 
+//Also a  Select button is added to each row that links to a php file that sets a cookie for the selected model.
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+		
+		if($row['model']== "S90"){
+			$carImage = "/infotivCarRental/img/s90.png";
+		}elseif($row['model']== "V40"){
+			$carImage = "/infotivCarRental/img/v40.png";
+		}elseif($row['model']== "XC90"){
+			$carImage = "/infotivCarRental/img/xc90.png";
+		}elseif($row['model']== "Model S"){
+			$carImage = "/infotivCarRental/img/modelS.png";
+		}else{
+			$carImage = "/infotivCarRental/img/stockCar.png";
+		}
+		?>
+		<!-- Switches back to html to format and alternates between 
+		that and php to populate the table with content from db-->
+			<tr>
+				<td><?php echo $row['make'];?></td>
+				<td><?php echo $row['model'];?></td>
+				<td><img src="<?php echo $carImage;?>" height=59 width=150></img></td>
+				<td>
+					<FORM NAME ="form1" METHOD ="POST" ACTION = "/infotivCarRental/html/cookies/setCookiesCar.php">
+						<input name="make" type="hidden" value="<?php echo $row['make'];?>">
+						<input name="model" type="hidden" value="<?php echo $row['model'];?>">
+						<INPUT TYPE = "submit" Name = "submit" VALUE = "Select">
+					</form>
+				</td>
+			</tr>
+		<?php
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+</tbody>
+</table>
+</body>
+</html>

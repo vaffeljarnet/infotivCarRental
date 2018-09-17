@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Confirmation</title>
+</head>
+
+<!-- Prints confirmation  message with collected cookie for the selected make and model.-->
+
+	<h1>Confirm booking of <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedCar']; ?></h1>
+	<label for="start">Pickup date: <?php echo $_COOKIE['startDate'] ?></label></br>
+	<label for="start">Return date: <?php echo $_COOKIE['endDate'] ?></label></br>
+	
+<body>
+<!-- Adds a confirmation button that triggers the updateAvailability.php script-->
+	<form action="/infotivCarRental/html/dbConnection/updateAvailability.php" method="GET">
+		<input type="Submit" value="Confirm"> 
+		<input id="input" type="button" value="Cancel Booking" onclick="location.href='showCars.phtml';" />
+	</form>
+
+</body>
+</html>
