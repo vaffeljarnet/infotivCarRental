@@ -6,7 +6,7 @@
 //Takes the value of the selected car in showCars.phtml and sets 
 //cookies for the make and model to be used later.
 
-	$cookie_name = "selectedCar";
+	$cookie_name = "selectedModel";
 	$cookie_value = $_POST['model'];
 	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 
