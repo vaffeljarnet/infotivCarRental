@@ -1,5 +1,7 @@
 <?php
 
+//creates a basic connection.
+
 $servername = "localhost";
 $username = "root";
 $password = "infotiv2018";

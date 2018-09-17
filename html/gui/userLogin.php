@@ -9,7 +9,7 @@
 				<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 				<br>
 				<button type="submit" name="submit">Login</button>
-				<button onclick="location.href='index.html'" class="selectBtn">Home</button>
+				<button onclick="location.href='index.php'" class="selectBtn">Home</button>
 
 			</form>
 </body>
