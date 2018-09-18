@@ -4,32 +4,31 @@
 </head>
 <body>
 <?php
-
 $servername = "localhost";
 $username = "root";
 $password = "infotiv2018";
 $dbname = "fleet_information";
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
+//Sends a sql query to insert new entryin table bookings for the car selected
+//in showCars.phtml using the previously stored selectedLicenseNumber cookie.
 
-//Sends a sql query to update the availability for one of the cars selected
-//in showCars.phtml using the previously stored cookie from setCookiesCar.php
-
-$sql = "UPDATE cars SET availability = '0' WHERE model ='".$_COOKIE['selectedCar']."' AND availability ='1' LIMIT 1";
-
+$sql = "INSERT INTO bookings VALUES ('".$_COOKIE['selectedLicenseNumber']."' , '".$_COOKIE['startDate']."' , '".$_COOKIE['endDate']."');";
+	
 	if ($conn->query($sql) === TRUE) {
-    	echo "Congratulations on booking a ".$_COOKIE['selectedMake']." ".$_COOKIE['selectedCar'];
+    	echo "Congratulations on booking a ".$_COOKIE['selectedMake']." ".$_COOKIE['selectedModel'];
 	} else {
     	echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 
+$conn->close();	
+	
 ?>
 </br>
-<button onclick="location.href='/infotivCarRental/html/index.html'" class="selectBtn">Back to start</button>
+<button onclick="location.href='/infotivCarRental/html/gui/index.html'" class="selectBtn">Back to start</button>
 </body>
 </html>
