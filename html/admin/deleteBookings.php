@@ -16,13 +16,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-//Sends a sql query to the database to set all entries in the 
-//table cars to available. 
+//Sends a sql query to the database to remove all entries from table bookings
 
-$sql = "UPDATE cars SET availability = '1' WHERE availability ='0'";
+$sql = "DELETE FROM bookings";
 
 	if ($conn->query($sql) === TRUE) {
-    	echo "Congratulations on getting all your cars back";
+    	echo "All bookings removed";
 	} else {
     	echo "Error: " . $sql . "<br>" . $conn->error;
 	}
