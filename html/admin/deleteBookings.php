@@ -30,6 +30,6 @@ $conn->close();
 	
 ?>
 </br>
-<button onclick="location.href='infotivCarRental/html/gui/dateSelection.html'" class="selectBtn">Back to start</button>
+<button onclick="location.href='infotivCarRental/html/gui/index.html'" class="selectBtn">Back to start</button>
 </body>
 </html>
