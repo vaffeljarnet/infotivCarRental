@@ -110,6 +110,8 @@ input, select {
 
 a {
     text-decoration: none;
+    float: right;
+
 }
 
 /*sets body color to #ccc=light grayish*/
@@ -131,6 +133,8 @@ header nav ul li {
     float: left;
     list-style:none;
 }
+
+
 
 header nav ul li a {
     font-family: Arial;

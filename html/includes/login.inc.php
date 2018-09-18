@@ -18,7 +18,8 @@ if (isset($_POST['submit'])) {
 	//checks if we got a matching email if not exits script.
 
 	if ($resultCheck < 1) {
-		header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?userLogin=error');
+		$_SESSION['error'] = 'Incorrect E-mail or password';
+		header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?Login=error');
 		exit();
 	}else {
 		
@@ -29,8 +30,8 @@ if (isset($_POST['submit'])) {
 			//de-hashing the password.
 			$hashedPassCheck = password_verify($pass, $row['user_pass']);
 			if ($hashedPassCheck == false) {
-				$_SESSION['errors'] = array("Your username or password was incorrect.");
-				header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?failed=true');
+				$_SESSION['error'] = 'Incorrect E-mail or password';
+				header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?Login=error');
 				exit();
 			} elseif ($hashedPassCheck == true) {
 				$_SESSION['u_id'] = $row['user_id'];
