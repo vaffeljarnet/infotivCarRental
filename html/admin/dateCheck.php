@@ -45,7 +45,7 @@ $licenseNumbers = array_unique($licenseNumbers);
 $arrayKeys = array_keys($licenseNumbers);
 $lastArrayKey = array_pop($arrayKeys);
 
-$sqlCars = "SELECT DISTINCT FROM cars WHERE NOT licenseNumber IN ('";
+$sqlCars = "SELECT DISTINCT model FROM cars WHERE NOT licenseNumber IN ('";
 
 foreach ($licenseNumbers as $key => $value) {
     if($key == $lastArrayKey){
