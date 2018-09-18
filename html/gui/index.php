@@ -33,7 +33,7 @@ showCars.phtml if the given values are valid-->
 	</form>
 
 	</br>
-		<button onclick="location.href='/infotivCarRental/html/gui/index.html'" class="selectBtn">Reset</button>
+		<button onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Reset</button>
 	</br>
 	
 	<p id="result"></p>
