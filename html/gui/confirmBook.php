@@ -4,6 +4,11 @@ session_start()
 <!DOCTYPE html>
 <html>
 <head>
+	 <script>
+        function pls(){
+              alert("Create a user or log in to proceed");
+           }
+    </script>
 	<title>Confirmation</title>
    <link type="text/css" href="style.css">
 	<header>
@@ -65,7 +70,7 @@ session_start()
 					echo '<form action="/infotivCarRental/html/dbConnection/updateAvailability.php" method="GET">
 							<input type="Submit" value="Confirm">';
 				} else {
-				?>	<input id="input" type="button" value="Confirm" onclick="location.href='userRegistration.php'" />	<?php
+				?>	<input id="funka" type="button" value="Confirm" onclick="pls();" />	<?php
 				}
 	?>
 		<input id="input" type="button" value="Cancel Booking" onclick="location.href='showCars.php'" />
