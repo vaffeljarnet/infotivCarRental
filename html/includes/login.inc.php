@@ -1,4 +1,9 @@
 <?php
+	session_start();
+
+if (isset($_POST['submit'])) {
+
+
 
 	include_once 'dbh.inc.php';
 
@@ -13,7 +18,7 @@
 	//checks if we got a matching email if not exits script.
 
 	if ($resultCheck < 1) {
-		header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php');
+		header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?userLogin=error');
 		exit();
 	}else {
 		
@@ -24,11 +29,18 @@
 			//de-hashing the password.
 			$hashedPassCheck = password_verify($pass, $row['user_pass']);
 			if ($hashedPassCheck == false) {
-			header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php');
-			exit();	
+				$_SESSION['errors'] = array("Your username or password was incorrect.");
+				header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?failed=true');
+				exit();
 			} elseif ($hashedPassCheck == true) {
-				//Logs in the user
-			header('Location: http://www.google.com');	
+				$_SESSION['u_id'] = $row['user_id'];
+				$_SESSION['u_first'] = $row['user_first'];
+				$_SESSION['u_last'] = $row['user_last'];
+				$_SESSION['u_phone'] = $row['user_phone'];
+				$_SESSION['u_email'] = $row['user_email'];
+			header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?login=success');	
+			exit();
 			}
 		}
 	}
+}

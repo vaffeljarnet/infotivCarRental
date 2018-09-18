@@ -19,13 +19,12 @@
 	$validPhone = $conn->query($sql3);
 	
 	if ($validEmail->num_rows > 0) {
-		echo "That email is already being used.";
+		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=email");
 		exit();
 
 	}else {
 		if ($validPhone->num_rows > 0) {
-		echo "That Phone number is already being used.";
-		exit();
+		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=phone");
 		} else {
 		$sql = "INSERT INTO users (user_first, user_last, user_email, user_phone, user_pass) VALUES('".$firstName."','".$lastName."','".$email."', '".$phone."', '".$hashedPass."');";
 	 	mysqli_query($conn, $sql);

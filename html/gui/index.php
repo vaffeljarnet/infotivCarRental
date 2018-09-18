@@ -1,27 +1,15 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Infotiv Car Rental</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <header>
-	<nav>
-		<div class="main-wrapper">
-			<ul>
-				<li><a href="index.php">Home</li>
-			</ul>
-			<div class="nav-login">
-				<form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
-					<input type="email" id="email" required="required" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail">
-					<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
-					<br>
-					<button type="submit" name="submit">Login</button>
-				</form>
-				<a href="userRegistration.php">Create user</a>
-
-		</div>
-	</nav>
+	
 
 
 </header>
@@ -29,6 +17,7 @@
 showCars.phtml if the given values are valid-->
 
 	<h4>Infotiv Car Rental </h4>
+	
 	
     <legend>Select trip dates</legend> </br>
 		
