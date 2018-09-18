@@ -1,3 +1,6 @@
+<?php 
+session_start()
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +38,14 @@
 				<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 				<input type="password" id="confirmPassword" required="required" name="passConfirm" pattern=".{6,}" title="Six or more characters" placeholder="Confirm Password"><br>
 				<button type="submit" name="submit">Create user</button>
+				<input id="input" type="button" value="Cancel Registration" onclick="location.href='index.php'" />
+				<br>
+				<?php 
+					if(isset($_SESSION['error'])) {
+						echo $_SESSION['error'];
+    					unset($_SESSION['error']);
+					}
+				 ?>
 
 			</form>
 

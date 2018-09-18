@@ -17,7 +17,7 @@
 
 ?>
 
-<meta http-equiv="refresh" content="0;URL=/infotivCarRental/html/gui/showCars.phtml" />
+<meta http-equiv="refresh" content="0;URL=/infotivCarRental/html/gui/showCars.php" />
 
 </body>
 </html>

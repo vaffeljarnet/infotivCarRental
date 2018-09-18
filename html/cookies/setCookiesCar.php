@@ -21,7 +21,7 @@
 
 ?>
 
-<meta http-equiv="refresh" content="0;URL=/infotivCarRental/html/gui/confirmBook.phtml" />
+<meta http-equiv="refresh" content="0;URL=/infotivCarRental/html/gui/confirmBook.php" />
 
 </body>
 </html>

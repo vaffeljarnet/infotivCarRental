@@ -1,3 +1,6 @@
+<?php 
+session_start()
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +17,16 @@
 <body>
 <!-- Adds a confirmation button that triggers the updateAvailability.php script-->
 	<form action="/infotivCarRental/html/dbConnection/updateAvailability.php" method="GET">
-		<input type="Submit" value="Confirm"> 
-		<input id="input" type="button" value="Cancel Booking" onclick="location.href='showCars.phtml';" />
+	<?php
+				if(isset($_SESSION['u_id'])) {
+					echo '<form action="/infotivCarRental/html/dbConnection/updateAvailability.php" method="GET">
+							<input type="Submit" value="Confirm">';
+				} else {
+				?>	<input id="input" type="button" value="Confirm" onclick="location.href='userRegistration.php'" />	<?php
+				}
+	?>
+		<input id="input" type="button" value="Cancel Booking" onclick="location.href='showCars.php'" />
+		
 	</form>
 
 </body>
