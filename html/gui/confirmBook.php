@@ -6,7 +6,7 @@ session_start()
 <head>
 	 <script>
         function pls(){
-              alert("Create a user or log in to proceed");
+              alert("You need to be logged in to book a car.");
            }
     </script>
 	<title>Confirmation</title>

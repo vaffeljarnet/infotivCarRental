@@ -3,9 +3,11 @@
 
 if (isset($_POST['submit'])) {
 
-
-
 	include_once 'dbh.inc.php';
+
+	if(isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+	}
 
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$pass = mysqli_real_escape_string($conn, $_POST['pass']);
@@ -18,8 +20,8 @@ if (isset($_POST['submit'])) {
 	//checks if we got a matching email if not exits script.
 
 	if ($resultCheck < 1) {
-		$_SESSION['error'] = 'Incorrect E-mail or password';
-		header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?Login=error');
+		$_SESSION['error'] = 'Incorrect e-mail or password';
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
 		exit();
 	}else {
 		
@@ -30,8 +32,8 @@ if (isset($_POST['submit'])) {
 			//de-hashing the password.
 			$hashedPassCheck = password_verify($pass, $row['user_pass']);
 			if ($hashedPassCheck == false) {
-				$_SESSION['error'] = 'Incorrect E-mail or password';
-				header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?Login=error');
+				$_SESSION['error'] = 'Incorrect e-mail or password';
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
 				exit();
 			} elseif ($hashedPassCheck == true) {
 				$_SESSION['u_id'] = $row['user_id'];
@@ -39,7 +41,7 @@ if (isset($_POST['submit'])) {
 				$_SESSION['u_last'] = $row['user_last'];
 				$_SESSION['u_phone'] = $row['user_phone'];
 				$_SESSION['u_email'] = $row['user_email'];
-			header("location:javascript://history.go(-1)");	
+			header('Location: ' . $_SERVER['HTTP_REFERER']);	
 			exit();
 			}
 		}
