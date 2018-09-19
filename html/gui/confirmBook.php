@@ -1,5 +1,8 @@
 <?php 
-session_start()
+	session_start();
+	$cookie_name = "previousLocation";
+	$cookie_value = "confirmBook";
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
  ?>
 <!DOCTYPE html>
 <html>

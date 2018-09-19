@@ -1,8 +1,5 @@
 <?php
 	session_start();
-	$cookie_name = "previousLocation";
-	$cookie_value = "index";
-	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +64,7 @@ showCars.phtml if the given values are valid-->
 	
     <legend>Select trip dates</legend> </br>
 		
-	<FORM NAME ="form1" METHOD ="POST" ACTION = "/infotivCarRental/html/cookies/setCookiesDate.php">
+	<FORM NAME ="form1" METHOD ="POST" ACTION = "/../cookies/setCookiesDate.php">
 		
 		<label for="start">Start</label>
 		<input type="date" id="start" name="start" value="" min="" max="" onchange="updateLimit()" required = "required" title="Please input a valid date" pattern="[0-9]"></br>
