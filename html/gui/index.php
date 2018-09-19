@@ -62,7 +62,7 @@
 <!-- Inputs two date selection fields and a continue button that directs customer to 
 showCars.phtml if the given values are valid-->
 
-	<h4>Infotiv Car Rental </h4>
+	<h3>Infotiv Car Rental </h3>
 	
 	
     <legend>Select trip dates</legend> </br>

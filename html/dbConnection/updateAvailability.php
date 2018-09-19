@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <html>
 <head>
 <title>Updated Car Availability</title>
@@ -11,7 +15,8 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 	|| !isset($_COOKIE['selectedMake'])
 	|| !isset($_COOKIE['selectedModel']) 
 	|| !isset($_COOKIE['startDate']) 
-	|| !isset($_COOKIE['endDate'])){
+	|| !isset($_COOKIE['endDate'])
+	|| !isset($_SESSION['u_id'])){
 		
 		echo "Booking incomplete. Go back to start.";
 		
@@ -35,8 +40,12 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 		//Sends a sql query to insert new entryin table bookings for the car selected
 		//in showCars.phtml using the previously stored selectedLicenseNumber cookie.
 
-		$sql = "INSERT INTO bookings VALUES ('".$_COOKIE['selectedLicenseNumber']."' , '".$_COOKIE['startDate']."' , '".$_COOKIE['endDate']."');";
-			
+		$sql = "INSERT INTO bookings (licenseNumber, startDate, endDate, userID) VALUES 
+				('".$_COOKIE['selectedLicenseNumber']."' , 
+				'".$_COOKIE['startDate']."' , 
+				'".$_COOKIE['endDate']."' ,
+				'".$_SESSION['u_id']."');";
+				
 			if ($conn->query($sql) === TRUE) {
 				echo "Congratulations on booking a ".$_COOKIE['selectedMake']." ".$_COOKIE['selectedModel'];
 			} else {

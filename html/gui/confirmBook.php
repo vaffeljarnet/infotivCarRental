@@ -60,7 +60,7 @@
 
 <!-- Prints confirmation  message with collected cookie for the selected make and model.-->
 
-	<h1>Confirm booking of <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedModel']; ?></h1>
+	<h3>Confirm booking of <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedModel']; ?></h3>
 	<label for="start">Pickup date: <?php echo $_COOKIE['startDate'] ?></label></br>
 	<label for="start">Return date: <?php echo $_COOKIE['endDate'] ?></label></br>
 	<label for="start">License Number: <?php echo $_COOKIE['selectedLicenseNumber'] ?></label></br>
