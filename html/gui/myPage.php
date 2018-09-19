@@ -50,9 +50,53 @@ session_start()
 </head>
 <h3>My bookings!</h3>
 <body>
+<table style="width:40%">
+
+<tbody>
+
+<th>License Number </th> 
+<th>Brand</th> 
+<th>Model</th> 
+<th>Passengers</th> 
+<th>Booked from</th> 
+<th>Until</th> 
+
+<?php
 
 
+include_once '../includes/dbh.inc.php';
+
+if(isset($_SESSION['u_id'])) {
+	$var = $_SESSION['u_id'];
+}
+
+//A query for selecting all cars that are connected to the users ID.
+$sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.user_id='".$var."'";
+$result = $conn->query($sql);
 
 
+//Loops trough the result of the query and populates the html table on the page. 
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+			?>
+			<tr>
+				<td><?php echo $row['licenseNumber'];?></td>
+				<td><?php echo $row['make'];?></td>
+				<td><?php echo $row['model'];?></td>
+				<td><?php echo $row['passengers'];?></td>
+				<td><?php echo $row['startDate'];?></td>
+				<td><?php echo $row['endDate'];?></td>
+			</tr>
+		<?php
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+?>
+</tbody>
+</table>
+</table>
 </body>
 </html>
