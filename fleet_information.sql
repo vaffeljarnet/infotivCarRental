@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 19, 2018 at 11:50 AM
+-- Generation Time: Sep 19, 2018 at 12:55 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -41,7 +41,7 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`licenseNumber`, `startDate`, `endDate`, `orderID`, `userID`) VALUES
-('BDE463', '2018-09-19', '2018-09-19', 2, 58);
+('BDE463', '2018-09-19', '2018-09-19', 1, 57);
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
