@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 				$_SESSION['u_last'] = $row['user_last'];
 				$_SESSION['u_phone'] = $row['user_phone'];
 				$_SESSION['u_email'] = $row['user_email'];
-			header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php?login=success');	
+			header("location:javascript://history.go(-1)");	
 			exit();
 			}
 		}

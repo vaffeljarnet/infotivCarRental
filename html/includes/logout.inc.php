@@ -4,5 +4,5 @@ if (isset($_POST['submit'])) {
 	session_start();
 	session_unset();
 	session_destroy();
-	header('Location: http://localhost/infotivCarRental/html/gui/userLogin.php');
+	header("location:javascript://history.go(-1)");
 }
