@@ -22,11 +22,12 @@
 						echo '<div class="nav-login" style="float:right">
 								You are logged in!
 							 	<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
-									<button type="submit" name="submit">Logout</button>
-									</form>
-							
+									<button type="submit" name="submit">Logout</button>'  ?>
+									<button id="input" type="button" value="Create new user" onclick="location.href='myPage.php'">My page</button>
+									<?php
+									echo 
+									'</form>	
 							</div>';
-
 					} else {
 						echo '<div class="nav-login" style="float:right">
 								<form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">

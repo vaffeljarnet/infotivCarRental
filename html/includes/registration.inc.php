@@ -32,6 +32,13 @@ session_start();
 		} else {
 		$sql = "INSERT INTO users (user_first, user_last, user_email, user_phone, user_pass) VALUES('".$firstName."','".$lastName."','".$email."', '".$phone."', '".$hashedPass."');";
 	 	mysqli_query($conn, $sql);
+   		
+   		if(isset($_COOKIE['selectedModel'])) {
+   			header("Location: http://localhost/infotivCarRental/html/gui/confirmBook.php");
+   		} else {
+   			header("Location: http://localhost/infotivCarRental/html/gui/index.php");
+   		}
+
    		echo "User account created for: " . $firstName . " " . $lastName ;
 		}
 	}
