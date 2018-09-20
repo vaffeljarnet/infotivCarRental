@@ -1,0 +1,245 @@
+html, body {
+	background-color: rgba(255,255,255);
+	width: 100%;
+	height: 100%;
+	margin:0;
+	padding:0;
+}
+
+div[id=headerWrapper] {
+	background-color: rgba(237,110,28);
+	height: 100px;
+}
+
+div[id=leftHeader] {
+	background-color: rgba(237,110,28);
+	height: 100px;
+	width: 340px;
+    float:left; /* add this */
+	overflow: hidden;
+}
+
+div[id=rightHeader] {
+	background-color: rgba(47,47,47);
+	height: 100px;
+	
+}
+
+
+h1[id=title]{
+	color: white;
+	margin-top: 28px;
+	margin-left: 30px;
+	display:inline-block;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 200%;
+}
+
+div[id=userInfoWrapper] {
+	height: 80px;
+	width: 350px;
+    float:right; /* add this */
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div[id=userInfoTopBottom]{
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+div[id=userInfoTop]{
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;	
+}
+
+label[id=welcomePhrase]{
+	color: white;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+label[id=signInError]{
+	color: rgba(237,110,28);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	margin-left: 19px;
+}
+
+div[id="mainWrapperBody"]{
+	width: 100%;
+	height: 100%;
+}
+
+div[id="leftpane"]{
+	width: 15%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+}
+
+div[id="middlepane"]{
+	width: 70%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+}
+
+div[id="rightpane"]{
+	width: 15%;
+	height: 100%;
+	position: relative;
+	float: right;
+	border-collapse: collapse;
+}
+
+div[id="tripQuestion"]{
+	width: 100%;
+    height: 20%;
+    float: left;
+    border-collapse: collapse;
+	text-align:center;
+}
+
+div[id="dateSelection"]{
+	width: 100%;
+    height: 20%;
+    float: left;
+    border-collapse: collapse;
+	text-align:center;
+}
+
+div[id="dateButtons"]{
+	width: 100%;
+	height: 60%;
+	position: relative;
+	float: right;
+	border-collapse: collapse;
+	margin-top: 40px;
+	text-align:center;
+}
+
+div[id="showQuestion"]{
+	width: 100%;
+    height: 15%;
+    border-collapse: collapse;
+	text-align:center;
+}
+
+div[id="carSelection"]{
+	width: 100%;
+    height: 40%;
+    border-collapse: collapse;
+	text-align:center;
+}
+
+div[id="backToDate"]{
+	width: 100%;
+	height: 45%;
+	position: relative;
+	border-collapse: collapse;
+	margin-top: 40px;
+	text-align:center;
+}
+
+h1[id=questionText]{
+	color: rgba(47,47,47);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	margin-top: 50px;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+button, input[type=submit], input[type=button], a[id=linkButton] {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  padding: 4px 15px;
+  border: 0px solid;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 95%;
+  color: rgba(255,255,255,0.9);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(237,110,28);
+  text-decoration: none;
+}
+
+button:hover, input[type=submit]:hover, input[type=button]:hover, a[class=linkButton]:hover {
+  background: rgba(239,129,54,1);
+  text-decoration: none;
+
+}
+
+button:active, input[type=submit]:active, input[type=button]:active, a[class=linkButton]:active {
+  background: rgba(237,110,28);
+  text-decoration: none;
+}
+input[type="email"],input[type="password"]{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: rgba(47,47,47,0.9);
+	text-align: left;
+	border-radius: 2px;
+    border: 1px solid rgba(47,47,47);
+	padding: 5px;
+}
+input[type="email"]:focus, input[type="password"]:focus{
+  outline: none;     /* oranges! yey */
+}
+
+input[type=date] {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 120%;
+	color: rgba(47,47,47,0.9);
+	text-align: left;
+	padding-left: 15px;
+	border-radius: 4px;
+    border: 1.2px solid rgba(47,47,47,0.9);
+	width: 220px;
+	height: 40px;
+	}
+
+::-webkit-datetime-edit-text { color: rgba(47,47,47,0.9); }
+::-webkit-datetime-edit-month-field { color: rgba(47,47,47,0.9); }
+::-webkit-datetime-edit-day-field { color: rgba(47,47,47,0.9); }
+::-webkit-datetime-edit-year-field { color: rgba(47,47,47,0.9); }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { background: white; }
+
+table[id="carTable"]{
+	margin: 0 auto;
+	width:45%
+	}
+
+.bigButton{
+	display: inline-block;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	cursor: pointer;
+	width: 100px;
+	height: 50px;
+	border: 0px solid;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 110%;
+	font-weight: bold;
+	color: rgba(255,255,255,0.9);
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	background: rgba(237,110,28);
+	text-decoration: none;
+}
+
+.mediumText{
+	color: rgba(47,47,47);
+	font-size: 100%;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
