@@ -31,7 +31,7 @@ Available <select NAME="avail" required="required">
   <option value="no">No</option>
 </select></br>
 <INPUT TYPE = "submit" Name = "Submit1" VALUE = "Add">
-
+<button id="input" type="button" value="addCar" onclick="location.href='../gui/myPage.php'">Back</button>
 </FORM>
 
 </body>
