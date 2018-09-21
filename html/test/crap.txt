@@ -1,0 +1,2 @@
+background-image: url("/infotivCarRental/img/mainPageBG.png");
+background-size:cover;

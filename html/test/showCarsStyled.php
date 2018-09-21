@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	$cookie_name = "previousLocation";
-	$cookie_value = "index";
+	$cookie_value = "showCars";
 	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 ?>
 
@@ -139,18 +139,21 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 	//Loops trough the result of the query and populates the html table
 	//on the page. On each row it also adds the image corresponding to the model, or a stock img if model is not known. 
 	//Also a  Select button is added to each row that links to setCookiesCar.php file that sets cookies for the selected car.
-?>
+   if ($result->num_rows > 0) {
+	   
+	   ?>
 				<div id="mainWrapperBody">
 					<div id="leftpane"></div>
 					<div id="middlepane">
 						<div id="showQuestion">
-							<h1 id="questionText">Which car model would you like to drive?</h1>
+							<h1 id="questionText">Which car model would you like to drive?</h1></br>
 							<label class="mediumText" for="start">Selected trip dates: <?php echo $_COOKIE['startDate'] ?> – <?php echo $_COOKIE['endDate'] ?></label></br>
 						</div>
 						<div id="carSelection" style="margin: 0 auto">
 							<table id="carTable">
 								<tbody>	
-<?php   if ($result->num_rows > 0) {
+<?php
+	   
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
 			
@@ -199,12 +202,17 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 		<?php
 	} else {
 		?>
-								</tbody>
-							</table>
-						<label class="mediumText">Sorry, no available cars during these dates.</label>
+				<div id="mainWrapperBody">
+					<div id="leftpane"></div>
+					<div id="middlepane">
+						<div id="showQuestion">
+							<h1 id="questionText">Sorry, no cars available during the selected dates</h1>
+							<label class="mediumText" for="start">Selected trip dates: <?php echo $_COOKIE['startDate'] ?> – <?php echo $_COOKIE['endDate'] ?></label></br>
+						</div>
+						<div id="carSelection" style="margin: 0 auto">
+							<button class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
 						</div>
 						<div id="backToDate">
-							<button class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
 						</div>
 					</div>
 					<div id="rightpane"></div>
