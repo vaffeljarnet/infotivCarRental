@@ -31,23 +31,19 @@
 					} else {
 						echo '<div class="nav-login" style="float:right">
 								<form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
-								<input type="email" id="email" required="required" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail">
+								<input type="text" id="email" required="required" name="email" placeholder="E-mail">
 								<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 								<br>
-								<button type="submit" name="submit">Login</button>
-								<a href="userRegistration.php">Create user</a><br>' ?>
+								<button type="submit" name="submit">Login</button>'  ?>
+								<button id="input" type="button" value="Create new user" onclick="location.href='userRegistration.php'">Create new user</button>
 									<?php 
 										if(isset($_SESSION['error'])) {
 										echo $_SESSION['error'];
     									unset($_SESSION['error']);
 										}
 									 echo '
-								
-
-								</form>
-							
+								</form>							
 							</div>';					
-
 					}
 				?>
 			</div>

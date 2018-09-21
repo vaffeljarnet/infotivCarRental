@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 } 
 //Sends a sql query to the database to remove all entries from table bookings
 
-$sql = "DELETE FROM bookings";
+$sql = "DELETE * FROM bookings";
 
 	if ($conn->query($sql) === TRUE) {
     	echo "All bookings removed";
