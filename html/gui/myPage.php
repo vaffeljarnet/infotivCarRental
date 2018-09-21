@@ -1,11 +1,13 @@
 <?php 
 session_start()
+
  ?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Login</title>
     <link type="text/css" href="style.css">
 	<header>
@@ -29,7 +31,7 @@ session_start()
 					} else {
 						echo '<div class="nav-login" style="float:right">
 								<form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
-								<input type="email" id="email" required="required" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail">
+								<input type="text" id="email" required="required" name="email" placeholder="E-mail">
 								<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 								<br>
 								<button type="submit" name="submit">Login</button>'  ?>
@@ -50,7 +52,7 @@ session_start()
 </head>
 <h3>My bookings!</h3>
 <body>
-<table style="width:40%">
+<table style="width:46%">
 
 <tbody>
 
@@ -63,6 +65,19 @@ session_start()
 
 <?php
 
+if(isset($_SESSION['u_admin'])) {
+
+?>	<button id="input" type="button" value="addCar" onclick="location.href='../admin/carRegistration.html'">Add new car</button>
+	<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">remove all bookings</button>
+<?php	
+
+}
+
+
+if(!isset($_SESSION['u_id'])) {
+header('Location: index.php');
+exit;
+}
 
 include_once '../includes/dbh.inc.php';
 
@@ -74,9 +89,9 @@ if(isset($_SESSION['u_id'])) {
 $sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.user_id='".$var."'";
 $result = $conn->query($sql);
 
-
 //Loops trough the result of the query and populates the html table on the page. 
 if ($result->num_rows > 0) {
+
     // output data of each row
     while($row = $result->fetch_assoc()) {
 			?>
@@ -87,14 +102,32 @@ if ($result->num_rows > 0) {
 				<td><?php echo $row['passengers'];?></td>
 				<td><?php echo $row['startDate'];?></td>
 				<td><?php echo $row['endDate'];?></td>
+				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook();" ACTION ="../dbConnection/unBooking.php">
+					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
+					<button type="submit" name = "submit">Unbook</button>
+					</FORM>
+				</td>
 			</tr>
-		<?php
+		<?php   
     }
 } else {
     echo "0 results";
 }
 $conn->close();
-?>
+?>		
+
+<script>
+function confirmUnbook() {
+ 	var r = confirm("Are you sure you want to cancel your order for: ");
+ 	if (r == true) {
+    document.getElementById("unBook").submit();
+  	} else {
+    return false;
+  	exit();
+	}
+}
+</script>	
+
 </tbody>
 </table>
 </table>

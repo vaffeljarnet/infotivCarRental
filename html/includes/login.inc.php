@@ -41,6 +41,7 @@ if (isset($_POST['submit'])) {
 				$_SESSION['u_last'] = $row['user_last'];
 				$_SESSION['u_phone'] = $row['user_phone'];
 				$_SESSION['u_email'] = $row['user_email'];
+				$_SESSION['u_admin'] = $row['Admin'];
 			header('Location: ' . $_SERVER['HTTP_REFERER']);	
 			exit();
 			}
