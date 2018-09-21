@@ -14,7 +14,10 @@
 <header>
 	<div id="headerWrapper">
 		<div id="leftHeader">
+			<div class="logo" id="logo">&nbsp;</div>
+			<div class="title" id="title">
 				<h1 id="title">Infotiv Car Rental</h1>
+			</div>
 		</div>
 		<div id="rightHeader">
 			<div id="userInfoWrapper">
@@ -38,6 +41,7 @@
 						<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 					</div>
 					<div id="userInfoTopBottom">
+						</br>
 						<button type="submit" name="submit">Login</button>
 						<button id="input" type="button" onclick="location.href='userRegistration.php'">Create user</button>
 					</div>

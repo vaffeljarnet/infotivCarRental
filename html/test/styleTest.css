@@ -113,56 +113,74 @@ html, body {
 
 div[id=headerWrapper] {
 	background-color: rgba(237,110,28);
+	width: 100%;
 	height: 100px;
 }
 
 div[id=leftHeader] {
 	background-color: rgba(237,110,28);
-	height: 100px;
+	height: 100%;
 	width: 340px;
     float:left; /* add this */
 	overflow: hidden;
 }
 
+div[id=logo]{
+	float:left;
+	width:29%; /*width of your image*/
+	height:100%; /*height of your image*/
+	background-image:url('/infotivCarRental/img/logoHeader.png');
+	margin:0; /* If you want no margin */
+	padding:0; /*if your want to padding */
+}
+
+div[id=title]{
+	float:right;
+	width:71%; /*width of your image*/
+	height:100%; /*height of your image*/
+	margin:0; /* If you want no margin */
+	padding:0; /*if your want to padding */
+}
+
 div[id=rightHeader] {
 	background-color: rgba(47,47,47);
 	height: 100px;
-	
-}
-
-
-h1[id=title]{
-	color: white;
-	margin-top: 28px;
-	margin-left: 30px;
-	display:inline-block;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	font-size: 200%;
 }
 
 div[id=userInfoWrapper] {
 	height: 80px;
-	width: 350px;
+	width: 40%;
     float:right; /* add this */
 	margin-right: 10px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-}
-
-div[id=userInfoTopBottom]{
-	float: right;
-	margin-top: 10px;
-	margin-right: 10px;
+	text-align: right;
 }
 
 div[id=userInfoTop]{
-	float: right;
+	float: top;
 	margin-top: 10px;
 	margin-right: 10px;	
 }
 
+div[id=userInfoTopBottom]{
+	float: bottom;
+	margin-right: 10px;
+}
+
+h1[id=title]{
+	color: white;
+	margin-top: 35px;
+	display:inline-block;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 170%;
+}
+
 label[id=welcomePhrase]{
 	color: white;
+	margin-top: 10px;
+	margin-bottom: 18px;
+	display:inline-block;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
@@ -248,11 +266,37 @@ div[id="backToDate"]{
 	text-align:center;
 }
 
+div[id="confirmMessage"]{
+	width: 100%;
+    height: 15%;
+    border-collapse: collapse;
+	text-align:center;
+}
+
+div[id="backToStart"]{
+	width: 100%;
+	height: 85%;
+	position: relative;
+	border-collapse: collapse;
+	margin-top: 40px;
+	text-align:center;
+}
+
+
+
 h1[id=questionText]{
 	color: rgba(47,47,47);
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	margin-top: 50px;
 	font-size: 200%;
+	font-weight: bold;
+}
+
+h1[id=questionTextSmall]{
+	color: rgba(47,47,47);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	margin-top: 50px;
+	font-size: 150%;
 	font-weight: bold;
 }
 
