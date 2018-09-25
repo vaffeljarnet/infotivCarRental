@@ -53,6 +53,25 @@ session_start()
 <body>
 <table style="width:50%">
 
+<h3>Admin control</h3>
+
+<?php
+
+if(isset($_SESSION['u_admin'])) {
+
+?>	
+
+	<button id="input" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
+	<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">remove all bookings</button>
+
+		<input name="users" placeholder="Find user info" onchange ="showUser(this.value)">
+	<div id="userInfo"><b>User info will show here "I hope"</div>
+
+
+<?php	
+}
+?>
+
 <tbody>
 
 <th>License</th> 
@@ -64,15 +83,10 @@ session_start()
 <th>order id</th>
 <th>First</th>
 <th>Last</th>
-<h3>Admin control</h3>
+<th>Car returned</th>
+
+
 <?php
-
-if(isset($_SESSION['u_admin'])) {
-
-?>	<button id="input" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
-	<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">remove all bookings</button>
-<?php	
-}
 
 if(!isset($_SESSION['u_admin'])) {
 header('Location: index.php');
@@ -89,17 +103,14 @@ include_once '../includes/dbh.inc.php';
 if(isset($_SESSION['u_id'])) {
 	$var = $_SESSION['u_id'];
 }
-
 ?>
-<h1>Current orders</h1>
 
+<h1>Current orders</h1>
 <?php
 //A query for selecting all cars that are connected to the users ID.
-$sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.orderID LIKE '%'";
+$sql = "SELECT bookings.*, cars.*, users.* FROM bookings JOIN cars ON bookings.licenseNumber = cars.licenseNumber JOIN users ON users.user_id = bookings.user_id ORDER BY bookings.orderID;";
 $result = $conn->query($sql);
 
-$sq2 = "SELECT users.user_first, users.user_last, bookings.user_id FROM users LEFT JOIN bookings on users.user_id = bookings.user_id WHERE bookings.orderID LIKE '%'";
-$result2 = $conn->query($sq2);
 //Loops trough the result of the query and populates the html table on the page. 
 if ($result->num_rows > 0) {
 
@@ -116,6 +127,14 @@ if ($result->num_rows > 0) {
 				<td><?php echo $row['orderID'];?></td>
 				<td><?php echo $row['user_first'];?></td>
 				<td><?php echo $row['user_last'];?></td>
+				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook();" ACTION ="../includes/unBooking.inc.php">
+					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
+					<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
+					<input name="startDate" type="hidden" value="<?php echo $row['startDate'];?>">
+					<input name="endDate" type="hidden" value="<?php echo $row['endDate'];?>">
+					<input name="user_id" type="hidden" value="<?php echo $row['user_id'];?>">
+					<button type="submit" name = "submit"><?php echo $row['licenseNumber'];?></button>
+					</FORM>
 				</td>
 			</tr>
 		<?php   
@@ -124,28 +143,19 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 
-if ($result2->num_rows > 0) {
-
-    // output data of each row
-    while($row = $result2->fetch_assoc()) {
-			?>
-			<tr>
-				<td><?php echo $row['user_first'];?></td>
-				<td><?php echo $row['user_last'];?></td>
-				</td>
-			</tr>
-		<?php   
-    }
-} else {
-    echo "0 results";
-}
 
 $conn->close();
 ?>		
 
+
+
+</tbody>
+</table>
+</table>
+</body>
 <script>
 function confirmUnbook() {
- 	var r = confirm("Are you sure you want to cancel your order for: ");
+ 	var r = confirm("Confirm car returned?");
  	if (r == true) {
     document.getElementById("unBook").submit();
   	} else {
@@ -153,10 +163,28 @@ function confirmUnbook() {
   	exit();
 	}
 }
-</script>	
 
-</tbody>
-</table>
-</table>
-</body>
+function showUser(str) {
+    if (str == "") {
+        document.getElementById("userInfo").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("userInfo").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","../includes/getUserInfo.inc.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+
+</script>	
 </html>

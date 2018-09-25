@@ -55,13 +55,14 @@ session_start()
 <table style="width:46%">
 
 <tbody>
-
-<th>License Number </th> 
+ 
 <th>Brand</th> 
 <th>Model</th> 
-<th>Passengers</th> 
 <th>Booked from</th> 
 <th>Until</th> 
+<th>Passengers</th> 
+<th>License Number</th>
+<th>Unbook car for</th>
 
 <?php
 
@@ -96,15 +97,15 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 			?>
 			<tr>
-				<td><?php echo $row['licenseNumber'];?></td>
 				<td><?php echo $row['make'];?></td>
 				<td><?php echo $row['model'];?></td>
-				<td><?php echo $row['passengers'];?></td>
 				<td><?php echo $row['startDate'];?></td>
 				<td><?php echo $row['endDate'];?></td>
-				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook();" ACTION ="../dbConnection/unBooking.php">
+				<td><?php echo $row['passengers'];?></td>
+				<td><?php echo $row['licenseNumber'];?></td>
+				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return <?php echo 'confirmUnbook();'?>" ACTION ="../includes/unBooking.inc.php">
 					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
-					<button type="submit" name = "submit">Unbook</button>
+					<button type="submit" name = "submit"><?php echo $row['startDate'];?></button>
 					</FORM>
 				</td>
 			</tr>
@@ -116,16 +117,34 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>		
 
+
 <script>
 function confirmUnbook() {
- 	var r = confirm("Are you sure you want to cancel your order for: ");
- 	if (r == true) {
-    document.getElementById("unBook").submit();
-  	} else {
-    return false;
-  	exit();
+	var response = confirm("are you sure you want to unbook this car?");
+	if (response == true) {
+	document.getElementById("unBook").submit();
+	} else {
+		return false;
+		exit();
+	} 
+/*var carVar = "'example Car'";
+var testStart = "'2018-09-24'";
+var testEnd = "'2018-09-24'";
+var data = [{'startDate':testStart,'endDate':testEnd}];
+var alertText = "Are you sure you want to unbook "+carVar+" for these times?\n"
+	for(var i in data) {
+    alertText += data[i].startDate+ " to "+ data[i].endDate +"\n";
 	}
-}
+	var response = confirm( alertText );
+	if (response == true) {
+	document.getElementById("unBook").submit();
+	} else {
+		return false;
+		exit();
+	} */
+} 
+
+
 </script>	
 
 </tbody>

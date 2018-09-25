@@ -35,11 +35,10 @@ session_start();
    		
    		if(isset($_COOKIE['selectedModel'])) {
    			header("Location: http://localhost/infotivCarRental/html/gui/confirmBook.php");
+
    		} else {
    			header("Location: http://localhost/infotivCarRental/html/gui/index.php");
    		}
-
-   		echo "User account created for: " . $firstName . " " . $lastName ;
 		}
 	}
 	
