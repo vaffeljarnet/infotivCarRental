@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 	//checks if we got a matching email if not exits script.
 
 	if ($resultCheck < 1) {
-		$_SESSION['error'] = 'Incorrect e-mail or password';
+		$_SESSION['error'] = 'Wrong e-mail or password';
 		header('Location: ' . $_SERVER['HTTP_REFERER']);
 		exit();
 	}else {
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 			//de-hashing the password.
 			$hashedPassCheck = password_verify($pass, $row['user_pass']);
 			if ($hashedPassCheck == false) {
-				$_SESSION['error'] = 'Incorrect e-mail or password';
+				$_SESSION['error'] = 'Wrong e-mail or password';
 				header('Location: ' . $_SERVER['HTTP_REFERER']);
 				exit();
 			} elseif ($hashedPassCheck == true) {
