@@ -7,27 +7,30 @@ $sql= "SELECT cars.*, orderhistory.* FROM cars LEFT JOIN orderhistory on cars.li
 $result = mysqli_query($conn, $sql);
 
 echo 
-'<table style="width:44%">
+'<div id="history">
+<h1 id="historyText">My order history!</h1>
+</div>
+<table  id="historyTable">
 <tr>
-<th>orderID</th>
-<th>Brand</th>
-<th>Model</th>
-<th>Booked from</th>
-<th>Until</th>
-<th>Passengers</th>
-<th>LicenseNumber</th>
+<th id="orderTH" class="mediumText">orderID</th>
+<th id="orderTH" class="mediumText">Brand</th>
+<th id="orderTH" class="mediumText">Model</th>
+<th id="orderTH" class="mediumText">Booked from</th>
+<th id="orderTH" class="mediumText">Until</th>
+<th id="orderTH" class="mediumText">Passengers</th>
+<th id="orderTH" class="mediumText">LicenseNumber</th>
 
 
 </tr>';
 while($row = mysqli_fetch_array($result)) {
    echo "<tr>";
-   echo "<td>" . $row['orderID'] . "</td>";
-   echo "<td>" . $row['make'] . "</td>";
-   echo "<td>" . $row['model'] . "</td>";
-   echo "<td>" . $row['startDate'] . "</td>";
-   echo "<td>" . $row['endDate'] . "</td>";
-   echo "<td>" . $row['passengers'] . "</td>";
-   echo "<td>" . $row['licenseNumber'] . "</td>";
+   echo "<td id='orderTD' class='mediumText'>" . $row['orderID'] . "</td>";
+   echo "<td id='orderTD' class='mediumText'>" . $row['make'] . "</td>";
+   echo "<td id='orderTD' class='mediumText'>" . $row['model'] . "</td>";
+   echo "<td id='orderTD' class='mediumText'>" . $row['startDate'] . "</td>";
+   echo "<td id='orderTD' class='mediumText'>" . $row['endDate'] . "</td>";
+   echo "<td id='orderTD' class='mediumText'>" . $row['passengers'] . "</td>";
+   echo "<td id='orderTD' class='mediumText'>" . $row['licenseNumber'] . "</td>";
    echo "</tr>";
 }
 echo "</table>";

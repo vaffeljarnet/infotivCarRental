@@ -814,3 +814,46 @@ table[id="carTable"]{
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
 }
+
+/*Styling for my bookings table on myPage */
+table[id="orderTable"]{
+	margin: 0 auto;
+	width: 90%;
+
+}
+
+/*Styling for my history table on myPage */
+table[id="historyTable"]{
+	margin: 0 auto;
+	width: 90%;
+}
+/* */
+table th {
+	text-align: left;
+}
+td[id="orderTD"], th[id="orderTH"] {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+div [id="history"] {
+	float: left;
+	margin-top: 20px;
+	border-collapse: collapse;
+	text-align:center;
+	width: 100%;
+	height: 15%;
+}
+
+h1[id=historyText] {
+	color: rgb(47,47,47);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	margin-top: 20px;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+select [id="selectHistory"] {
+	font-size: 200%;
+}
+

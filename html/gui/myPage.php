@@ -7,127 +7,148 @@ session_start()
 <!DOCTYPE html>
 <html>
 <head>
-
-	<title>Login</title>
-    <link type="text/css" href="style.css">
-	<header>
-		<nav>
-
-			<div class="main-wrapper">
-				<ul>
-					<a href="index.php" style="float:right" >Home</a>
-				</ul>
-				<?php
-					if(isset($_SESSION['u_id'])) {
-						echo '<div class="nav-login" style="float:right">
-								You are logged in!
-							 	<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
-									<button type="submit" name="submit">Logout</button>'  ?>
-									<button id="input" type="button" value="Create new user" onclick="location.href='myPage.php'">My page</button>
-									<?php
-									echo 
-									'</form>	
-							</div>';
-					} else {
-						echo '<div class="nav-login" style="float:right">
-								<form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
-								<input type="text" id="email" required="required" name="email" placeholder="E-mail">
-								<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
-								<br>
-								<button type="submit" name="submit">Login</button>'  ?>
-								<button id="input" type="button" value="Create new user" onclick="location.href='userRegistration.php'">Create new user</button>
-									<?php 
-										if(isset($_SESSION['error'])) {
-										echo $_SESSION['error'];
-    									unset($_SESSION['error']);
-										}
-									 echo '
-								</form>							
-							</div>';					
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css"> 
+</head>	
+<header>
+	<div id="headerWrapper">
+	<!---Inputs the logo and title of hompage to the left in the header-->
+		<a href="/infotivCarRental/html/gui/index.php">
+			<div id="leftHeader">
+				<div class="logo" id="logo">&nbsp;</div>
+				<div class="title" id="title">
+					<h1 id="title">Infotiv Car Rental</h1>
+				</div>
+			</div>
+		</a>
+		<div id="rightHeader">
+		<!---Inputs the About button to the left in the right part of the header-->
+			<div id="categories">
+				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
+			</div>
+		<!---If user is logger in, inputs welcome phrase and buttons for logout and my page.
+		If not logged in, inputs email and password field, and log in and create user buttons.-->
+			<div id="userInfoWrapper">
+	<?php
+	if(isset($_SESSION['u_id'])) {
+			?>
+				<div id="userInfoTop">
+					<label id="welcomePhrase">You are signed in as <?php echo $_SESSION['u_first'];?></label>
+				</div>
+				<div id="userInfoTopBottom">
+					<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
+						<button type="submit" name="submit">Logout</button>
+						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/myPage.php'">My page</button>
+					</form>
+				</div>
+			<?php
+	} else {
+				?><form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
+					<div id="userInfoTop">
+						<input class="inputFields" type="text" id="email" required="required" name="email" placeholder="E-mail">
+						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
+					</div>
+					<div id="userInfoTopBottom">
+					<!---If wrong information is given on sign in, appropriate error message is printed-->
+					<?php 
+					if(isset($_SESSION['error'])) {
+					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
+    				unset($_SESSION['error']);
 					}
+					?>
+						<button type="submit" name="submit">Login</button>
+						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/userRegistration.php'">Create user</button>
+					</div>
+				</form>
+				<?php
+			}
 				?>
 			</div>
-		</nav>
-	</header>
-</head>
-<h3>My bookings!</h3>
+		</div>
+	</div>
+</header>
 <body>
-<table style="width:50%">
-
-<tbody>
- 
-<th>orderID</th> 
-<th>Brand</th> 
-<th>Model</th> 
-<th>Booked from</th> 
-<th>Until</th> 
-<th>Passengers</th> 
-<th>License Number</th>
-<th>Unbook car for</th>
 
 <?php
 //checks if user is logged in to an admin account, if true then redirect to adminPage.
 if(isset($_SESSION['u_admin'])) {
 header('Location: adminPage.php');
 exit();
-}
-	
+}	
 //checks if user is logged in, if NOT then return to index.
 if(!isset($_SESSION['u_id'])) {
 header('Location: index.php');
 exit;
 }
-
 include_once '../includes/dbh.inc.php';
 
 if(isset($_SESSION['u_id'])) {
 	$var = $_SESSION['u_id'];
 }
-
 //A query for selecting all cars that are connected to the users ID.
 $sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.user_id='".$var."'";
 $result = $conn->query($sql);
-
+?>
+<div id="mainWrapperBody">
+	<div id="leftpane"></div>
+	<div id="middlepane">
+		<div id="history">
+			<h1 id="historyText">My bookings!</h1>
+		</div>
+		<div>
+			<table id="orderTable">
+				<tr>
+ 					<th id="orderTH" class="mediumText">orderID</th> 
+					<th id="orderTH" class="mediumText">Brand</th> 
+					<th id="orderTH" class="mediumText">Model</th> 
+					<th id="orderTH" class="mediumText">Booked from</th> 
+					<th id="orderTH" class="mediumText">Until</th> 
+					<th id="orderTH" class="mediumText">Passengers</th> 
+					<th id="orderTH" class="mediumText">License Number</th>
+					<th class="mediumText">Unbook car for</th>
+				</tr>
+<?php 
 //Loops trough the result of the query and populates the html table on the page. 
 if ($result->num_rows > 0) {
-
     // output data of each row
     while($row = $result->fetch_assoc()) {
 			?>
-			<tr>
-				<td><?php echo $row['orderID'];?></td>
-				<td><?php echo $row['make'];?></td>
-				<td><?php echo $row['model'];?></td>
-				<td><?php echo $row['startDate'];?></td>
-				<td><?php echo $row['endDate'];?></td>
-				<td><?php echo $row['passengers'];?></td>
-				<td><?php echo $row['licenseNumber'];?></td>
-				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
-					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
-					<button type="submit" name = "submit">Cancel booking</button>
-					</FORM>
-				</td>
-			</tr>
+				<tr>
+					<td id="orderTD" class="mediumText"><?php echo $row['orderID'];?></td>
+					<td id="orderTD" class="mediumText"><?php echo $row['make'];?></td>
+					<td id="orderTD" class="mediumText"><?php echo $row['model'];?></td>
+					<td id="orderTD" class="mediumText"><?php echo $row['startDate'];?></td>
+					<td id="orderTD" class="mediumText"><?php echo $row['endDate'];?></td>
+					<td id="orderTD" class="mediumText"><?php echo $row['passengers'];?></td>
+					<td id="orderTD" class="mediumText"><?php echo $row['licenseNumber'];?></td>
+					<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+						<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
+						<button type="submit" name = "submit">Cancel booking</button>
+						</FORM>
+					</td>
+				</tr>
 		<?php   
     }
 } else {
     echo "0 results";
 }
-
 ?>		
-
-<form>
-<select name="users" onchange="showHistory(this.value)">
-  <option value="">Hide history</option>
-  <option value="<?php echo $var?>">Show history</option>
-  </select>
-</form>
-<div id="orderHistory"><b></div>
-
-</tbody>
-</table>
-</table>
-</body>
+			
+			</table>
+		</div> 
+			<div id="history">
+				<form>
+					<select id="selectHistory" name="users" onchange="showHistory(this.value)">
+ 					 <option id="selectHistory" value="">Hide order history</option>
+ 					 <option id="selectHistory" value="<?php echo $var?>">Show order history</option>
+ 					 </select>
+				</form>
+				<div id="orderHistory"></B></div>
+			</div>
+	</div>
+	<div id="rightpane"></div>
+</div>
+</body> 
 <script>
 	//simple confirm method that takes an argument"order id" from the form "unBook". and alerts the user of what they're trying to do.
 function confirmUnbook(string) {
