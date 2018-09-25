@@ -36,6 +36,7 @@ $sql = "INSERT INTO cars (licenseNumber, make, model, passengers, availability) 
 //Sends the query to SQL db and gives confirmation if the query was successfully
 	if ($conn->query($sql) === TRUE) {
     	echo "Car added to database";
+    	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	} else {
     	echo "Error: " . $sql . "<br>" . $conn->error;
 	}
@@ -44,6 +45,5 @@ $conn->close();
 
 ?>
 <br \>
-<button onclick="location.href='/infotivCarRental/html/admin/carRegistration.html'" class="selectBtn">Return</button>
 </body>
 </html>
