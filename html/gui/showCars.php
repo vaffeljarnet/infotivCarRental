@@ -13,6 +13,7 @@
 </head>	
 <header>
 	<div id="headerWrapper">
+	<!---Inputs the logo and title of hompage to the left in the header-->
 		<a href="/infotivCarRental/html/gui/index.php">
 			<div id="leftHeader">
 				<div class="logo" id="logo">&nbsp;</div>
@@ -22,9 +23,12 @@
 			</div>
 		</a>
 		<div id="rightHeader">
+		<!---Inputs the About button to the left in the right part of the header-->
 			<div id="categories">
 				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
 			</div>
+		<!---If user is logger in, inputs welcome phrase and buttons for logout and my page.
+		If not logged in, inputs email and password field, and log in and create user buttons.-->
 			<div id="userInfoWrapper">
 	<?php
 	if(isset($_SESSION['u_id'])) {
@@ -46,6 +50,7 @@
 						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 					</div>
 					<div id="userInfoTopBottom">
+					<!---If wrong information is given on sign in, appropriate error message is printed-->
 					<?php 
 					if(isset($_SESSION['error'])) {
 					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
@@ -67,14 +72,15 @@
 
 <?php
 
+//Sets up a connection to the database
+
 $servername = "localhost";
 $username = "root";
 $password = "infotiv2018";
 $dbname = "fleet_information";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
@@ -85,9 +91,10 @@ $sqlBookings = "SELECT * FROM bookings";
 $result = $conn->query($sqlBookings);
 $licenseNumbers = [];
 
-//Loops trough the result of the query and checks if the dates given by the user
+//If no dates are set, an error message. Otherwise loops trough the 
+//result of the query above and checks if the dates given by the user
 //in index.html are within the range of the cars in the bookings table. If it is,
-//the unavailable cars are put in to an array.
+//the unavailable cars are put in to an array. 
 
 if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 	?>
@@ -103,9 +110,9 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 			<div id="rightpane"></div>
 		</div>
 	<?php
+	$conn->close();
 }else{
 	if ($result->num_rows > 0) {
-		// output data of each row
 		while($row = $result->fetch_assoc()) {
 			
 			$start_date = $row['startDate'];
@@ -161,6 +168,9 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 							<h1 id="questionText">Which car model would you like to drive?</h1></br>
 							<label class="mediumText" for="start">Selected trip dates: <?php echo $_COOKIE['startDate'] ?> – <?php echo $_COOKIE['endDate'] ?></label></br>
 						</div>
+						<div id="backToDate">
+							
+						</div>
 						<div id="carSelection">
 							<table id="carTable">
 								<tbody>	
@@ -184,10 +194,10 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 			<!-- Switches back to html to format and alternates between 
 			that and php to populate the table with content from db-->
 									
-									<tr>
-										<td><img src="<?php echo $carImage;?>" height=59 width=150></img></td>
+									<tr>										
 										<td class="mediumText"><?php echo $row['make'];?></td>
-										<td class="mediumText"><?php echo $row['model'];?></td>										
+										<td class="mediumText"><?php echo $row['model'];?></td>		
+										<td><img src="<?php echo $carImage;?>" height=59 width=150></img></td>										
 										<td>
 											<FORM NAME ="form1" METHOD ="POST" ACTION = "/infotivCarRental/html/cookies/setCookiesCar.php">
 												<input name="make" type="hidden" value="<?php echo $row['make'];?>">
@@ -204,15 +214,15 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 		?>				
 								</tbody>
 							</table>
-						</div>
-						<div id="backToDate">
-							<button class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
+							</br><button style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
 						</div>
 					</div>
 					<div id="rightpane"></div>
 				</div>
 		<?php
 	} else {
+		//If query has no entries, that information is printed and a button to go back 
+		//to date select is added.
 		?>
 				<div id="mainWrapperBody">
 					<div id="leftpane"></div>
@@ -241,7 +251,7 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 
 <?php
 
-//Function used for check if a pair of start and end dates are within the range 
+//Function used to check if a pair of start and end dates are within the range 
 //of another pair of start and end dates.
 function check_in_range($start_date, $end_date, $start_from_user, $end_from_user)
 {

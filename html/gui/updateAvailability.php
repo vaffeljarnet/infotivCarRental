@@ -10,6 +10,7 @@
 </head>	
 <header>
 	<div id="headerWrapper">
+	<!---Inputs the logo and title of hompage to the left in the header-->
 		<a href="/infotivCarRental/html/gui/index.php">
 			<div id="leftHeader">
 				<div class="logo" id="logo">&nbsp;</div>
@@ -19,9 +20,12 @@
 			</div>
 		</a>
 		<div id="rightHeader">
+		<!---Inputs the About button to the left in the right part of the header-->
 			<div id="categories">
 				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
 			</div>
+		<!---If user is logger in, inputs welcome phrase and buttons for logout and my page.
+		If not logged in, inputs email and password field, and log in and create user buttons.-->
 			<div id="userInfoWrapper">
 	<?php
 	if(isset($_SESSION['u_id'])) {
@@ -43,6 +47,7 @@
 						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 					</div>
 					<div id="userInfoTopBottom">
+					<!---If wrong information is given on sign in, appropriate error message is printed-->
 					<?php 
 					if(isset($_SESSION['error'])) {
 					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
@@ -62,7 +67,8 @@
 </header>
 <body>
 <?php
-
+//Checks that the previous location was the confirm book page
+//and that the user is signed in, book a car with incomplete information.
 if($_COOKIE['previousLocation'] == "confirmBook"){
 	
 	if(!isset($_COOKIE['selectedLicenseNumber']) 
@@ -90,17 +96,17 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 		<?php
 		
 	}else{
+		//Sets up a connection to the database
 		$servername = "localhost";
 		$username = "root";
 		$password = "infotiv2018";
 		$dbname = "fleet_information";
-		// Create connection
 		$conn = new mysqli($servername, $username, $password, $dbname);
-		// Check connection
+
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
 		} 
-		//Sends a sql query to insert new entryin table bookings for the car selected
+		//Sends a sql query to insert new entry in table bookings for the car selected
 		//in showCars.phtml using the previously stored selectedLicenseNumber cookie.
 
 		$sql = "INSERT INTO bookings (licenseNumber, startDate, endDate, user_id) VALUES 
@@ -113,6 +119,8 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 				?>
 	<div id="mainWrapperBody">
 		<div id="leftpane"></div>
+		<!-- Inputs a confirmation message with booking information, and buttons for 
+		going to start page, and my page to view booking.-->
 			<div id="middlepane">
 				<div id="confirmMessage">
 					<h1 id="questionTextSmall">A <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedModel']; ?> is now ready for pickup <?php echo $_COOKIE['startDate']; ?></h1>
@@ -129,6 +137,7 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 		<?php
 			} else {
 				?>
+				<!-- If the sql query was unsucessfull, error message is printed.-->
 	<div id="mainWrapperBody">
 		<div id="leftpane"></div>
 			<div id="middlepane">
@@ -148,6 +157,8 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 
 		$conn->close();	
 		
+		//Cookies are reset after booking to make sure the same
+		//car is not booked twice.
 		setcookie('selectedLicenseNumber', null, -1, "/");
 		setcookie('selectedMake', null, -1, "/");
 		setcookie('selectedModel', null, -1, "/");
@@ -156,6 +167,7 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 	}	
 }else{
 	?>
+	<!-- If user inputs this url directly, a message is printed about bad request.-->
 	<div id="mainWrapperBody">
 		<div id="leftpane"></div>
 		<div id="middlepane">

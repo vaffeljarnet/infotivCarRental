@@ -13,6 +13,7 @@
 </head>	
 <header>
 	<div id="headerWrapper">
+	<!---Inputs the logo and title of hompage to the left in the header-->
 		<a href="/infotivCarRental/html/gui/index.php">
 			<div id="leftHeader">
 				<div class="logo" id="logo">&nbsp;</div>
@@ -22,9 +23,12 @@
 			</div>
 		</a>
 		<div id="rightHeader">
+		<!---Inputs the About button to the left in the right part of the header-->
 			<div id="categories">
 				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
 			</div>
+		<!---If user is logger in, inputs welcome phrase and buttons for logout and my page.
+		If not logged in, inputs email and password field, and log in and create user buttons.-->
 			<div id="userInfoWrapper">
 	<?php
 	if(isset($_SESSION['u_id'])) {
@@ -46,6 +50,7 @@
 						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 					</div>
 					<div id="userInfoTopBottom">
+					<!---If wrong information is given on sign in, appropriate error message is printed-->
 					<?php 
 					if(isset($_SESSION['error'])) {
 					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
@@ -68,13 +73,16 @@
 <div id="mainWrapperBody">
 	<div id="leftpane"></div>
 	<div id="middlepane">
-	<!-- Prints confirmation  message with collected cookie for the selected make and model.-->
-		<div id="showQuestion">
+	<!-- Prints confirmation  message with collected cookie for the selected make, model
+	and the selected start and end dates.-->
+		<div id="confirmQuestion">
 			<h1 id="questionText">Confirm booking of <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedModel']; ?></h1></br>
 			<label class="mediumText" for="start">Pickup date: <?php echo $_COOKIE['startDate'] ?></label>
 			<label class="mediumText" for="start">Return date: <?php echo $_COOKIE['endDate'] ?></label></br>
 		</div>
-		<div id="carSelection">
+		<!-- Inputs buttons for canceling the booking and confirming it. If confirm button
+		is pressed and user is not signed in, the booking will not be possible.-->
+		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
 <?php
 			?><button class="bigButton" id="input" type="button" onclick="location.href='showCars.php'">Cancel</button><?php
@@ -86,7 +94,6 @@
 		?>
 			</form>
 		</div>
-		<div id="backToDate"></div>
 	</div>
 	<div id="rightpane"></div>
 </div>		

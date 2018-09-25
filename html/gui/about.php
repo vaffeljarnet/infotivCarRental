@@ -13,6 +13,7 @@
 </head>	
 <header>
 	<div id="headerWrapper">
+	<!---Inputs the logo and title of hompage to the left in the header-->
 		<a href="/infotivCarRental/html/gui/index.php">
 			<div id="leftHeader">
 				<div class="logo" id="logo">&nbsp;</div>
@@ -22,9 +23,12 @@
 			</div>
 		</a>
 		<div id="rightHeader">
+		<!---Inputs the About button to the left in the right part of the header-->
 			<div id="categories">
 				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
 			</div>
+		<!---If user is logger in, inputs welcome phrase and buttons for logout and my page.
+		If not logged in, inputs email and password field, and log in and create user buttons.-->
 			<div id="userInfoWrapper">
 	<?php
 	if(isset($_SESSION['u_id'])) {
@@ -46,6 +50,7 @@
 						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 					</div>
 					<div id="userInfoTopBottom">
+					<!---If wrong information is given on sign in, appropriate error message is printed-->
 					<?php 
 					if(isset($_SESSION['error'])) {
 					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
@@ -67,6 +72,7 @@
 <div id="mainWrapperBody">
 	<div id="leftpane"></div>
 	<div id="middlepane">
+	<!---Simple information page that inputs a presentation text, and also states the current version-->
 		<div id="aboutHeading">
 			<h1 id="questionText">Welcome</h1>
 		</div>		
@@ -74,7 +80,8 @@
 			<label class="mediumText">This is a project created during an internship at Infotiv AB, Gothenburg by Joakim Gustavsson, Johan Larson and Maheel Dabarera.</label>
 		</div>
 		<div id="versionNr">
-			<label class="mediumText">Version: 0.2</label>
+			<label class="mediumText">Version: 0.2</label></br></br>
+			<button onclick="location.href='/infotivCarRental/documentation/index.html'">Go to documentation</button>
 		</div>
 	</div>
 	<div id="rightpane"></div>
