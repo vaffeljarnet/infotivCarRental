@@ -1,10 +1,8 @@
-
 <?php
 $q = intval($_GET['q']);
 
 include_once 'dbh.inc.php';
 
-mysqli_select_db($con,"ajax_demo");
 $sql="SELECT users.*, bookings.* FROM users LEFT JOIN bookings on users.user_id = bookings.user_id WHERE bookings.orderID LIKE '".$q."';";
 $result = mysqli_query($conn, $sql);
 

@@ -46,7 +46,7 @@
 	} else {
 				?><form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
 					<div id="userInfoTop">
-						<input class="inputFields" type="email" id="email" required="required" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail">
+						<input class="inputFields" type="text" id="email" required="required" name="email" placeholder="E-mail">
 						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 					</div>
 					<div id="userInfoTopBottom">
