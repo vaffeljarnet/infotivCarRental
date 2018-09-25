@@ -51,7 +51,7 @@ session_start()
 	</header>
 </head>
 <body>
-<table style="width:50%">
+<table style="width:51%">
 
 <h3>Admin control</h3>
 
@@ -62,11 +62,10 @@ if(isset($_SESSION['u_admin'])) {
 ?>	
 
 	<button id="input" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
-	<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">remove all bookings</button>
+	<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">Delete all bookings</button>
 
-		<input name="users" placeholder="Find user info" onchange ="showUser(this.value)">
-	<div id="userInfo"><b>User info will show here "I hope"</div>
-
+	<input name="users" placeholder="Find user info" onchange ="showUser(this.value)">
+	<div id="userInfo"><b></div>
 
 <?php	
 }
@@ -74,16 +73,16 @@ if(isset($_SESSION['u_admin'])) {
 
 <tbody>
 
+<th>order id</th>
 <th>License</th> 
 <th>Make</th> 
 <th>Model</th> 
 <th>Passengers</th> 
 <th>Booked from</th> 
 <th>Until</th> 
-<th>order id</th>
 <th>First</th>
 <th>Last</th>
-<th>Car returned</th>
+<th>Order completed</th>
 
 
 <?php
@@ -118,22 +117,23 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 			?>
 			<tr>
+				<td><?php echo $row['orderID'];?></td>
 				<td><?php echo $row['licenseNumber'];?></td>
 				<td><?php echo $row['make'];?></td>
 				<td><?php echo $row['model'];?></td>
 				<td><?php echo $row['passengers'];?></td>
 				<td><?php echo $row['startDate'];?></td>
 				<td><?php echo $row['endDate'];?></td>
-				<td><?php echo $row['orderID'];?></td>
 				<td><?php echo $row['user_first'];?></td>
 				<td><?php echo $row['user_last'];?></td>
-				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook();" ACTION ="../includes/unBooking.inc.php">
+				<?php //form for sending info about the booking to unBooking.inc.php  ?>
+				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
 					<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
 					<input name="startDate" type="hidden" value="<?php echo $row['startDate'];?>">
 					<input name="endDate" type="hidden" value="<?php echo $row['endDate'];?>">
 					<input name="user_id" type="hidden" value="<?php echo $row['user_id'];?>">
-					<button type="submit" name = "submit"><?php echo $row['licenseNumber'];?></button>
+					<button type="submit" name = "submit">Complete order</button>
 					</FORM>
 				</td>
 			</tr>
@@ -154,8 +154,9 @@ $conn->close();
 </table>
 </body>
 <script>
-function confirmUnbook() {
- 	var r = confirm("Confirm car returned?");
+	//simple confirm method that takes an argument"order id" from the form "unBook". and alerts the user of what they're trying to do.
+function confirmUnbook(string) {
+ 	var r = confirm("Are you sure car from order No: " +string+ " has been returned and payed for?");
  	if (r == true) {
     document.getElementById("unBook").submit();
   	} else {
@@ -163,24 +164,27 @@ function confirmUnbook() {
   	exit();
 	}
 }
-
+//Ajax function, takes the user input and updates content of the div "userInfo".
 function showUser(str) {
     if (str == "") {
+    	//if str is empty then return ""
         document.getElementById("userInfo").innerHTML = "";
         return;
     } else { 
+ 		//creating xmlhttp object for IE7+, Firefox, Chrome, Opera, Safari
         if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
-            // code for IE6, IE5
+            //creating xmlhttp object for code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
+        } 
+        // will come back for clarification.
         xmlhttp.onreadystatechange = function() {
+        // Create the function to be executed when the server response is ready.
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("userInfo").innerHTML = this.responseText;
             }
-        };
+        };  //Send the request off to a file on the server
         xmlhttp.open("GET","../includes/getUserInfo.inc.php?q="+str,true);
         xmlhttp.send();
     }
