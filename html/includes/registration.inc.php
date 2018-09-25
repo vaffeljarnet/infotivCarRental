@@ -21,25 +21,24 @@ session_start();
 	$validPhone = $conn->query($sql3);
 	
 	if ($validEmail->num_rows > 0) {
-		$_SESSION['error'] = 'That E-mail is already taken';
+		$_SESSION['errorCreate'] = 'That E-mail is already taken';
 		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=email");
 		exit();
 
 	}else {
 		if ($validPhone->num_rows > 0) {
-		$_SESSION['error'] = 'That Phone number is already taken';
+		$_SESSION['errorCreate'] = 'That Phone number is already taken';
 		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=phone");
 		} else {
 		$sql = "INSERT INTO users (user_first, user_last, user_email, user_phone, user_pass) VALUES('".$firstName."','".$lastName."','".$email."', '".$phone."', '".$hashedPass."');";
 	 	mysqli_query($conn, $sql);
    		
-   		if(isset($_COOKIE['selectedModel'])) {
-   			header("Location: http://localhost/infotivCarRental/html/gui/confirmBook.php");
-   		} else {
-   			header("Location: http://localhost/infotivCarRental/html/gui/index.php");
-   		}
-
-   		echo "User account created for: " . $firstName . " " . $lastName ;
+			if(isset($_COOKIE['selectedModel'])) {
+				header("Location: http://localhost/infotivCarRental/html/gui/confirmBook.php");
+			} else {				
+				header("Location: http://localhost/infotivCarRental/html/gui/index.php");
+			}
+	
 		}
 	}
 	

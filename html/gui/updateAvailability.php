@@ -2,17 +2,26 @@
 	session_start();
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
 <title>Infotiv Car Rental</title>
-<link rel="stylesheet" type="text/css" href="styleTest.css"> 
+<link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css"> 
 </head>	
 <header>
 	<div id="headerWrapper">
-		<div id="leftHeader">
-				<h1 id="title">Infotiv Car Rental</h1>
-		</div>
+		<a href="/infotivCarRental/html/gui/index.php">
+			<div id="leftHeader">
+				<div class="logo" id="logo">&nbsp;</div>
+				<div class="title" id="title">
+					<h1 id="title">Infotiv Car Rental</h1>
+				</div>
+			</div>
+		</a>
 		<div id="rightHeader">
+			<div id="categories">
+				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
+			</div>
 			<div id="userInfoWrapper">
 	<?php
 	if(isset($_SESSION['u_id'])) {
@@ -23,26 +32,27 @@
 				<div id="userInfoTopBottom">
 					<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
 						<button type="submit" name="submit">Logout</button>
-						<button id="input" type="button" onclick="location.href='myPage.php'">My page</button>
+						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/myPage.php'">My page</button>
 					</form>
 				</div>
 			<?php
 	} else {
 				?><form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
 					<div id="userInfoTop">
-						<input type="email" id="email" required="required" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail">
-						<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
+						<input class="inputFields" type="email" id="email" required="required" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail">
+						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
 					</div>
 					<div id="userInfoTopBottom">
-						<button type="submit" name="submit">Login</button>
-						<button id="input" type="button" onclick="location.href='userRegistration.php'">Create user</button>
-					</div>
-				<?php 
+					<?php 
 					if(isset($_SESSION['error'])) {
 					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
     				unset($_SESSION['error']);
 					}
-				?></form>
+					?>
+						<button type="submit" name="submit">Login</button>
+						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/userRegistration.php'">Create user</button>
+					</div>
+				</form>
 				<?php
 			}
 				?>
@@ -72,7 +82,7 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 				<h1 id="questionText">Booking incomplete, please try again from start.</h1>
 			</div>
 			<div id="backToStart">
-				<button class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to start</button>
+				<button class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Home</button>
 			</div>
 		</div>
 		<div id="rightpane"></div>
@@ -106,6 +116,7 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 			<div id="middlepane">
 				<div id="confirmMessage">
 					<h1 id="questionTextSmall">A <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedModel']; ?> is now ready for pickup <?php echo $_COOKIE['startDate']; ?></h1>
+					</br>
 					<label class="mediumText">You can view your booking on your page</label>
 				</div>
 				<div id="backToStart">
@@ -152,7 +163,7 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 				<h1 id="questionTextSmall">You seem to have gotten to this page by mistake. Please go back to start and try again.</h1>
 			</div>
 			<div id="backToStart">
-				<button class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to start</button>
+				<button class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Home</button>
 			</div>
 		</div>
 		<div id="rightpane"></div>

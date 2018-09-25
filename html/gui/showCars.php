@@ -8,60 +8,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Car Selection</title>
-   <link type="text/css" href="style.css">
-	<header>
-		<nav>
-
-			<div class="main-wrapper">
-				<ul>
-					<a href="index.php" style="float:right" >Home</a>
-				</ul>
-				<?php
-					if(isset($_SESSION['u_id'])) {
-						echo '<div class="nav-login" style="float:right">
-								You are logged in!
-							 	<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
-									<button type="submit" name="submit">Logout</button>'  ?>
-									<button id="input" type="button" value="Create new user" onclick="location.href='myPage.php'">My page</button>
-									<?php
-									echo 
-									'</form>	
-							</div>';
-					} else {
-						echo '<div class="nav-login" style="float:right">
-								<form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
-								<input type="text" id="email" required="required" name="email" placeholder="E-mail">
-								<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
-								<br>
-								<button type="submit" name="submit">Login</button>'  ?>
-								<button id="input" type="button" value="Create new user" onclick="location.href='userRegistration.php'">Create new user</button>
-									<?php 
-										if(isset($_SESSION['error'])) {
-										echo $_SESSION['error'];
-    									unset($_SESSION['error']);
-										}
-									 echo '
-								</form>							
-							</div>';					
+<title>Infotiv Car Rental</title>
+<link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css"> 
+</head>	
+<header>
+	<div id="headerWrapper">
+		<a href="/infotivCarRental/html/gui/index.php">
+			<div id="leftHeader">
+				<div class="logo" id="logo">&nbsp;</div>
+				<div class="title" id="title">
+					<h1 id="title">Infotiv Car Rental</h1>
+				</div>
+			</div>
+		</a>
+		<div id="rightHeader">
+			<div id="categories">
+				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
+			</div>
+			<div id="userInfoWrapper">
+	<?php
+	if(isset($_SESSION['u_id'])) {
+			?>
+				<div id="userInfoTop">
+					<label id="welcomePhrase">You are signed in as <?php echo $_SESSION['u_first'];?></label>
+				</div>
+				<div id="userInfoTopBottom">
+					<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
+						<button type="submit" name="submit">Logout</button>
+						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/myPage.php'">My page</button>
+					</form>
+				</div>
+			<?php
+	} else {
+				?><form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
+					<div id="userInfoTop">
+						<input class="inputFields" type="email" id="email" required="required" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail">
+						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
+					</div>
+					<div id="userInfoTopBottom">
+					<?php 
+					if(isset($_SESSION['error'])) {
+					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
+    				unset($_SESSION['error']);
 					}
+					?>
+						<button type="submit" name="submit">Login</button>
+						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/userRegistration.php'">Create user</button>
+					</div>
+				</form>
+				<?php
+			}
 				?>
 			</div>
-		</nav>
-	</header>
-</head>
+		</div>
+	</div>
+</header>
 <body>
 
-
-
-<!-- Inputs a html table with headers-->
-<h3>Select your desired car model<br></h3>
-
-<table style="width:35%">
-
-<tbody>
-
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "infotiv2018";
@@ -75,20 +80,28 @@ if ($conn->connect_error) {
 } 
 
 //A query for fetching all information from bookings table and put them in an array
+
 $sqlBookings = "SELECT * FROM bookings";
 $result = $conn->query($sqlBookings);
 $licenseNumbers = [];
+
 //Loops trough the result of the query and checks if the dates given by the user
 //in index.html are within the range of the cars in the bookings table. If it is,
 //the unavailable cars are put in to an array.
+
 if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
-	echo "No start and end date set. Please return to date selection and set a date.";
 	?>
-		</tbody>
-		</table>
-		</br>
-			<button onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to start</button>
-		</br>
+		<div id="mainWrapperBody">
+			<div id="leftpane"></div>
+			<div id="middlepane">
+			<div id="showQuestion">
+				<h1 id="questionText">No date set. Please return to date selection.</h1>
+			</div>
+			<div id="backToDate">
+			<button class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
+			</div>
+			<div id="rightpane"></div>
+		</div>
 	<?php
 }else{
 	if ($result->num_rows > 0) {
@@ -138,10 +151,21 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 	//Loops trough the result of the query and populates the html table
 	//on the page. On each row it also adds the image corresponding to the model, or a stock img if model is not known. 
 	//Also a  Select button is added to each row that links to setCookiesCar.php file that sets cookies for the selected car.
-	?>
-	<label for="start">Selected trip dates: <?php echo $_COOKIE['startDate'] ?> – <?php echo $_COOKIE['endDate'] ?></label></br>
-	<?php
-	if ($result->num_rows > 0) {
+   if ($result->num_rows > 0) {
+	   
+	   ?>
+				<div id="mainWrapperBody">
+					<div id="leftpane"></div>
+					<div id="middlepane">
+						<div id="showQuestion">
+							<h1 id="questionText">Which car model would you like to drive?</h1></br>
+							<label class="mediumText" for="start">Selected trip dates: <?php echo $_COOKIE['startDate'] ?> – <?php echo $_COOKIE['endDate'] ?></label></br>
+						</div>
+						<div id="carSelection">
+							<table id="carTable">
+								<tbody>	
+<?php
+	   
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
 			
@@ -159,36 +183,52 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 			?>
 			<!-- Switches back to html to format and alternates between 
 			that and php to populate the table with content from db-->
-				<tr>
-					<td><?php echo $row['make'];?></td>
-					<td><?php echo $row['model'];?></td>
-					<td><img src="<?php echo $carImage;?>" height=59 width=150></img></td>
-					<td>
-						<FORM NAME ="form1" METHOD ="POST" ACTION = "/infotivCarRental/html/cookies/setCookiesCar.php">
-							<input name="make" type="hidden" value="<?php echo $row['make'];?>">
-							<input name="model" type="hidden" value="<?php echo $row['model'];?>">
-							<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
-							<INPUT TYPE = "submit" Name = "submit" VALUE = "Select">
-						</form>
-					</td>
-				</tr>
+									
+									<tr>
+										<td><img src="<?php echo $carImage;?>" height=59 width=150></img></td>
+										<td class="mediumText"><?php echo $row['make'];?></td>
+										<td class="mediumText"><?php echo $row['model'];?></td>										
+										<td>
+											<FORM NAME ="form1" METHOD ="POST" ACTION = "/infotivCarRental/html/cookies/setCookiesCar.php">
+												<input name="make" type="hidden" value="<?php echo $row['make'];?>">
+												<input name="model" type="hidden" value="<?php echo $row['model'];?>">
+												<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
+												<INPUT TYPE = "submit" Name = "submit" VALUE = "Select">
+											</form>
+										</td>
+									</tr>
+								
+												
 			<?php
 		}
-		?>
-			</tbody>
-			</table>
-			</br>
-				<button onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
-			</br>
+		?>				
+								</tbody>
+							</table>
+						</div>
+						<div id="backToDate">
+							<button class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
+						</div>
+					</div>
+					<div id="rightpane"></div>
+				</div>
 		<?php
 	} else {
-		echo "No cars available in this period. Please select different dates.";
 		?>
-			</tbody>
-			</table>
-			</br>
-				<button onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to start</button>
-			</br>
+				<div id="mainWrapperBody">
+					<div id="leftpane"></div>
+					<div id="middlepane">
+						<div id="showQuestion">
+							<h1 id="questionText">Sorry, no cars available during the selected dates</h1>
+							<label class="mediumText" for="start">Selected trip dates: <?php echo $_COOKIE['startDate'] ?> – <?php echo $_COOKIE['endDate'] ?></label></br>
+						</div>
+						<div id="carSelection" style="margin: 0 auto">
+							<button class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
+						</div>
+						<div id="backToDate">
+						</div>
+					</div>
+					<div id="rightpane"></div>
+				</div>
 		<?php
 	}
 

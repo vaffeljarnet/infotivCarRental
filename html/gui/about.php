@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	$cookie_name = "previousLocation";
-	$cookie_value = "confirmBook";
+	$cookie_value = "about";
 	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 ?>
 
@@ -64,39 +64,20 @@
 	</div>
 </header>
 <body>
-
 <div id="mainWrapperBody">
 	<div id="leftpane"></div>
 	<div id="middlepane">
-	<!-- Prints confirmation  message with collected cookie for the selected make and model.-->
-		<div id="showQuestion">
-			<h1 id="questionText">Confirm booking of <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedModel']; ?></h1></br>
-			<label class="mediumText" for="start">Pickup date: <?php echo $_COOKIE['startDate'] ?></label>
-			<label class="mediumText" for="start">Return date: <?php echo $_COOKIE['endDate'] ?></label></br>
+		<div id="aboutHeading">
+			<h1 id="questionText">Welcome</h1>
+		</div>		
+		<div id="mainText">
+			<label class="mediumText">This is a project created during an internship at Infotiv AB, Gothenburg by Joakim Gustavsson, Johan Larson and Maheel Dabarera.</label>
 		</div>
-		<div id="carSelection">
-			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
-<?php
-			?><button class="bigButton" id="input" type="button" onclick="location.href='showCars.php'">Cancel</button><?php
-			if(isset($_SESSION['u_id'])) {
-				?><button class="bigButton" type="Submit">Confirm</button><?php
-			} else {
-				?><button class="bigButton" type="button" onclick="pls();">Confirm</button><?php
-			}
-		?>
-			</form>
+		<div id="versionNr">
+			<label class="mediumText">Version: 0.2</label>
 		</div>
-		<div id="backToDate"></div>
 	</div>
 	<div id="rightpane"></div>
-</div>		
-
+</div>
 </body>
-
-<script>
-    function pls(){
-        alert("You need to be logged in to book a car.");
-    }
-</script>
-
 </html>
