@@ -75,7 +75,7 @@
 		<div id="mainWrapperBody">
 			<div id="leftpane"></div>
 			<div id="middlepane">
-				<div id="middleTop">HEADING HERE</div>		
+				<div id="middleTop"></div>		
 				<div id="middleMiddle">PAGE MAIN CONTENT HERE</div>
 				<div id="middleBottom">NAVIGATION BUTTONS HERE</div>
 			</div>
