@@ -67,7 +67,7 @@ session_start()
 		</div>
 	</div>
 </header>
-<body>
+<body onload="alternate('results'); alternate('results2');">
 
 <?php
 //checks if user is logged in to an admin account, if true then redirect to adminPage.
@@ -93,19 +93,18 @@ $result = $conn->query($sql);
 	<div id="leftpane"></div>
 	<div id="middlepane">
 		<div id="history">
-			<h1 id="historyText">My bookings!</h1>
+			<h1 id="historyText">My bookings</h1>
 		</div>
-		<div>
-			<table id="orderTable">
-				<tr>
- 					<th id="orderTH" class="mediumText">orderID</th> 
-					<th id="orderTH" class="mediumText">Brand</th> 
-					<th id="orderTH" class="mediumText">Model</th> 
-					<th id="orderTH" class="mediumText">Booked from</th> 
-					<th id="orderTH" class="mediumText">Until</th> 
-					<th id="orderTH" class="mediumText">Passengers</th> 
-					<th id="orderTH" class="mediumText">License Number</th>
-					<th class="mediumText">Unbook car for</th>
+			<table class="orderTable">
+				<tr class="orderTD">
+ 					<th class="orderTD">orderID</th> 
+					<th class="orderTD">Brand</th> 
+					<th class="orderTD">Model</th> 
+					<th class="orderTD">Booked from</th> 
+					<th class="orderTD">Until</th> 
+					<th class="orderTD">Passengers</th> 
+					<th class="orderTD">License Number</th>
+					<th class="mediumTextCenter">Unbook car for</th>
 				</tr>
 <?php 
 //Loops trough the result of the query and populates the html table on the page. 
@@ -113,14 +112,14 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 			?>
-				<tr>
-					<td id="orderTD" class="mediumText"><?php echo $row['orderID'];?></td>
-					<td id="orderTD" class="mediumText"><?php echo $row['make'];?></td>
-					<td id="orderTD" class="mediumText"><?php echo $row['model'];?></td>
-					<td id="orderTD" class="mediumText"><?php echo $row['startDate'];?></td>
-					<td id="orderTD" class="mediumText"><?php echo $row['endDate'];?></td>
-					<td id="orderTD" class="mediumText"><?php echo $row['passengers'];?></td>
-					<td id="orderTD" class="mediumText"><?php echo $row['licenseNumber'];?></td>
+				<tr class="orderTD">
+					<td><?php echo $row['orderID'];?></td>
+					<td><?php echo $row['make'];?></td>
+					<td><?php echo $row['model'];?></td>
+					<td><?php echo $row['startDate'];?></td>
+					<td><?php echo $row['endDate'];?></td>
+					<td><?php echo $row['passengers'];?></td>
+					<td><?php echo $row['licenseNumber'];?></td>
 					<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 						<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
 						<button type="submit" name = "submit">Cancel booking</button>
@@ -135,16 +134,11 @@ if ($result->num_rows > 0) {
 ?>		
 			
 			</table>
-		</div> 
-			<div id="history">
-				<form>
-					<select id="selectHistory" name="users" onchange="showHistory(this.value)">
- 					 <option id="selectHistory" value="">Hide order history</option>
- 					 <option id="selectHistory" value="<?php echo $var?>">Show order history</option>
- 					 </select>
-				</form>
-				<div id="orderHistory"></B></div>
-			</div>
+			<div id="historyButton">	
+						<button type="submit" onclick="showHistory(this.value)">Hide history</button>			
+ 						<button type="submit" value="<?php echo $var?>" onclick="showHistory(this.value)">Show history</input>				
+ 			</div>
+ 				<div id="orderHistory"></B>SDFSDFSDFSDFSD</div>			
 	</div>
 	<div id="rightpane"></div>
 </div>
@@ -183,6 +177,17 @@ function showHistory(str) {
         }; //Send the request off to a file on the server
         xmlhttp.open("GET","../includes/getHistory.inc.php?q="+str,true);
         xmlhttp.send();
+    }
+}
+function alternate(classNameMatch) {
+    var tables = document.getElementsByTagName("table");
+    for (var i=0; i < tables.length; i++) {
+        var table = tables[i];
+        if (table.className.indexOf(classNameMatch) == -1) continue;
+
+        for (var j=0; j < table.rows.length; j++) { // "TABLE" elements have a "rows" collection built-in
+            table.rows[j].className = j % 2 == 0 ? "orderTD" : "orderTDg";
+        }
     }
 }
 
