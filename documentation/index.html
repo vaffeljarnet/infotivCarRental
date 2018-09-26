@@ -72,18 +72,30 @@
                         <ul class="nav">
                             <li><a href="#line1">How to run</a>
                                 <ul class="nav">
-                                    <li><a href="#line1_1">Locally</a></li>
-                                    <li><a href="#line1_2">Server</a></li>
+                                    <li><a href="#line1_1">Local Server</a></li>
+                                    <li><a href="#line1_2">External Server</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#line2">Page functionality</a>
+                            <li><a href="#line2">Page Functionality</a>
                                 <ul class="nav">
-                                    <li><a href="#line2_1">Header</a></li>                                   
+									<li><a href="#line2_1">Header</a></li>
+                                    <li><a href="#line2_2">Date Selection</a></li>
+									<li><a href="#line2_3">Car Selection</a></li>
+									<li><a href="#line2_4">Confirm Booking</a></li> 
+									<li><a href="#line2_5">Successful Booking</a></li>
+									<li><a href="#line2_6">Create User</a></li>
                                 </ul>
                             </li>
-							<li><a href="#line3">Standard template</a></li>
-                            <li><a href="#line4">Version History (Changelog)</a></li>
-                            <li><a href="#line5">Copyright and license</a></li>
+							<li><a href="#line3">Coding templates</a>
+								<ul class="nav">
+									<li><a href="#line3_1">Body Layout</a></li>
+                                    <li><a href="#line3_2">User Session</a></li>
+									<li><a href="#line3_3">Standard Page Template</a></li>									
+                                </ul>
+							</li>
+                            <li><a href="#line4">Changelog</a></li>
+                            <li><a href="#line5">Credits</a></li>
+							<li><a href="#line6">Copyright and License</a></li>
                         </ul>
                     </nav >
                 </div>
@@ -98,7 +110,7 @@
                                     <div class="col-md-12 full">
                                         <div class="intro1">
                                             <ul>
-                                                <li><strong>Item Name : </strong>Infotiv Car Rental</li>
+                                                <li><strong>Item Name : </strong>Infotiv Car Rental Internship Project</li>
                                                 <li><strong>Item Version : </strong> v 0.2</li>
                                                 <li><strong>Authors  : </strong>Johan Larsson and Joakim Gustavsson</li>
 												<li><strong>Source Code : </strong> <a href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">GitHub</a></li>
@@ -109,7 +121,7 @@
 
                                         <hr>
                                         <div>
-                                            <p>This project was created at an internship at Infotiv AB, Gothenburg, by Joakim Gustavsson, Johan Larsson and Maheel Dabarera. 
+                                            <p>This project was created at an internship at Infotiv AB, Gothenburg, by Joakim Gustavsson and Johan Larsson, with the help of Maheel Dabarera. 
 											The project consists of a fake car rental booking homepage, to be used as a system under test for educational purposes.
                                             </p>
 											
@@ -131,35 +143,61 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">How to run<a href="#top">#back to top</a><hr></h2>
+                                <h2 class="dark-text">How To Run<a href="#top">#back to top</a><hr></h2>
+								<p>If you wish only to view the homepage, it's available here: <a href="http://35.234.77.201/" target="_blank">http://35.234.77.201/</a>
+								<p>If you want to further develop upon our groundwork, you'll find below our methods of setting up and running the homepage locally and on Google Cloud Platform. Off course there are alternatives to this, however, we will not go into these in this documentation, but on a basic ground level the requirements to run the homepage are:</p>
+								<ol>
+									<li>Source code: <a href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">GitHub</a></li></li>
+									<li>Server to host the files</li>
+									<li>MySQL database on that server</li>
+								</ol>
                             </div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="upload/thumbnail.png" data-rel="prettyPhoto"><img src="images/upload/thumbnail.png" alt="" class="img-responsive img-thumbnail"></a>
-                            </div>
-
-                            <div class="col-md-8">
-                                <h4 id="line1_1">Locally - <a href="#top">#back to top</a></h4>
-                                <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. long established fact that a reader will English.</p>
-                            </div>
+                        <div class="row">                        
+                            <div class="col-md-12">
+                                <h4 id="line1_1">Local Server - <a href="#top">#back to top</a></h4>								
+                                <p>When starting to develop this project we ran it locally using MAMP. This has proven to be useful to be able to test our changes before deploying them on a server. Below are instructions on how we set up our MAMP configuration.</p>
+								<ol>
+									<li>Download and install MAMP with default values:  </strong><a href="https://www.mamp.info/en/downloads/" target="_blank">MAMP Download</a></li></li>
+									<li>Download the source code from </strong><a href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">GitHub</a>, extract content and put the folder infotivCarRental in C:\MAMP\htdocs</li>
+									<li>Start MAMP and wait for Apache and MySQL server to start</li>
+									<li>Open your browser and go to: </strong><a href="http://localhost/phpMyAdmin" target="_blank">http://localhost/phpMyAdmin</a></li>
+									<li>Click the tab <strong>User Accounts</strong> and select <strong>Edit Privileges</strong> on the row corresponding to <strong>User name: root Hostname: localhost</strong></li>
+									<li>Press <strong>Change password</strong>, select a new password and take note of it. </li>
+									<li>In a text editor, open the file <strong>C:\MAMP\bin\phpMyAdmin\config.inc.php</strong></li>
+									<li>Go to line 61, change the password from root to the one you entered in phpMyAdmin, save the file and exit</li>
+									<li>In a text editor, open the file <strong>C:\MAMP\htdocs\infotivCarRental\html\includes\dbh.inc.php</strong></li>
+									<li>Go to line 7, change the password to the one you entered in phpMyAdmin, save the file and exit</li>
+									<li>Go back to phpMyAdmin in your browser and press <strong>New</strong> in the left section of the page</li>
+									<li>Input <strong>fleet_information</strong> as name, press <strong>Create</strong> and a new database should be added in the left section of the page</li>
+									<li>Make sure the database is selected and press the tab <strong>Import</strong> in the top of the page</li>
+									<li>Press <strong>Select file</strong> and browse for <strong>C:\MAMP\htdocs\infotivCarRental\fleet_information.sql</strong></li>
+									<li>When the file is selected, scroll down, press <strong>Go</strong> and the available tables should be added to <strong>fleet_information</strong></li>																
+								</ol>
+								<p>If everything is in order, you should now be able to use the homepage by going to <a href="http://localhost/infotivCarRental/html/gui/index.php" target="_blank">http://localhost/infotivCarRental/html/gui/index.php</a></p>
+							</div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
 
                         <hr>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <a href="upload/thumbnail.png" data-rel="prettyPhoto"><img src="images/upload/thumbnail.png" alt="" class="img-responsive img-thumbnail"></a>
-                            </div>
-
-                            <div class="col-md-8">
-                                <h4 id="line2_2">Server - <a href="#top">#back to top</a></h4>
-                                <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. long established fact that a reader will English.</p>
+                        <div class="row">                         
+                            <div class="col-md-12">
+                                <h4 id="line1_2">External Server - <a href="#top">#back to top</a></h4>
+                                <p>When setting up our homepage on Google Cloud Platform the following step by step tutorial from Google was used: <a href="https://cloud.google.com/community/tutorials/setting-up-lamp" target="_blank">Setting Up LAMP on Compute Engine</a></p>
+								<p>It will instruct you on how to setup an Apache server with MySQL database on a compute engine, and for our purposes all the steps in the guide were appropriate.</p>
+								<p>Depending on your operating system, transfering the files to the compute engine might cause some issues. An alternative to the method used in the guide is to upload the files to a bucket on Google Cloud Platform and then transfering them to the compute engine. A tutorial for this can be found here: <a href="https://cloud.google.com/compute/docs/instances/transfer-files#gcstransfer" target="_blank">Transfering Files to Instances</a></p>
+								<p>You will need the source code as well, which you can download here: <a href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">GitHub</a></p>
+								<p>In the files you need to make one edit, the password for the database connection. When setting up the database according to the guide above you will be asked to set a root password for phpMyAdmin, take note of this password, and among the source code files:</p>
+								<ol>
+									<li>In a text editor, open the file <strong>C:\MAMP\htdocs\infotivCarRental\html\includes\dbh.inc.php</strong></li>
+									<li>Go to line 7, change the password to the one you entered for phpMyAdmin, save the file and exit</li>
+								</ol>
+								<p>Hopefully this will point you in the right direction of deploying the homepage on Google Cloud Platform</p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -172,20 +210,47 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Page functionality<a href="#top">#back to top</a><hr></h2>
+                                <h2 class="dark-text">Page Functionality<a href="#top">#back to top</a><hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
-
-                        <div class="row">
+						
+						<div class="row">
                             <div class="col-md-4">
-                                <a href="upload/thumbnail.png" data-rel="prettyPhoto"><img src="images/upload/thumbnail.png" alt="" class="img-responsive img-thumbnail"></a>
+                                <a href="/infotivCarRental/documentation/images/upload/printScreen_header.png" data-rel="prettyPhoto"><img src="images/upload/printScreen_header.png" alt="" class="img-responsive img-thumbnail"></a>
                             </div>
 
                             <div class="col-md-8">
-                                <h4 id="line2_1">Date selection -  <a href="#top">#back to top</a></h4>
-                                <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. long established fact that a reader will English.</p>
+                                <h4 id="line2_1">Header -  <a href="#top">#back to top</a></h4>
+                                <p>The header is available on every page. The logo and title are clickable and will take you to the start page. The About text will take you to the about page. To the right is the user information field. If not signed in, a input field for email and password is visible in addition to the buttons Login, that will attempt to login the user, and Create user, that will take the user to the Create User page.</p>
+								<p>If one of the input fields are left empty, login will not be possible and an alert for corresponding field will appear. If the user inserts the wrong information a error message appears to the left of the buttons.</p>
+								<p>If user signs in successfully, the user information field will change to view a welcome phrase with the users firstname and the buttons will be changed to Logout, that wiill logout the user from the session, and My Page, that will take the user to the page where they can view their bookings. </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+						
+						<hr>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="/infotivCarRental/documentation/images/upload/printScreen_date.png" data-rel="prettyPhoto"><img src="images/upload/printScreen_date.png" alt="" class="img-responsive img-thumbnail"></a>
+                            </div>
+
+                            <div class="col-md-8">
+                                <h4 id="line2_2">Date Selection -  <a href="#top">#back to top</a></h4>
+                                <p>On the date selection page, user is required to input start and end dates for the trip. The default values will always be put as todays date. Restrictions for the start date are:</p>
+								<ol>
+									<li>Earliest selectable date is today</li>
+									<li>Latest selectable date is one month ahead from today</li>
+								</ol>
+								<p>Restrictions for end date are:</p>
+								<ol>
+									<li>Earliest selectable date is the date selected as start date</li>
+									<li>Latest selectable date is one month ahead from the selected start date</li>
+								</ol>
+								<p>The reset button will refresh the page and set dates to today. If valid dates are inputted, the Continue button will take the user to the car selection page. If invalid dates are inputted, an alert will pop up for the date field that has issues and not allow user to continue.</p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -195,12 +260,64 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <a href="upload/thumbnail.png" data-rel="prettyPhoto"><img src="images/upload/thumbnail.png" alt="" class="img-responsive img-thumbnail"></a>
+                                <a href="/infotivCarRental/documentation/images/upload/printScreen_cars.png" data-rel="prettyPhoto"><img src="images/upload/printScreen_cars.png" alt="" class="img-responsive img-thumbnail"></a>
                             </div>
 
                             <div class="col-md-8">
-                                <h4 id="line2_2">Car selection - <a href="#top">#back to top</a></h4>
-                                <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. long established fact that a reader will English.</p>
+                                <h4 id="line2_3">Car Selection - <a href="#top">#back to top</a></h4>
+                                <p>On the car selection page, the user is required to pick a car model. The listed car models are based on whether a car of that model is available during the date range selected by the user. This is calculated with the table named bookings in the database, where every booking is registered with a date range paired with a license number of the selected car. </p>
+								<p>The cars in the list are given an image based on what model is listed, if the car model does not have a specific image available, a stock image will appear in that place.</p>
+								<p>The Select button will select the car model on the corresponding row and take the user to the confirm booking page. The Back to date selection button will take the user back to the date selection page.</p>
+								<p>If a user tries to get to this page without setting any dates, an error message will appear and no cars will be listed.</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+						
+						<hr>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="/infotivCarRental/documentation/images/upload/printScreen_confirm.png" data-rel="prettyPhoto"><img src="images/upload/printScreen_confirm.png" alt="" class="img-responsive img-thumbnail"></a>
+                            </div>
+
+                            <div class="col-md-8">
+                                <h4 id="line2_4">Confirm Booking - <a href="#top">#back to top</a></h4>
+                                <p>On the booking confirmation page, the selections made by the user will be displayed. A Cancel button, that will take the user back to the car selection page, and a Confirm button that will attempt to finalize the booking. </p>
+								<p>If the user is not signed in, a alert popup will appear if the confirm button is pressed, asking the user to either sign in or create a user. </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+						
+						<hr>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="/infotivCarRental/documentation/images/upload/printScreen_booked.png" data-rel="prettyPhoto"><img src="images/upload/printScreen_booked.png" alt="" class="img-responsive img-thumbnail"></a>
+                            </div>
+
+                            <div class="col-md-8">
+                                <h4 id="line2_5">Successful Booking - <a href="#top">#back to top</a></h4>
+                                <p>On the successful booking  page, a message will appear with details of the registered booking if successful. A Home button, that will take the user to the date selection page, and a My Page button that will take the user to the page where they can view their bookings.</p>
+								<p>On a successful booking, a entry is added to the database table bookings with license number of the selected car, the selected start and end dates and the users internal id.</p>
+								<p>If the user tries to get to this page from any other place than the booking confirmation page, a error message will appear. The same will happen if user updates the page. </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+						
+						<hr>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a href="/infotivCarRental/documentation/images/upload/printScreen_createUser.png" data-rel="prettyPhoto"><img src="images/upload/printScreen_createUser.png" alt="" class="img-responsive img-thumbnail"></a>
+                            </div>
+
+                            <div class="col-md-8">
+                                <h4 id="line2_6">Create User - <a href="#top">#back to top</a></h4>
+                                <p>On the create user page, the user may create an user account to be able to book a car. Required fields are, first and last name, phone number, email and password. A Cancel button, that will take the user to the date selection page, and a Create button that will attempt to create the user account with the inputted information.</p>
+								<p>If one of the fields are left empty, the inputted email or password does not match, the email is not in a correct format or the password is less than six characters, a alert popup will appear in the corresponding field when the Create button is pressed.</p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -213,59 +330,41 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Standard template<a href="#top">#back to top</a><hr></h2>
+                                <h2 class="dark-text">Coding Templates<a href="#top">#back to top</a><hr></h2>
+								<p>This project is very much an exploratory one, and lacking previous experience with HTML has resulted in maybe not the most consistent coding standards. However, we will try and give some examples of recurring elements that might be useful.</p>
                             </div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
 
                         <div class="row">
-                            <div class="col-md-12">
-                                <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-
-                                <h4>Bootstrap Grid System</h4>
-
-                                <pre class="brush: html; highlight: [2,4]">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div></pre>
-
-                                <p>Our you can use the grid system with 2 columns like this;</p>
-
-                                <pre class="brush: html">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div>
-                         </pre>
-
-                                <p>Our you can use the grid system with 3 columns like this;</p>
-
-                                <pre class="brush: html">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div>
-                         </pre>
+                            <div class="col-md-12">                                								
+								<h4 id="line3_1">Body Layout - <a href="#top">#back to top</a></h4>
+								<p>Below is the standard layout used for the majority of the pages' body. It’s divided in three vertical sections with 15%, 70% and 15% screen space distribution. The div middlePane is then in most cases split in three horizontal sections which have custom space distribution for each page. Meaning the id of the div’s in the middlePane div are different depending on page.</p>                         								
+								<pre class="brush: html; highlight: [2,4]">
+									<div id="mainWrapperBody">
+										<div id="leftpane"></div>
+										<div id="middlepane">
+											<div id="middleTop">HEADING HERE</div>		
+											<div id="middleMiddle">PAGE MAIN CONTENT HERE</div>
+											<div id="middleBottom">NAVIGATION BUTTONS HERE</div>
+										</div>
+										<div id="rightpane"></div>
+									</div>
+								</pre> 
+								
+								<h4 id="line3_2">User Session - <a href="#top">#back to top</a></h4>
+								<p>To be able to have the user signed in, the below code is put in every file at the top. This keeps track of which user is signed in and makes the user credentials accessible across all pages. In this snippet is also a cookie declaration used for keeping track of what page the user was located on previously. This is used, for example in updateAvailability.php, to restrict the user from being able to access that page from any other than confirmBook.php.</p>                         
+								<pre class="brush: html; highlight: [2,4]">
+									<?php
+										session_start();
+										$cookie_name = "previousLocation";
+										$cookie_value = "CURRENT_PAGE_NAME_HERE";
+										setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+									?>
+								</pre> 
+								<h4 id="line3_3">Standard Page Template - <a href="#top">#back to top</a></h4>
+								<p>A full standard page template, including the header, can be viewed and downloaded here: INPUT LINK TO STANDARD PAGE</p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -278,7 +377,7 @@
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Version History (Changelog) <a href="#top">#back to top</a><hr></h2>
+                                <h2 class="dark-text">Changelog<a href="#top">#back to top</a><hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
@@ -287,58 +386,30 @@
                         <div class="row">
                             <div class="col-md-12">
 
-                                <p>You can find the version history (changelog.txt) file on <strong>yourthemename-full.zip</strong> folder or you can check changelog on theme sale page.</p>
-                                <p>Once again, thank you so much for purchasing this theme. As I said at the beginning, I'd be glad to help you if you have any questions relating to this theme. No guarantees, but I'll do my best to assist. If you have a more general question relating to the themes on ThemeForest, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p>
-
-                                <hr>
-
-                                <h4>Changelog</h4>
+                                <p>Changelog last updated September 25, 2018</p>                               
 
                                 <pre class="brush: html">
+										
+										-----------------------------------------------------------------------------------------
+                                        Version 0.2 - September ?, 2018
+                                        -----------------------------------------------------------------------------------------
 
+                                        - text about new version
+										
                                         -----------------------------------------------------------------------------------------
-                                        Version 3.8.4 - May 7th, 2015
+                                        Version 0.1 - September 18th, 2018
                                         -----------------------------------------------------------------------------------------
 
-                                        - new revolution slider plugin version
-                                        - fixed security issue with xss vulnerability
-                                        - improved demo importer for certain server environments
-                                        - updated WooCommerce template files for the outdated message in system status
-                                        - added suhosin check in system status 
-                                        - added information that explains ZipArchive is required on your server for importing demos 
-                                        - portfolio Grid template improvement
-                                        - added more information to demo popup message for individual demo requirements
-                                        - RTL style improvements
-                                        - breadcrumb function improved for various areas
-
-                                        -----------------------------------------------------------------------------------------
-                                        Version 3.8.3 - May 7th, 2015
-                                        -----------------------------------------------------------------------------------------
-                                        - fixed responsive / retina issue for larger logos
-                                        - fusion slider now uses responsive headings all the time
-                                        - dropped custom Avada styles for select boxes in IE since it is not supported
-                                        - fixed compatibility issue with Category Order and Taxonomy Terms Order plugin
-                                        - fixed issue of full width background being affected by padding options
-                                        - tested and fixed hellobar issue 
-                                        - typography settings now apply to single post pages
-                                        - improved smooth scroll in certain situations
-                                        - youtube & vimeo videos will show at normal size in light box as long as video embed link is not used
-                                        - fixed issue of â€œfixedâ€ featured image mode not working for carousels / recent work
-                                        - fixed issue of header tagline font not working with font options
-
-                                        -----------------------------------------------------------------------------------------
-                                        Version 3.8.2 - May 7th, 2015
-                                        -----------------------------------------------------------------------------------------
-                                        - fixed formatting issues with Turkish language files 
-                                        - letter spacing menu option improvement
-                                        - improved fusion slider max content width setting
-                                        - removed the â€œdisable first featured image on productsâ€ setting since it does not apply
-                                        - improved portfolio featured image loading
-                                        - removed encoding from tracking code, space before head, space before body, and custom CSS to stop it from parsing code within TO and removing special characters e.g. +
-                                        - woo login box now shows login fields for logged out users
-                                        - woo cart / my account links now show on mobile 
-                                        - fixed button styling issue with gravity forms
-
+                                        - Initial upload to Google Cloud Server
+										- Apache server with MySql database
+										- Database structure:
+											- Table 'cars', contains the available vehicles
+											- Table 'bookings', contains the registered bookings of a car based on license number										
+										- User interface consists of a booking flow with:
+											- Date selection, sets from and to date, continue and reset button
+											- Car selection, lists available cars bBased on the dates given by the user
+											- Confirm selection, displays the selected booking and ask user to confirm
+											- Booking complete, displays a message about completion of booking
 
                                       </pre>
 
@@ -348,12 +419,34 @@
 
                     </section>
                     <!-- end section -->
-
-                    <section id="line5" class="section">
+					
+					<section id="line5" class="section">
 
                         <div class="row">
                             <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Copyright and license <a href="#top">#back to top</a><hr></h2>
+                                <h2 class="dark-text">Credits<a href="#top">#back to top</a><hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Thanks to the creators below for some of the content used in this project!</p> 
+								<p>HTML Documentation Template by Surjith S M: <a href="https://github.com/surjithctly/documentation-html-template" target="_blank">Source code on GitHub</a></p>  
+								<p>Reset Stylsheet Template by Richard Clark: <a href="http://richclarkdesign.com" target="_blank">richclarkdesign.com</a> </p>
+							</div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line6" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Copyright and License <a href="#top">#back to top</a><hr></h2>
                             </div>
                             <!-- end col -->
                         </div>
