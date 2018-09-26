@@ -67,7 +67,7 @@ session_start()
 		</div>
 	</div>
 </header>
-<body onload="alternate('results'); alternate('results2');">
+<body onload="alternate('orderTable');">
 
 <?php
 //checks if user is logged in to an admin account, if true then redirect to adminPage.
@@ -136,9 +136,9 @@ if ($result->num_rows > 0) {
 			</table>
 			<div id="historyButton">	
 						<button type="submit" onclick="showHistory(this.value)">Hide history</button>			
- 						<button type="submit" value="<?php echo $var?>" onclick="showHistory(this.value)">Show history</input>				
+ 						<button type="submit" value="<?php echo $var?>" onclick="showHistory(this.value);">Show history</input>				
  			</div>
- 				<div id="orderHistory"></B>SDFSDFSDFSDFSD</div>			
+ 				<div id="orderHistory"></B></div>		
 	</div>
 	<div id="rightpane"></div>
 </div>
@@ -173,6 +173,7 @@ function showHistory(str) {
         // Create the function to be executed when the server response is ready.
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("orderHistory").innerHTML = this.responseText;
+                alternate('historyTable');
             }
         }; //Send the request off to a file on the server
         xmlhttp.open("GET","../includes/getHistory.inc.php?q="+str,true);

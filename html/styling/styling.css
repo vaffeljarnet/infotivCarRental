@@ -860,11 +860,6 @@ table th {
     text-align: center;
     color: rgb(255,1,255);
 }
-.orderTHg {
-    padding: 5px;
-    text-align: center;
-    color: rgb(255,1,255);
-}
 
 /* Styling for tables in myPage and adminPage*/
 /*td[id="orderTD", th[id="orderTH"] {
