@@ -4,8 +4,8 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "infotiv2018";
-$dbname = "INPUT PASSWORD HERE";
+$password = "INPUT PASSWORD HERE";
+$dbname = "fleet_information";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
