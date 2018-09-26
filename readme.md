@@ -1,41 +1,10 @@
-$project
-========
+# Intofiv Car Rental Internship Project
 
-$project will solve your problem of where to start with documentation,
-by providing a basic explanation of how to do it easily.
+This project was created at an internship at Infotiv AB, Gothenburg, by Joakim Gustavsson and Johan Larsson, with the help of Maheel Dabarera. The project consists of a fake car rental booking homepage, to be used as a system under test for educational purposes.
 
-Look how easy it is to use:
+## Getting started
 
-    import project
-    # Get your stuff done
-    project.do_stuff()
+To simply view the result of the project, go to:  [http://35.234.77.201/](http://35.234.77.201/)
 
-Features
---------
+For further documentation with more details: [Project Documenation](http://35.234.77.201/infotivCarRental/documentation/index.html)
 
-- Be awesome
-- Make things faster
-
-Installation
-------------
-
-Install $project by running:
-
-    install project
-
-Contribute
-----------
-
-- Issue Tracker: github.com/$project/$project/issues
-- Source Code: github.com/$project/$project
-
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@google-groups.com
-
-License
--------
-
-The project is licensed under the BSD license.
