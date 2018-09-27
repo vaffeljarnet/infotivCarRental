@@ -14,6 +14,7 @@
 <header>
 	<!--Imports the header from getHeader.inc.php by including it with php-->
 	<?php include_once '../includes/getHeader.inc.php'; ?>
+</header>
 <body>
 
 <div id="mainWrapperBody">

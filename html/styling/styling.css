@@ -249,7 +249,6 @@ layout above this threshold*/
 			height: 100%;
 			float: left;
 			border-collapse: collapse;
-			background-color: green;
 		}
 		
 		/*Div for main content mid pane*/
@@ -258,7 +257,6 @@ layout above this threshold*/
 			height: 100%;
 			float: left;
 			border-collapse: collapse;
-			background-color: red;
 		}
 		
 		/*Div for empty right pane*/
@@ -268,7 +266,6 @@ layout above this threshold*/
 			position: relative;
 			float: right;
 			border-collapse: collapse;
-			background-color: yellow;
 		}
 			/*Div for heading on index page*/
 			div[id="tripQuestion"]{

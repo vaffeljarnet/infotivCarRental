@@ -169,8 +169,9 @@
 									<li>Press <strong>Change password</strong>, select a new password and take note of it. </li>
 									<li>In a text editor, open the file <strong>C:\MAMP\bin\phpMyAdmin\config.inc.php</strong></li>
 									<li>Go to line 61, change the password from root to the one you entered in phpMyAdmin, save the file and exit</li>
-									<li>In a text editor, open the file <strong>C:\MAMP\htdocs\infotivCarRental\html\includes\dbh.inc.php</strong></li>
-									<li>Go to line 7, change the password to the one you entered in phpMyAdmin, save the file and exit</li>
+									<li>In a text editor, open the file <strong>C:\MAMP\htdocs\infotivCarRental\html\includes\dbh.inc.php.template</strong></li>
+									<li>Go to line 7, change the password to the one you entered in phpMyAdmin</li>
+									<li>Rename the file as <strong>dbh.inc.php</strong> and save it in the same directory</li>
 									<li>Go back to phpMyAdmin in your browser and press <strong>New</strong> in the left section of the page</li>
 									<li>Input <strong>fleet_information</strong> as name, press <strong>Create</strong> and a new database should be added in the left section of the page</li>
 									<li>Make sure the database is selected and press the tab <strong>Import</strong> in the top of the page</li>
@@ -194,8 +195,9 @@
 								<p>You will need the source code as well, which you can download here: <a href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">GitHub</a></p>
 								<p>In the files you need to make one edit, the password for the database connection. When setting up the database according to the guide above you will be asked to set a root password for phpMyAdmin, take note of this password, and among the source code files:</p>
 								<ol>
-									<li>In a text editor, open the file <strong>C:\MAMP\htdocs\infotivCarRental\html\includes\dbh.inc.php</strong></li>
-									<li>Go to line 7, change the password to the one you entered for phpMyAdmin, save the file and exit</li>
+									<li>In a text editor, open the file <strong>C:\MAMP\htdocs\infotivCarRental\html\includes\dbh.inc.php.template</strong></li>
+									<li>Go to line 7, change the password to the one you entered in phpMyAdmin</li>
+									<li>Rename the file as <strong>dbh.inc.php</strong> and save it in the same directory</li>
 								</ol>
 								<p>Hopefully this will point you in the right direction of deploying the homepage on Google Cloud Platform</p>
                             </div>
