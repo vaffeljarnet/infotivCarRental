@@ -851,14 +851,15 @@ table th {
     padding: 5px;
     text-align: center;
 }
-.orderTH {
+form [id="unBook"] {
     padding: 5px;
     text-align: center;
+    background-color: lightgray;
 }
 .orderTDg {
     padding: 5px;
     text-align: center;
-    color: rgb(255,1,255);
+    background-color: lightgray;
 }
 
 /* Styling for tables in myPage and adminPage*/
