@@ -1,2 +1,7 @@
 **/html/test
 **/html/includes/dbh.inc.php
+
+#Add assume unchanged to dbh.inc.php
+#git update-index --assume-unchanged filepath
+#Remove assume unchanged to dbh.inc.php
+#git update-index --no-assume-unchanged filepath
