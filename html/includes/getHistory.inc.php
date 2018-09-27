@@ -3,6 +3,8 @@ $q = intval($_GET['q']);
 
 include_once 'dbh.inc.php';
 
+
+//sql query that joins the tables cars and orderhistory where there are matching license numbers and stores it in a variable.
 $sql= "SELECT cars.*, orderhistory.* FROM cars LEFT JOIN orderhistory on cars.licenseNumber = orderhistory.licenseNumber WHERE orderhistory.user_id='".$q."';";
 $result = mysqli_query($conn, $sql);
 
@@ -10,7 +12,7 @@ $result = mysqli_query($conn, $sql);
 <h1 id="historyText">My order history</h1><br><br>
 </div> 
 <table class="historyTable">
-	<tr>
+	<tr class="orderTH">
 	<th class="orderTH">orderID</th>
 	<th class="orderTH">Brand</th>
 	<th class="orderTH">Model</th>
@@ -20,6 +22,7 @@ $result = mysqli_query($conn, $sql);
 	<th class="orderTH">LicenseNumber</th>
 </tr>
 <?php
+// while loop that fetches all matching data from db and puts it into a table.
 while($row = mysqli_fetch_array($result)) {
 ?>	<tr class="orderTD">
 		<td class="orderTD"><?php echo $row['orderID'];?></td>

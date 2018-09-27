@@ -26,10 +26,9 @@ if (isset($_POST['submit'])) {
 	}else {
 		
 		//takes password from $result and dehashes it and then checks it against what the user typed in.
-		//If there's no match it sends the user back, if it matches logs in the user.
+		//If there's no match it sends the user back, if it matches then the user gets logged in.
 
 		if($row = mysqli_fetch_assoc($result)) {
-			//de-hashing the password.
 			$hashedPassCheck = password_verify($pass, $row['user_pass']);
 			if ($hashedPassCheck == false) {
 				$_SESSION['error'] = 'Wrong e-mail or password';
