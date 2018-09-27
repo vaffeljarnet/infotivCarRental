@@ -1,1 +1,9 @@
+# Deny access to indexing the directories
 Options -Indexes
+
+# Deny access to standardPageTemplate
+<Files "standardPageTemplate.php">
+Order Allow,Deny
+Deny from all
+</Files>
+
