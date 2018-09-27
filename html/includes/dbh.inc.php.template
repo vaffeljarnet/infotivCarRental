@@ -1,0 +1,17 @@
+<?php
+
+/*Input the password you selected for phpMyAdmin as the 
+variable $password. Save this file as bdh.inc.php 
+in this same directory*/
+
+$servername = "localhost";
+$username = "root";
+$password = "INPUT PASSWORD HERE";
+$dbname = "fleet_information";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
