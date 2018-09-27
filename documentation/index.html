@@ -88,9 +88,9 @@
                             </li>
 							<li><a href="#line3">Coding templates</a>
 								<ul class="nav">
-									<li><a href="#line3_1">Body Layout</a></li>
-                                    <li><a href="#line3_2">User Session</a></li>
-									<li><a href="#line3_3">Standard Page Template</a></li>									
+									<li><a href="#line3_1">Standard Page Template</a></li>	
+									<li><a href="#line3_2">Body Layout</a></li>
+                                    <li><a href="#line3_3">User Session</a></li>																	
                                 </ul>
 							</li>
                             <li><a href="#line4">Changelog</a></li>
@@ -302,7 +302,7 @@
                             <div class="col-md-8">
                                 <h4 id="line2_5">Successful Booking - <a href="#top">#back to top</a></h4>
                                 <p>On the successful booking  page, a message will appear with details of the registered booking if successful. A Home button, that will take the user to the date selection page, and a My Page button that will take the user to the page where they can view their bookings.</p>
-								<p>On a successful booking, a entry is added to the database table bookings with license number of the selected car, the selected start and end dates and the users internal id.</p>
+								<p>On a successful booking, an entry is added to the database table bookings with license number of the selected car, the selected start/end dates and the users internal id.</p>
 								<p>If the user tries to get to this page from any other place than the booking confirmation page, a error message will appear. The same will happen if user updates the page. </p>
                             </div>
                             <!-- end col -->
@@ -340,8 +340,11 @@
                         <!-- end row -->
 
                         <div class="row">
-                            <div class="col-md-12">                                								
-								<h4 id="line3_1">Body Layout - <a href="#top">#back to top</a></h4>
+                            <div class="col-md-12">
+								<h4 id="line3_1">Standard Page Template - <a href="#top">#back to top</a></h4>
+								<p>A full standard page template, including the header, can be viewed and downloaded here: <a href="https://github.com/vaffeljarnet/infotivCarRental/blob/master/html/styling/standardPageTemplate.php" target="_blank">Standard Page Template</a></p>
+                            
+								<h4 id="line3_2">Body Layout - <a href="#top">#back to top</a></h4>
 								<p>Below is the standard layout used for the majority of the pages' body. It’s divided in three vertical sections with 15%, 70% and 15% screen space distribution. The div middlePane is then in most cases split in three horizontal sections which have custom space distribution for each page. Meaning the id of the div’s in the middlePane div are different depending on page.</p>                         								
 								<pre class="brush: html; highlight: [2,4]">
 									<div id="mainWrapperBody">
@@ -355,7 +358,7 @@
 									</div>
 								</pre> 
 								
-								<h4 id="line3_2">User Session - <a href="#top">#back to top</a></h4>
+								<h4 id="line3_3">User Session - <a href="#top">#back to top</a></h4>
 								<p>To be able to have the user signed in, the below code is put in every file at the top. This keeps track of which user is signed in and makes the user credentials accessible across all pages. In this snippet is also a cookie declaration used for keeping track of what page the user was located on previously. This is used, for example in updateAvailability.php, to restrict the user from being able to access that page from any other than confirmBook.php.</p>                         
 								<pre class="brush: html; highlight: [2,4]">
 									<?php
@@ -365,9 +368,7 @@
 										setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 									?>
 								</pre> 
-								<h4 id="line3_3">Standard Page Template - <a href="#top">#back to top</a></h4>
-								<p>A full standard page template, including the header, can be viewed and downloaded here: <a href="https://github.com/vaffeljarnet/infotivCarRental/blob/master/html/styling/standardPageTemplate.php" target="_blank">Standard Page Template</a></p>
-                            </div>
+							</div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
