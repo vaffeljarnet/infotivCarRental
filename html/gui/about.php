@@ -24,11 +24,12 @@
 			<h1 id="questionText">Welcome</h1>
 		</div>		
 		<div id="mainText">
-			<label class="mediumText">This is a project created during an internship at Infotiv AB, Gothenburg by Joakim Gustavsson, Johan Larson and Maheel Dabarera.</label>
+			<label class="mediumText">This project was created at an internship at Infotiv AB, Gothenburg, by Joakim Gustavsson and Johan Larsson, with the help of Maheel Dabarera. The project consists of a mock car rental homepage, to be used as a system under test for educational purposes.</label>
 		</div>
 		<div id="versionNr">
-			<label class="mediumText">Version: 0.2</label></br></br>
-			<button onclick="location.href='/infotivCarRental/documentation/index.html'">Go to documentation</button>
+			<label class="mediumText">Homepage version: 0.2</label></br></br>
+			<a id="linkButton" href="location.href='/infotivCarRental/documentation/index.html" target="_blank">Documentation</a></br>
+			<a id="linkButton" href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">Source Code</a>			
 		</div>
 	</div>
 	<div id="rightpane"></div>
