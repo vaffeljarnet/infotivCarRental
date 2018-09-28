@@ -133,7 +133,7 @@ function alternate(classNameMatch) {
         if (table.className.indexOf(classNameMatch) == -1) continue;
 
         for (var j=0; j < table.rows.length; j++) { // "TABLE" elements have a "rows" collection built-in
-            table.rows[j].className = j % 2 == 0 ? "orderTDg" : "orderTD";
+            table.rows[j].className = j % 2 == 0 ? "orderTD" : "orderTDg";
         }
     }
 }

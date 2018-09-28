@@ -819,11 +819,9 @@ input:-webkit-autofill {
 	font-weight: bold;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	float: left;
-	margin-top: 20px;
 	border-collapse: collapse;
 	text-align:center;
 	width: 100%;
-	height: 15%;
 }
 
 /*Styling for my bookings table on myPage */
@@ -890,8 +888,8 @@ table th {
     padding: 5px;
     text-align: center;
     background-color: white;
-    border-collapse:
-    margin-bottom: 10px;
+    border-collapse: collapse;
+    height: 100%;
 }
 
 /* Styling for tables in myPage and adminPage*/
@@ -905,16 +903,6 @@ table th {
     text-align: center;
     background-color: rgb(255,1,255);
 }*/
-
- /* Styling adminControl on adminPage */
-div [id="adminControl"] {
-	float: left;
-	margin-top: 10px;
-/*	border-collapse: collapse; */
-	text-align:center;
-	width: 100%;
-	height: 10%;
-}
 
  /* Styling history on myPage */
 div [id="history"] {
@@ -937,10 +925,20 @@ h1[id=historyText] {
  /* Styling currentOrders on adminPage */
 div [id="currentOrders"] {
 	float: left;
-	margin-top: 80px;
+	margin-top: 160px;
 	text-align:center;
 	width: 100%;
-	height: 15%;
+	height: 100%;
+}
+
+ /* Styling adminControl on adminPage */
+div [id="adminControl"] {
+	float: left;
+	margin-top: 10px;
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 5%;
 }
 
  /* Styling for adminControl on adminPage */
@@ -970,7 +968,6 @@ h1[id=adminText] {
  /* Styling for adminControl on adminPage */
 div [id="showUser"] {
 	float: left;
-	border-collapse: collapse;
 	text-align:center;
 	width: 100%;
 	height: 5%;

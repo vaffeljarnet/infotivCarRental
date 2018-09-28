@@ -49,7 +49,7 @@ if(isset($_SESSION['u_admin'])) {
 
 		<input name="users" placeholder="Find user info" onchange ="showUser(this.value)">
 	</div>
-		<div id="showUser"><br></div>
+		<div id="showUser"></div>
 <?php	
 }	?>
 		<div id="currentOrders">
@@ -152,7 +152,7 @@ function alternate(classNameMatch) {
         if (table.className.indexOf(classNameMatch) == -1) continue;
 
         for (var j=0; j < table.rows.length; j++) { // "TABLE" elements have a "rows" collection built-in
-            table.rows[j].className = j % 2 == 0 ? "orderTDg" : "orderTD";
+            table.rows[j].className = j % 2 == 0 ? "orderTD" : "orderTDg";
         }
     }
 }
