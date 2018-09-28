@@ -7,86 +7,16 @@ session_start()
 <!DOCTYPE html>
 <html>
 <head>
-
-	<title>Login</title>
-    <link type="text/css" href="style.css">
-	<header>
-		<nav>
-
-			<div class="main-wrapper">
-				<ul>
-					<a href="index.php" style="float:right" >Home</a>
-				</ul>
-				<?php
-					if(isset($_SESSION['u_id'])) {
-						echo '<div class="nav-login" style="float:right">
-								Welcome oh Admin my Admin!
-							 	<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
-									<button type="submit" name="submit">Logout</button>'  ?>
-									<button id="input" type="button" value="Create new user" onclick="location.href='myPage.php'">My page</button>
-									<?php
-									echo 
-									'</form>	
-							</div>';
-					} else {
-						echo '<div class="nav-login" style="float:right">
-								<form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
-								<input type="text" id="email" required="required" name="email" placeholder="E-mail">
-								<input type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
-								<br>
-								<button type="submit" name="submit">Login</button>'  ?>
-								<button id="input" type="button" value="Create new user" onclick="location.href='userRegistration.php'">Create new user</button>
-									<?php 
-										if(isset($_SESSION['error'])) {
-										echo $_SESSION['error'];
-    									unset($_SESSION['error']);
-										}
-									 echo '
-								</form>							
-							</div>';					
-					}
-				?>
-			</div>
-		</nav>
-	</header>
-</head>
-<body>
-<table style="width:51%">
-
-<h3>Admin control</h3>
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css"> 
+</head>	
+<header>
+	<!--Imports the header from getHeader.inc.php by including it with php-->
+	<?php include_once '../includes/getHeader.inc.php'; ?>
+</header>
+<body onload="alternate('currentOrderTable');">
 
 <?php
-
-if(isset($_SESSION['u_admin'])) {
-
-?>	
-
-	<button id="input" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
-	<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">Delete all bookings</button>
-
-	<input name="users" placeholder="Find user info" onchange ="showUser(this.value)">
-	<div id="userInfo"><b></div>
-
-<?php	
-}
-?>
-
-<tbody>
-
-<th>order id</th>
-<th>License</th> 
-<th>Make</th> 
-<th>Model</th> 
-<th>Passengers</th> 
-<th>Booked from</th> 
-<th>Until</th> 
-<th>First</th>
-<th>Last</th>
-<th>Order completed</th>
-
-
-<?php
-
 if(!isset($_SESSION['u_admin'])) {
 header('Location: index.php');
 exit;
@@ -99,17 +29,44 @@ exit;
 
 include_once '../includes/dbh.inc.php';
 
-if(isset($_SESSION['u_id'])) {
-	$var = $_SESSION['u_id'];
-}
-?>
-
-<h1>Current orders</h1>
-<?php
-//A query for selecting all cars that are connected to the users ID.
-$sql = "SELECT bookings.*, cars.*, users.* FROM bookings JOIN cars ON bookings.licenseNumber = cars.licenseNumber JOIN users ON users.user_id = bookings.user_id ORDER BY bookings.orderID;";
+//A query for selecting all cars that are currently booked.
+$sql = "SELECT bookings.*, cars.* FROM bookings JOIN cars ON bookings.licenseNumber = cars.licenseNumber ORDER BY bookings.orderID;";
 $result = $conn->query($sql);
 
+?>
+<div id="mainWrapperBody">
+	<div id="leftpane"></div>
+	<div id="middlepane">
+		<div id="admin">
+			<h1 id="adminText">Admin control</h1>
+		</div>
+<?php
+if(isset($_SESSION['u_admin'])) {
+?>
+	<div id="adminControl">
+		<button id="input" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
+		<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">Delete all bookings</button>
+
+		<input name="users" placeholder="Find user info" onchange ="showUser(this.value)">
+	</div>
+		<div id="showUser"><br></div>
+<?php	
+}	?>
+		<div id="currentOrders">
+			<h1 id="historyText">Ongoing orders</h1>
+		
+			<table class="currentOrderTable">
+				<th class="orderTD">order id</th>
+				<th class="orderTD">License</th> 
+				<th class="orderTD">Make</th> 
+				<th class="orderTD">Model</th> 
+				<th class="orderTD">Passengers</th> 
+				<th class="orderTD">Booked from</th> 
+				<th class="orderTD">Until</th> 
+		<?php	/*	<th class="orderTD">First</th>
+				<th class="orderTD">Last</th>*/ ?>
+				<th class="orderTD">Order completed</th>
+<?php
 //Loops trough the result of the query and populates the html table on the page. 
 if ($result->num_rows > 0) {
 
@@ -124,34 +81,33 @@ if ($result->num_rows > 0) {
 				<td><?php echo $row['passengers'];?></td>
 				<td><?php echo $row['startDate'];?></td>
 				<td><?php echo $row['endDate'];?></td>
-				<td><?php echo $row['user_first'];?></td>
-				<td><?php echo $row['user_last'];?></td>
+	<?php	/*		<td><?php echo $row['user_first'];?></td>
+				<td><?php echo $row['user_last'];?></td>   */ ?>
 				<?php //form for sending info about the booking to unBooking.inc.php  ?>
-				<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+				<td><div class="formOrders"><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
 					<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
 					<input name="startDate" type="hidden" value="<?php echo $row['startDate'];?>">
 					<input name="endDate" type="hidden" value="<?php echo $row['endDate'];?>">
-					<input name="user_id" type="hidden" value="<?php echo $row['user_id'];?>">
+					<input name="userID" type="hidden" value="<?php echo $row['userID'];?>">
 					<button type="submit" name = "submit">Complete order</button>
 					</FORM>
+					</div>
 				</td>
 			</tr>
+        </div>
 		<?php   
     }
 } else {
     echo "0 results";
 }
-
-
 $conn->close();
 ?>		
-
-
-
-</tbody>
-</table>
-</table>
+			</table>
+	</div>
+</div>
+	<div id="rightpane"></div>
+</div>
 </body>
 <script>
 	//simple confirm method that takes an argument"order id" from the form "unBook". and alerts the user of what they're trying to do.
@@ -168,7 +124,7 @@ function confirmUnbook(string) {
 function showUser(str) {
     if (str == "") {
     	//if str is empty then return ""
-        document.getElementById("userInfo").innerHTML = "";
+        document.getElementById("showUser").innerHTML = "";
         return;
     } else { 
  		//creating xmlhttp object for IE7+, Firefox, Chrome, Opera, Safari
@@ -182,11 +138,22 @@ function showUser(str) {
         xmlhttp.onreadystatechange = function() {
         // Create the function to be executed when the server response is ready.
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("userInfo").innerHTML = this.responseText;
+                document.getElementById("showUser").innerHTML = this.responseText;
             }
         };  //Send the request off to a file on the server
         xmlhttp.open("GET","../includes/getUserInfo.inc.php?q="+str,true);
         xmlhttp.send();
+    }
+}
+function alternate(classNameMatch) {
+    var tables = document.getElementsByTagName("table");
+    for (var i=0; i < tables.length; i++) {
+        var table = tables[i];
+        if (table.className.indexOf(classNameMatch) == -1) continue;
+
+        for (var j=0; j < table.rows.length; j++) { // "TABLE" elements have a "rows" collection built-in
+            table.rows[j].className = j % 2 == 0 ? "orderTDg" : "orderTD";
+        }
     }
 }
 

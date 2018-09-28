@@ -11,61 +11,8 @@ session_start()
 <link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css"> 
 </head>	
 <header>
-	<div id="headerWrapper">
-	<!---Inputs the logo and title of hompage to the left in the header-->
-		<a href="/infotivCarRental/html/gui/index.php">
-			<div id="leftHeader">
-				<div class="logo" id="logo">&nbsp;</div>
-				<div class="title" id="title">
-					<h1 id="title">Infotiv Car Rental</h1>
-				</div>
-			</div>
-		</a>
-		<div id="rightHeader">
-		<!---Inputs the About button to the left in the right part of the header-->
-			<div id="categories">
-				<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
-			</div>
-		<!---If user is logger in, inputs welcome phrase and buttons for logout and my page.
-		If not logged in, inputs email and password field, and log in and create user buttons.-->
-			<div id="userInfoWrapper">
-	<?php
-	if(isset($_SESSION['u_id'])) {
-			?>
-				<div id="userInfoTop">
-					<label id="welcomePhrase">You are signed in as <?php echo $_SESSION['u_first'];?></label>
-				</div>
-				<div id="userInfoTopBottom">
-					<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
-						<button type="submit" name="submit">Logout</button>
-						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/myPage.php'">My page</button>
-					</form>
-				</div>
-			<?php
-	} else {
-				?><form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
-					<div id="userInfoTop">
-						<input class="inputFields" type="text" id="email" required="required" name="email" placeholder="E-mail">
-						<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
-					</div>
-					<div id="userInfoTopBottom">
-					<!---If wrong information is given on sign in, appropriate error message is printed-->
-					<?php 
-					if(isset($_SESSION['error'])) {
-					?> <label id="signInError"><?php echo $_SESSION['error']; ?> </label> <?php
-    				unset($_SESSION['error']);
-					}
-					?>
-						<button type="submit" name="submit">Login</button>
-						<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/userRegistration.php'">Create user</button>
-					</div>
-				</form>
-				<?php
-			}
-				?>
-			</div>
-		</div>
-	</div>
+	<!--Imports the header from getHeader.inc.php by including it with php-->
+	<?php include_once '../includes/getHeader.inc.php'; ?>
 </header>
 <body onload="alternate('orderTable');">
 
@@ -86,7 +33,7 @@ if(isset($_SESSION['u_id'])) {
 	$var = $_SESSION['u_id'];
 }
 //A query for selecting all cars that are connected to the users ID.
-$sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.user_id='".$var."'";
+$sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.userID='".$var."'";
 $result = $conn->query($sql);
 ?>
 <div id="mainWrapperBody">
@@ -96,7 +43,6 @@ $result = $conn->query($sql);
 			<h1 id="historyText">My bookings</h1>
 		</div>
 			<table class="orderTable">
-				<tr class="orderTD">
  					<th class="orderTD">orderID</th> 
 					<th class="orderTD">Brand</th> 
 					<th class="orderTD">Model</th> 
@@ -104,15 +50,14 @@ $result = $conn->query($sql);
 					<th class="orderTD">Until</th> 
 					<th class="orderTD">Passengers</th> 
 					<th class="orderTD">License Number</th>
-					<th class="mediumTextCenter">Unbook car for</th>
-				</tr>
+					<th class="mediumTextCenter">Unbook car for</th>				
 <?php 
 //Loops trough the result of the query and populates the html table on the page. 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 			?>
-				<tr class="orderTD">
+				<tr>
 					<td><?php echo $row['orderID'];?></td>
 					<td><?php echo $row['make'];?></td>
 					<td><?php echo $row['model'];?></td>
@@ -120,19 +65,20 @@ if ($result->num_rows > 0) {
 					<td><?php echo $row['endDate'];?></td>
 					<td><?php echo $row['passengers'];?></td>
 					<td><?php echo $row['licenseNumber'];?></td>
-					<td><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+					<td><div class="formOrders"><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 						<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
 						<button type="submit" name = "submit">Cancel booking</button>
 						</FORM>
+						</div>	
 					</td>
+					
 				</tr>
 		<?php   
     }
 } else {
-    echo "0 results";
+    echo "No cars booked";
 }
 ?>		
-			
 			</table>
 			<div id="historyButton">	
 						<button type="submit" onclick="showHistory(this.value)">Hide history</button>			
@@ -187,7 +133,7 @@ function alternate(classNameMatch) {
         if (table.className.indexOf(classNameMatch) == -1) continue;
 
         for (var j=0; j < table.rows.length; j++) { // "TABLE" elements have a "rows" collection built-in
-            table.rows[j].className = j % 2 == 0 ? "orderTD" : "orderTDg";
+            table.rows[j].className = j % 2 == 0 ? "orderTDg" : "orderTD";
         }
     }
 }

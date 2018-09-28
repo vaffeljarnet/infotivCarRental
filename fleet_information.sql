@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 26, 2018 at 12:17 PM
+-- Generation Time: Sep 28, 2018 at 11:15 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -33,17 +33,18 @@ CREATE TABLE `bookings` (
   `licenseNumber` varchar(255) NOT NULL,
   `startDate` varchar(255) NOT NULL,
   `endDate` varchar(255) NOT NULL,
-  `user_id` varchar(255) NOT NULL
+  `userID` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`orderID`, `licenseNumber`, `startDate`, `endDate`, `user_id`) VALUES
-(224, 'BCD639', '2018-09-25', '2018-09-25', '1'),
-(225, 'BWE530', '2018-09-25', '2018-09-25', '1'),
-(226, 'ASD432', '2018-09-25', '2018-09-25', '1');
+INSERT INTO `bookings` (`orderID`, `licenseNumber`, `startDate`, `endDate`, `userID`) VALUES
+(239, 'ASD432', '2018-09-28', '2018-09-28', '85'),
+(240, 'BDE463', '2018-09-28', '2018-09-28', '85'),
+(241, 'BWE530', '2018-09-28', '2018-09-28', '85'),
+(242, 'DSA321', '2018-09-28', '2018-09-28', '1');
 
 -- --------------------------------------------------------
 
@@ -100,24 +101,37 @@ CREATE TABLE `orderhistory` (
   `licenseNumber` varchar(255) DEFAULT NULL,
   `startDate` varchar(255) DEFAULT NULL,
   `endDate` varchar(255) DEFAULT NULL,
-  `user_id` varchar(255) DEFAULT NULL
+  `userID` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orderhistory`
 --
 
-INSERT INTO `orderhistory` (`orderID`, `licenseNumber`, `startDate`, `endDate`, `user_id`) VALUES
-(205, 'BCD639', '2018-09-24', '2018-09-24', '1'),
+INSERT INTO `orderhistory` (`orderID`, `licenseNumber`, `startDate`, `endDate`, `userID`) VALUES
+(123, 'BCD639', '2018-09-24', '2018-09-24', '1'),
 (207, 'JKI321', '2018-09-24', '2018-09-24', '1'),
 (208, 'ASD432', '2018-09-25', '2018-09-25', '79'),
 (209, 'BDE463', '2018-09-25', '2018-09-25', '79'),
-(210, 'BWE530', '2018-09-25', '2018-09-25', '79'),
+(211, 'BWE530', '2018-09-25', '2018-09-25', '79'),
 (212, 'BDE463', '2018-09-25', '2018-09-25', '1'),
 (213, 'BCD639', '2018-09-25', '2018-09-25', '1'),
 (214, 'BWS902', '2018-09-25', '2018-09-25', '1'),
 (215, 'DSA321', '2018-09-25', '2018-09-25', '1'),
-(223, 'DSA321', '2018-09-25', '2018-09-25', '1');
+(223, 'DSA321', '2018-09-25', '2018-09-25', '1'),
+(224, 'BCD639', '2018-09-25', '2018-09-25', '1'),
+(225, 'BWE530', '2018-09-25', '2018-09-25', '1'),
+(226, 'ASD432', '2018-09-25', '2018-09-25', '1'),
+(227, 'ASD432', '2018-09-26', '2018-09-26', '1'),
+(228, 'BDE463', '2018-09-26', '2018-09-26', '1'),
+(229, 'BDE463', '2018-09-28', '2018-09-28', '1'),
+(230, 'IEK382', '2018-09-28', '2018-09-28', '1'),
+(231, 'ASD432', '2018-09-28', '2018-09-28', '86'),
+(232, 'BWE530', '2018-09-28', '2018-09-28', '86'),
+(233, 'DSA321', '2018-09-28', '2018-09-28', '87'),
+(234, 'BDE463', '2018-09-28', '2018-09-28', '1'),
+(235, 'ASD432', '2018-09-28', '2018-09-28', '85'),
+(236, 'BWE530', '2018-09-28', '2018-09-28', '85');
 
 -- --------------------------------------------------------
 
@@ -126,12 +140,12 @@ INSERT INTO `orderhistory` (`orderID`, `licenseNumber`, `startDate`, `endDate`, 
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `user_first` varchar(256) NOT NULL,
-  `user_last` varchar(256) NOT NULL,
-  `user_phone` varchar(256) NOT NULL,
-  `user_email` varchar(256) NOT NULL,
-  `user_pass` varchar(256) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `userFirst` varchar(256) NOT NULL,
+  `userLast` varchar(256) NOT NULL,
+  `userPhone` varchar(256) NOT NULL,
+  `userEmail` varchar(256) NOT NULL,
+  `userPass` varchar(256) NOT NULL,
   `Admin` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -139,7 +153,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_first`, `user_last`, `user_phone`, `user_email`, `user_pass`, `Admin`) VALUES
+INSERT INTO `users` (`userID`, `userFirst`, `userLast`, `userPhone`, `userEmail`, `userPass`, `Admin`) VALUES
 (0, '', '', '', 'Admin', '$2y$10$DsxIRZBwT35MRir2cZDThuM3Vw.o4t0Pcn5of6kK6mLPELvv/L1n6', 1),
 (1, 'mindre', 'kaffe', '123321', 'test@email.se', '$2y$10$RP3vaQ9uYWZfsCBLo6pvIOotzMeWj7eS3ftg325aAlfPm710RuM6e', NULL),
 (72, 'mer', 'te', '123123123', 'yay@email.se', '$2y$10$4D8pLlMs00GDRqf/ZM.ql.Rn6uVa5UrknD292R3NXIW4uciKj9vAu', NULL),
@@ -149,7 +163,8 @@ INSERT INTO `users` (`user_id`, `user_first`, `user_last`, `user_phone`, `user_e
 (81, '123123', '123123123', 'qweqweqwe', 'new@email.se', '$2y$10$q6CoTaHu0ftRISLnA.qdJekF/XrIi9r29ZjWAX3d1mVxDWCeSMu12', NULL),
 (82, 'falco', 'falcosson', 'asdfgweavarsgvsdyhsd', 'qwer@email.se', '$2y$10$pCjwCs.6GJK/VGJKcriOqu5bAVkwDYpsesFhDcsGHY5m6szL8Xi6.', NULL),
 (83, 'trwe', 'rewq', 'rewq', 'asd@email.se', '$2y$10$y8oPLCGNLJmkTsYup5krF.RuJJu6uIGhejQGuBw9ccYw0ArYH.tla', NULL),
-(84, 'qwewer', 'ewrwerwe', '+235457yrgdte45', 'fds@email.se', '$2y$10$vRLdknznGx0OO80uk2QxJeKCxAOHWht23ikfhW0igR6o1Cl0RMasS', NULL);
+(84, 'qwewer', 'ewrwerwe', '+235457yrgdte45', 'fds@email.se', '$2y$10$vRLdknznGx0OO80uk2QxJeKCxAOHWht23ikfhW0igR6o1Cl0RMasS', NULL),
+(85, 'siffertest123', 'siffertest4321', '12344321', 'dbcheck@email.com', '$2y$10$RqFRB06m4chVEplV06l2TOitOZzYY73c86RAcjD2Pag85Gxp7ROJy', NULL);
 
 --
 -- Indexes for dumped tables
@@ -177,8 +192,8 @@ ALTER TABLE `orderhistory`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `user_email` (`user_email`);
+  ADD PRIMARY KEY (`userID`),
+  ADD UNIQUE KEY `user_email` (`userEmail`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -188,12 +203,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;COMMIT;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -826,6 +826,20 @@ input:-webkit-autofill {
 	height: 15%;
 }
 
+/*Styling for my bookings table on myPage */
+.currentOrderTable{
+	color: rgb(47,47,47);
+	font-size: 100%;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	float: left;
+/*	margin-top: 20px;*/
+/*	border-collapse: collapse;*/
+	text-align:center;
+	width: 100%;
+	height: 20%;
+}
+
 /*Styling for my history table on myPage */
 .historyTable{
 	color: rgb(47,47,47);
@@ -834,6 +848,20 @@ input:-webkit-autofill {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	float: left;
 	border-collapse: collapse;
+	text-align:center;
+	width: 100%;
+	height: 15%;
+	margin-bottom: 40px;
+}
+
+/*Styling for show User info table on adminPage */
+.userTable{
+	color: rgb(47,47,47);
+	font-size: 120%;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	float: left;
+
 	text-align:center;
 	width: 100%;
 	height: 15%;
@@ -848,15 +876,22 @@ table th {
     padding: 5px;
     text-align: center;
 }
-form [id="unBook"] {
+.orderTH {
     padding: 5px;
     text-align: center;
-    background-color: lightgray;
 }
 .orderTDg {
     padding: 5px;
     text-align: center;
     background-color: lightgray;
+}
+
+.formOrders {
+    padding: 5px;
+    text-align: center;
+    background-color: white;
+    border-collapse:
+    margin-bottom: 10px;
 }
 
 /* Styling for tables in myPage and adminPage*/
@@ -871,16 +906,26 @@ form [id="unBook"] {
     background-color: rgb(255,1,255);
 }*/
 
- /* div for styling history on myPage */
+ /* Styling adminControl on adminPage */
+div [id="adminControl"] {
+	float: left;
+	margin-top: 10px;
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 10%;
+}
+
+ /* Styling history on myPage */
 div [id="history"] {
 	float: left;
 	margin-top: 20px;
-	border-collapse: collapse;
 	text-align:center;
 	width: 100%;
 	height: 15%;
 }
-/* styling for header in mypage tables. */
+
+/* Styling for header in mypage tables. */
 h1[id=historyText] {
 	color: rgb(47,47,47);
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -888,7 +933,51 @@ h1[id=historyText] {
 	font-size: 200%;
 	font-weight: bold;
 }
-	/*div for button that opens/closes show history on myPage */
+
+ /* Styling currentOrders on adminPage */
+div [id="currentOrders"] {
+	float: left;
+	margin-top: 80px;
+	text-align:center;
+	width: 100%;
+	height: 15%;
+}
+
+ /* Styling for adminControl on adminPage */
+div [id="admin"] {
+	float: left;
+	margin-top: 10px;
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 5%;
+}
+
+/* Styling for h1 in adminPage. */
+h1[id=adminText] {
+	color: rgb(47,47,47);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+/*	margin-top: 20px; */
+	font-size: 200%;
+	font-weight: bold;
+/*		margin-top: 10px; */
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 5%;
+}
+
+ /* Styling for adminControl on adminPage */
+div [id="showUser"] {
+	float: left;
+	border-collapse: collapse;
+	text-align:center;
+	width: 100%;
+	height: 5%;
+	margin-bottom: 10px;
+}
+
+	/*Styling button that opens/closes show history on myPage */
 div [id="historyButton"] {
 	float: left;
 	border-collapse: collapse;
