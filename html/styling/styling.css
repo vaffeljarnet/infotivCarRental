@@ -891,6 +891,7 @@ table th {
     text-align: center;
     background-color: white;
     border-collapse:
+    margin-bottom: 10px;
 }
 
 /* Styling for tables in myPage and adminPage*/
@@ -908,11 +909,11 @@ table th {
  /* Styling adminControl on adminPage */
 div [id="adminControl"] {
 	float: left;
-	margin-top: 20px;
-	border-collapse: collapse;
+	margin-top: 10px;
+/*	border-collapse: collapse; */
 	text-align:center;
 	width: 100%;
-	height: 5%;
+	height: 10%;
 }
 
  /* Styling history on myPage */
@@ -945,8 +946,22 @@ div [id="currentOrders"] {
  /* Styling for adminControl on adminPage */
 div [id="admin"] {
 	float: left;
-	margin-top: 20px;
-	border-collapse: collapse;
+	margin-top: 10px;
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 5%;
+}
+
+/* Styling for h1 in adminPage. */
+h1[id=adminText] {
+	color: rgb(47,47,47);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+/*	margin-top: 20px; */
+	font-size: 200%;
+	font-weight: bold;
+/*		margin-top: 10px; */
+/*	border-collapse: collapse; */
 	text-align:center;
 	width: 100%;
 	height: 5%;
@@ -955,23 +970,13 @@ div [id="admin"] {
  /* Styling for adminControl on adminPage */
 div [id="showUser"] {
 	float: left;
-
 	border-collapse: collapse;
 	text-align:center;
 	width: 100%;
-	height: 10%;
+	height: 5%;
 	margin-bottom: 10px;
 }
 
-
-/* Styling for h1 in adminPage. */
-h1[id=adminText] {
-	color: rgb(47,47,47);
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	margin-top: 20px;
-	font-size: 200%;
-	font-weight: bold;
-}
 	/*Styling button that opens/closes show history on myPage */
 div [id="historyButton"] {
 	float: left;

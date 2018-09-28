@@ -3,7 +3,7 @@ $q = intval($_GET['q']);
 
 include_once 'dbh.inc.php';
 //sql query that joins the tables users and bookings where there are matching user id,s and stores it in a variable.
-$sql="SELECT users.*, bookings.* FROM users LEFT JOIN bookings on users.user_id = bookings.user_id WHERE bookings.orderID = '".$q."';";
+$sql="SELECT users.*, bookings.* FROM users LEFT JOIN bookings on users.userID = bookings.userID WHERE bookings.orderID = '".$q."';";
 $result = mysqli_query($conn, $sql); 
 
 /* $sql="SELECT DISTINCT users.*, bookings.*, orderhistory.* FROM users JOIN bookings on users.user_id = bookings.user_id JOIN orderhistory on users.user_id = orderhistory.user_id WHERE bookings.orderID = '".$q."' OR orderhistory.orderID = '".$q."'  LIMIT 1;";
@@ -27,10 +27,10 @@ $result = mysqli_query($conn, $sql); */
 // while loop that fetches all matching data from db and puts it into a table.
 while($row = mysqli_fetch_array($result)) {
 ?>	<tr class="orderTDg">
-		<td><?php echo $row['user_first'];?></td>
-		<td class="orderTD"><?php echo $row['user_last'];?></td>
-		<td class="orderTD"><?php echo $row['user_phone'];?></td>
-		<td class="orderTD"><?php echo $row['user_email'];?></td>
+		<td><?php echo $row['userFirst'];?></td>
+		<td class="orderTD"><?php echo $row['userLast'];?></td>
+		<td class="orderTD"><?php echo $row['userPhone'];?></td>
+		<td class="orderTD"><?php echo $row['userEmail'];?></td>
 		<td class="orderTD"><?php echo $row['startDate'];?></td>
 		<td class="orderTD"><?php echo $row['endDate'];?></td>
 		<td class="orderTD"><?php echo $row['licenseNumber'];?></td>

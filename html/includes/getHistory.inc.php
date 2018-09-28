@@ -5,7 +5,7 @@ include_once 'dbh.inc.php';
 
 
 //sql query that joins the tables cars and orderhistory where there are matching license numbers and stores it in a variable.
-$sql= "SELECT cars.*, orderhistory.* FROM cars LEFT JOIN orderhistory on cars.licenseNumber = orderhistory.licenseNumber WHERE orderhistory.user_id='".$q."';";
+$sql= "SELECT cars.*, orderhistory.* FROM cars LEFT JOIN orderhistory on cars.licenseNumber = orderhistory.licenseNumber WHERE orderhistory.userID='".$q."';";
 $result = mysqli_query($conn, $sql);
 
 ?>	<div id="historyButton">

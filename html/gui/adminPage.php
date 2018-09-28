@@ -29,10 +29,9 @@ exit;
 
 include_once '../includes/dbh.inc.php';
 
-//A query for selecting all cars that are connected to the users ID.
-$sql = "SELECT bookings.*, cars.*, users.* FROM bookings JOIN cars ON bookings.licenseNumber = cars.licenseNumber JOIN users ON users.user_id = bookings.user_id ORDER BY bookings.orderID;";
+//A query for selecting all cars that are currently booked.
+$sql = "SELECT bookings.*, cars.* FROM bookings JOIN cars ON bookings.licenseNumber = cars.licenseNumber ORDER BY bookings.orderID;";
 $result = $conn->query($sql);
-
 
 ?>
 <div id="mainWrapperBody">
@@ -54,8 +53,8 @@ if(isset($_SESSION['u_admin'])) {
 <?php	
 }	?>
 		<div id="currentOrders">
-			<h1 id="historyText">Current orders</h1>
-		</div>
+			<h1 id="historyText">Ongoing orders</h1>
+		
 			<table class="currentOrderTable">
 				<th class="orderTD">order id</th>
 				<th class="orderTD">License</th> 
@@ -90,12 +89,13 @@ if ($result->num_rows > 0) {
 					<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
 					<input name="startDate" type="hidden" value="<?php echo $row['startDate'];?>">
 					<input name="endDate" type="hidden" value="<?php echo $row['endDate'];?>">
-					<input name="user_id" type="hidden" value="<?php echo $row['user_id'];?>">
+					<input name="userID" type="hidden" value="<?php echo $row['userID'];?>">
 					<button type="submit" name = "submit">Complete order</button>
 					</FORM>
 					</div>
 				</td>
 			</tr>
+        </div>
 		<?php   
     }
 } else {
@@ -105,6 +105,7 @@ $conn->close();
 ?>		
 			</table>
 	</div>
+</div>
 	<div id="rightpane"></div>
 </div>
 </body>
@@ -151,36 +152,10 @@ function alternate(classNameMatch) {
         if (table.className.indexOf(classNameMatch) == -1) continue;
 
         for (var j=0; j < table.rows.length; j++) { // "TABLE" elements have a "rows" collection built-in
-            table.rows[j].className = j % 2 == 0 ? "orderTD" : "orderTDg";
+            table.rows[j].className = j % 2 == 0 ? "orderTDg" : "orderTD";
         }
     }
 }
-
-function showUser(str) {
-    if (str == "") {
-    	//if str is empty then return ""
-        document.getElementById("showUser").innerHTML = "";
-        return;
-    } else { 
- 		//creating xmlhttp object for IE7+, Firefox, Chrome, Opera, Safari
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            //creating xmlhttp object for code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        } 
-        // will come back for clarification.
-        xmlhttp.onreadystatechange = function() {
-        // Create the function to be executed when the server response is ready.
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("showUser").innerHTML = this.responseText;
-            }
-        };  //Send the request off to a file on the server
-        xmlhttp.open("GET","../includes/getUserInfo.inc.php?q="+str,true);
-        xmlhttp.send();
-    }
-}
-
 
 </script>	
 </html>

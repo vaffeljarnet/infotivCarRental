@@ -33,7 +33,7 @@ if(isset($_SESSION['u_id'])) {
 	$var = $_SESSION['u_id'];
 }
 //A query for selecting all cars that are connected to the users ID.
-$sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.user_id='".$var."'";
+$sql = "SELECT cars.*, bookings.* FROM cars LEFT JOIN bookings on cars.licenseNumber = bookings.licenseNumber WHERE bookings.userID='".$var."'";
 $result = $conn->query($sql);
 ?>
 <div id="mainWrapperBody">
@@ -76,7 +76,7 @@ if ($result->num_rows > 0) {
 		<?php   
     }
 } else {
-    echo "0 results";
+    echo "No cars booked";
 }
 ?>		
 			</table>
@@ -133,7 +133,7 @@ function alternate(classNameMatch) {
         if (table.className.indexOf(classNameMatch) == -1) continue;
 
         for (var j=0; j < table.rows.length; j++) { // "TABLE" elements have a "rows" collection built-in
-            table.rows[j].className = j % 2 == 0 ? "orderTD" : "orderTDg";
+            table.rows[j].className = j % 2 == 0 ? "orderTDg" : "orderTD";
         }
     }
 }

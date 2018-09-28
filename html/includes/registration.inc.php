@@ -15,18 +15,18 @@ session_start();
 	$hashedPass = password_hash($pass, PASSWORD_DEFAULT);
 
 	//takes the requested email and queries the db and store any result into a variable.
-	$sql2 = "SELECT * FROM users WHERE user_email='".$email."';";
+	$sql2 = "SELECT * FROM users WHERE userEmail='".$email."';";
 	$validEmail = $conn->query($sql2);
 	//takes the requested phonenumber and queries the db and store any result into a variable.
-	$sql3 = "SELECT * FROM users WHERE user_phone='".$phone."';";
+	$sql3 = "SELECT * FROM users WHERE userPhone='".$phone."';";
 	$validPhone = $conn->query($sql3);
 	
 	//checks if first and last name contain any none regular characters and if it does then exits the script and send the user back with an error message.
-	if (!preg_match("/^[a-zA-Z]*$", $firstName) || !preg_match("/^[a-zA-Z]*$", $lastName)) {
+	if (!preg_match("/^([a-zA-Z]+)$/", $firstName) || !preg_match("/^([a-zA-Z]+)$/", $lastName)) {
 		$_SESSION['errorCreate'] = 'First and last name must be characters only';
 		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
 		exit();
-	} else {
+	} else { 
 	// checks the email against the database and if it gets a result then exits script and sends user back with a error message.
 	if ($validEmail->num_rows > 0) {
 		$_SESSION['errorCreate'] = 'That E-mail is already taken';
@@ -39,7 +39,7 @@ session_start();
 		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=phone");
 		} else {
 	//creates a sql statement containing the user info and creates a user in the db.
-		$sql = "INSERT INTO users (user_first, user_last, user_email, user_phone, user_pass) VALUES('".$firstName."','".$lastName."','".$email."', '".$phone."', '".$hashedPass."');";
+		$sql = "INSERT INTO users (userFirst, userLast, userEmail, userPhone, userPass) VALUES('".$firstName."','".$lastName."','".$email."', '".$phone."', '".$hashedPass."');";
 	 	mysqli_query($conn, $sql);
    	//checks cookies to determine where to send the user after completed registration.
 			if(isset($_COOKIE['selectedModel'])) {

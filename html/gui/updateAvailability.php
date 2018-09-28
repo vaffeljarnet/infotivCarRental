@@ -48,7 +48,7 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 
 		//Sends a sql query to insert new entry in table bookings for the car selected
 		//in showCars.phtml using the previously stored selectedLicenseNumber cookie.
-		$sql = "INSERT INTO bookings (licenseNumber, startDate, endDate, user_id) VALUES 
+		$sql = "INSERT INTO bookings (licenseNumber, startDate, endDate, userID) VALUES 
 				('".$_COOKIE['selectedLicenseNumber']."' , 
 				'".$_COOKIE['startDate']."' , 
 				'".$_COOKIE['endDate']."' ,
