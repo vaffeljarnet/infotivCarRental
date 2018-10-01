@@ -28,8 +28,8 @@
 		</div>
 		<div id="versionNr">
 			<label class="mediumText">Homepage version: 0.2</label></br></br>
-			<a id="linkButton" href="location.href='/infotivCarRental/documentation/index.html" target="_blank">Documentation</a></br>
-			<a id="linkButton" href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">Source Code</a>			
+			<a id="linkButton" href="/infotivCarRental/documentation/index.html" target="_blank">Documentation</a></br>
+			<a id="linkButton" href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">Source Code</a>	
 		</div>
 	</div>
 	<div id="rightpane"></div>
