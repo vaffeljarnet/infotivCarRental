@@ -41,17 +41,29 @@ session_start();
 	//creates a sql statement containing the user info and creates a user in the db.
 		$sql = "INSERT INTO users (userFirst, userLast, userEmail, userPhone, userPass) VALUES('".$firstName."','".$lastName."','".$email."', '".$phone."', '".$hashedPass."');";
 	 	mysqli_query($conn, $sql);
+	 //logs user in after creating account.
+	 	$sqlLog = "SELECT * FROM users WHERE userEmail='".$email."';";
+	 	$resultLog = $conn->query($sqlLog);
+	 	if ($resultLog->num_rows > 0) {
+			while($row = $resultLog->fetch_assoc()) {
+				$_SESSION['u_id'] = $row['userID'];
+				$_SESSION['u_first'] = $row['userFirst'];
+				$_SESSION['u_last'] = $row['userLast'];
+				$_SESSION['u_phone'] = $row['userPhone'];
+				$_SESSION['u_email'] = $row['userEmail'];
+			}
    	//checks cookies to determine where to send the user after completed registration.
 			if(isset($_COOKIE['selectedModel'])) {
 				header("Location: http://localhost/infotivCarRental/html/gui/confirmBook.php");
 			} else {				
 				header("Location: http://localhost/infotivCarRental/html/gui/index.php");
 			}
-	
+		}	
 		}
 	}
 	}
 }
+
 
 
 
