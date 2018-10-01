@@ -12,9 +12,9 @@ $result = mysqli_query($conn, $sql); */
 $result = mysqli_query($conn, $sql); */
 
 
-?>	<div id="historyButton">
+?>
 <h1 id="historyText">User info for order: <?php echo $q?></h1><br><br>
-</div> 
+
 <table class="userTable">
 	<tr class="orderTH">
 	<th class="orderTH">First name</th>

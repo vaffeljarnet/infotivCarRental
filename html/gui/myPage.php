@@ -7,7 +7,7 @@ session_start()
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>Mypage</title>
 <link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css"> 
 </head>	
 <header>

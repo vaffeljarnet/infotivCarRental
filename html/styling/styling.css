@@ -385,6 +385,97 @@ layout above this threshold*/
 			}
 }
 
+ /* Styling history on myPage */
+div [id="history"] {
+	float: left;
+	margin-top: 20px;
+	text-align:center;
+	width: 100%;
+	height: 15%;
+}
+
+/* Styling for header in mypage tables. */
+h1[id=historyText] {
+	color: rgb(47,47,47);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+ /* Styling currentOrders on adminPage */
+div [id="currentOrders"] {
+	float: left;
+	margin-top: 160px;
+	text-align:center;
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+}
+
+ /* Styling adminControl on adminPage */
+div [id="adminControl"] {
+	float: left;
+	margin-top: 10px;
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 5%;
+}
+
+ /* Styling for adminControl on adminPage */
+div [id="admin"] {
+	float: left;
+	margin-top: 10px;
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 5%;
+}
+
+/* Styling for h1 in adminPage. */
+h1[id=adminText] {
+	color: rgb(47,47,47);
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+/*	margin-top: 20px; */
+	font-size: 200%;
+	font-weight: bold;
+/*		margin-top: 10px; */
+/*	border-collapse: collapse; */
+	text-align:center;
+	width: 100%;
+	height: 5%;
+}
+
+ /* Styling for adminControl on adminPage */
+div [id="showUser"] {
+	float: left;
+	text-align:center;
+	border-collapse: collapse;
+	width: 100%;
+	height: 10%;
+	margin-top: 45px;
+	margin-bottom: 10px;
+}
+
+	/*Styling button that opens/closes show history on myPage */
+div [id="historyButton"] {
+	float: left;
+	border-collapse: collapse;
+	margin-top: 20px;
+	text-align:center;
+	width: 100%;
+}
+
+/*Styling for longer text paragraphs(centered)*/
+.mediumTextCenter {
+	color: rgb(47,47,47);
+	font-size: 100%;
+	font-weight: bold;
+	text-align:center;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+
 
 /*Everything withing the next @media tag are customized
 divs for layout when width of browser is over 821 px. To edit
@@ -824,7 +915,7 @@ input:-webkit-autofill {
 	width: 100%;
 }
 
-/*Styling for my bookings table on myPage */
+/*Styling for my current order table on myPage */
 .currentOrderTable{
 	color: rgb(47,47,47);
 	font-size: 100%;
@@ -855,11 +946,10 @@ input:-webkit-autofill {
 /*Styling for show User info table on adminPage */
 .userTable{
 	color: rgb(47,47,47);
-	font-size: 120%;
+	font-size: 105%;
 	font-weight: bold;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	float: left;
-
 	text-align:center;
 	width: 100%;
 	height: 15%;
@@ -869,21 +959,25 @@ input:-webkit-autofill {
 table th {
 	text-align: left;
 }
-
+/* Styling for cells in orderTable currentOrderTable historyTable and userTable on myPage and adminPage */
 .orderTD {
     padding: 5px;
     text-align: center;
+    word-break: normal;
 }
+/* Styling for table headers in orderTable currentOrderTable historyTable and userTable on myPage and adminPage */
 .orderTH {
     padding: 5px;
     text-align: center;
 }
+/* Styling for cells in orderTable currentOrderTable historyTable and userTable*/
 .orderTDg {
     padding: 5px;
     text-align: center;
     background-color: lightgray;
+    word-break: normal;
 }
-
+/* Styling for the forms unbooking/completed bookings on my/adminPage */ 
 .formOrders {
     padding: 5px;
     text-align: center;
@@ -891,18 +985,6 @@ table th {
     border-collapse: collapse;
     height: 100%;
 }
-
-/* Styling for tables in myPage and adminPage*/
-/*td[id="orderTD", th[id="orderTH"] {
-    padding: 5px;
-    text-align: center;
-}
-/* Styling for tables in myPage and adminPage*/
-/*td[id="orderTDg"], th[id="orderTHg"] {
-    padding: 5px;
-    text-align: center;
-    background-color: rgb(255,1,255);
-}*/
 
  /* Styling history on myPage */
 div [id="history"] {
