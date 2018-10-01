@@ -3,16 +3,18 @@ $q = intval($_GET['q']);
 
 include_once 'dbh.inc.php';
 //sql query that joins the tables users and bookings where there are matching user id,s and stores it in a variable.
-$sql="SELECT users.*, bookings.* FROM users LEFT JOIN bookings on users.userID = bookings.userID WHERE bookings.orderID = '".$q."';";
-$result = mysqli_query($conn, $sql); 
+$sql="SELECT users.*, bookings.* FROM users LEFT JOIN bookings on users.userID = bookings.userID WHERE bookings.orderID = '".$q."' UNION SELECT users.*, orderhistory.* FROM users LEFT JOIN orderhistory on users.userID = orderhistory.userID WHERE orderhistory.orderID = '".$q."';";
+$result = mysqli_query($conn, $sql);
+/*$sql="SELECT users.*, bookings.* FROM users LEFT JOIN bookings on users.userID = bookings.userID WHERE bookings.orderID = '".$q."';";
+$result = mysqli_query($conn, $sql); */
 
 /* $sql="SELECT DISTINCT users.*, bookings.*, orderhistory.* FROM users JOIN bookings on users.user_id = bookings.user_id JOIN orderhistory on users.user_id = orderhistory.user_id WHERE bookings.orderID = '".$q."' OR orderhistory.orderID = '".$q."'  LIMIT 1;";
 $result = mysqli_query($conn, $sql); */
 
 
-?>	<div id="historyButton">
+?>
 <h1 id="historyText">User info for order: <?php echo $q?></h1><br><br>
-</div> 
+
 <table class="userTable">
 	<tr class="orderTH">
 	<th class="orderTH">First name</th>

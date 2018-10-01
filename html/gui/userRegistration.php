@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Infotiv Car Rental</title>
+<title>Create user</title>
 <link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css">
 </head>	
 <header>
