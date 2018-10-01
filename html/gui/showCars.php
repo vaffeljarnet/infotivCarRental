@@ -55,12 +55,12 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
 			
-			$start_date = $row['startDate'];
-			$end_date = $row['endDate'];
-			$start_from_user = $_COOKIE['startDate'];
-			$end_from_user = $_COOKIE['endDate'];
+			$startDate = $row['startDate'];
+			$endDate = $row['endDate'];
+			$startFromUser = $_COOKIE['startDate'];
+			$endFromUser = $_COOKIE['endDate'];
 			
-			if(check_in_range($start_date, $end_date, $start_from_user, $end_from_user)==true){
+			if(check_in_range($startDate, $endDate, $startFromUser, $endFromUser)==true){
 				array_push($licenseNumbers, $row['licenseNumber']);
 			}	
 		}
@@ -193,16 +193,16 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 
 //Function used to check if a pair of start and end dates are within the range 
 //of another pair of start and end dates.
-function check_in_range($start_date, $end_date, $start_from_user, $end_from_user)
+function check_in_range($startDate, $endDate, $startFromUser, $endFromUser)
 {
   // Convert to timestamp
-  $start_ts = strtotime($start_date);
-  $end_ts = strtotime($end_date);
-  $userStart_ts = strtotime($start_from_user);
-  $userEnd_ts = strtotime($end_from_user);
+  $startTs = strtotime($startDate);
+  $endTs = strtotime($endDate);
+  $userStartTs = strtotime($startFromUser);
+  $userEndTs = strtotime($endFromUser);
   
   // Check that user date is between start & end
-  return (($userStart_ts >= $start_ts) && ($userStart_ts <= $end_ts) || ($userEnd_ts >= $start_ts) && ($userEnd_ts <= $end_ts));
+  return (($userStartTs >= $startTs) && ($userStartTs <= $endTs) || ($userEndTs >= $startTs) && ($userEndTs <= $endTs));
 }
 
 
