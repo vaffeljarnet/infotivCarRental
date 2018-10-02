@@ -5,12 +5,19 @@ if (isset($_POST['submit'])) {
 session_start();
 
 	include_once 'dbh.inc.php';
+					
+	$_SESSION['firstNamePH'] = $_POST['firstName'];
+ 	$_SESSION['lastNamePH'] = $_POST['lastName'];
+ 	$_SESSION['phonePH'] = $_POST['phone'];
+ 	$_SESSION['emailPH'] = $_POST['email'];
 
 	$firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
 	$lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
 	$phone = mysqli_real_escape_string($conn, $_POST['phone']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$pass = mysqli_real_escape_string($conn, $_POST['pass']);
+	$passCon = mysqli_real_escape_string($conn, $_POST['passCon']);
+	$emailCon = mysqli_real_escape_string($conn, $_POST['emailCon']);
 	//built in function that hashes the password.
 	$hashedPass = password_hash($pass, PASSWORD_DEFAULT);
 
@@ -20,7 +27,20 @@ session_start();
 	//takes the requested phonenumber and queries the db and store any result into a variable.
 	$sql3 = "SELECT * FROM users WHERE userPhone='".$phone."';";
 	$validPhone = $conn->query($sql3);
-	
+
+
+	//compares password and confrim passwords from the form, if no match then send user back with error.
+	if ($pass!=$passCon) {
+		$_SESSION['errorCreate'] = 'Passwords must match';
+		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
+		exit();
+    } else {
+	//compares email and confrim email from the form, if no match then send user back with error.
+	if ($email!=$emailCon) {
+		$_SESSION['errorCreate'] = 'Emails must match';
+		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
+		exit();
+    } else {    
 	//checks if first and last name contain any none regular characters and if it does then exits the script and send the user back with an error message.
 	if (!preg_match("/^([a-zA-Z]+)$/", $firstName) || !preg_match("/^([a-zA-Z]+)$/", $lastName)) {
 		$_SESSION['errorCreate'] = 'First and last name must be characters only';
@@ -60,6 +80,8 @@ session_start();
 			}
 		}	
 		}
+	}
+	}
 	}
 	}
 }
