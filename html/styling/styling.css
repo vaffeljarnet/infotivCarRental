@@ -890,30 +890,6 @@ table[id="carTable"]{
 	text-decoration: none;
 }
 
-/*bigButton styling for cancel buttons so they won't interfere with regular buttons*/
-.bigButtonCancel{
-	margin: auto;
-	display: inline-block;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	cursor: pointer;
-	width: 90px;
-	height: 40px;
-	border: 0px solid;
-	margin-left: 5px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	font-size: 110%;
-	font-weight: bold;
-	color: rgb(255,255,255,0.9);
-	-o-text-overflow: clip;
-	text-overflow: clip;
-	background: rgb(237,110,28);
-	text-decoration: none;
-}
-
 /*Styling for longer text paragraphs*/
 .mediumText{
 	color: rgb(47,47,47);
