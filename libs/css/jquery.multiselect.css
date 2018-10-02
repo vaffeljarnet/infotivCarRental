@@ -1,4 +1,7 @@
-.ms-options-wrap,
+.ms-options-wrap{
+	box-sizing: border-box;
+	width:100%;
+}
 .ms-options-wrap * {
     box-sizing: border-box;
 }
@@ -6,14 +9,14 @@
 .ms-options-wrap > button:focus,
 .ms-options-wrap > button {
     position: relative;
-    width: 100%;
+    width: 150px;
     text-align: left;
-    border: 1px solid #aaa;
+    border: 1px solid rgb(47,47,47);
     background-color: #fff;
     padding: 5px 20px 5px 5px;
     margin-top: 1px;
     font-size: 13px;
-    color: #aaa;
+    color: rgb(47,47,47);
     outline-offset: -2px;
     white-space: nowrap;
 }
@@ -36,7 +39,7 @@
     right: 5px;
     width: 0;
     border: 6px solid rgba(0, 0, 0, 0);
-    border-top-color: #999;
+    border-top-color: rgb(47,47,47);
     margin-top: -3px;
 }
 
@@ -49,16 +52,21 @@
     left: 0;
     width: 100%;
     margin-top: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
+	margin-left: 2px;
     background: white;
     z-index: 2000;
-    border: 1px solid #aaa;
+    border: 1px solid rgb(47,47,47);
+	border-radius: 3px;
     overflow: auto;
     visibility: hidden;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	text-align:left;
 }
 
 .ms-options-wrap.ms-active > .ms-options {
     visibility: visible
+	
 }
 
 .ms-options-wrap > .ms-options > .ms-search input {
