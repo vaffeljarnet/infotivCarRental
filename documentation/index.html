@@ -433,10 +433,54 @@
                                 <pre class="brush: html">
 										
 										-----------------------------------------------------------------------------------------
-                                        Version 0.2 - September ?, 2018
+                                        Version 0.5 - October 2nd, 2018
                                         -----------------------------------------------------------------------------------------
 
-                                        - text about new version
+                                        - Database updates
+                                            - table 'users' containing user information.
+                                            - table 'orderhistory' contains information about finalized orders.
+                                            - updated table 'bookings' now contains a unique order id for each order.
+
+                                        - Added css styling
+                                            - css styling added for all pages.
+
+                                        - Added an about page
+                                            - Contains information about the project and links to source code and documentation.
+
+                                        - Added documentation for the project
+                                            -containing detailed information about the project
+                                            - How to run.
+                                            - Page functionality.
+                                            - Coding templates.
+                                            - Changelog.
+                                            - Credits.
+                                            - Copyright and License.
+                                            - Introduction.
+
+                                        - Added an create user page
+                                            - Fields for user information to be put in.
+                                            - If information is valid creates a user in the database.
+                                            - Gets error messages when invalid information is entered.
+
+                                        - Added an mypage page
+                                            - Shows the user their orders.
+                                            - Lets users cancel bookings.
+                                            - Users can see their orderhistory through buttons on the page.
+
+                                        - Added an admin page
+                                            - Lets admin see all ongoing bookings.
+                                            - Lets admin search order number to get information about customer.
+                                            - Lets the admin complete orders which moves the information from bookings table 
+                                              to orderhistory in the database.
+                                            - Lets admin search order numbers to get information about the customer.
+
+                                        - Added a header used for all pages
+                                            - Contains link back to index.
+                                            - Contains a link to the about page.
+                                            - Contains a login form for the user to log in/ log out if already signed in.
+                                            - Contains a link for create user page. If the user is logged in a link for
+                                              mypage will appear instead.
+
 										
                                         -----------------------------------------------------------------------------------------
                                         Version 0.1 - September 18th, 2018
@@ -449,7 +493,7 @@
 											- Table 'bookings', contains the registered bookings of a car based on license number										
 										- User interface consists of a booking flow with:
 											- Date selection, sets from and to date, continue and reset button
-											- Car selection, lists available cars bBased on the dates given by the user
+											- Car selection, lists available cars based on the dates given by the user
 											- Confirm selection, displays the selected booking and ask user to confirm
 											- Booking complete, displays a message about completion of booking
 

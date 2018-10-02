@@ -27,7 +27,7 @@
 			<label class="mediumText">This project was created at an internship at Infotiv AB, Gothenburg, by Joakim Gustavsson and Johan Larsson, with the help of Maheel Dabarera. The project consists of a mock car rental homepage, to be used as a system under test for educational purposes.</label>
 		</div>
 		<div id="versionNr">
-			<label class="mediumText">Homepage version: 0.2</label></br></br>
+			<label class="mediumText">Homepage version: 0.5</label></br></br>
 			<a id="linkButton" href="/infotivCarRental/documentation/index.html" target="_blank">Documentation</a></br>
 			<a id="linkButton" href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">Source Code</a>	
 		</div>
