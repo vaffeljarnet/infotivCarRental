@@ -45,14 +45,18 @@ if(isset($_SESSION['u_admin'])) {
 ?>
 	<div id="adminControl">
 		<button id="addCar" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
-		<button id="delete" onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">Delete all bookings</button>
-
+		<button id="delete" onclick="return confirm('Warning proceeding will remove all bookings!')" type="submit" onsubmit="">Cancel all bookings</button>
 		<input id="showUserInfo" name="users" placeholder="Find user info" onchange ="showUser(this.value)">
 	</div>
 		<div id="showUser"></div>
 <?php	
 }	?>
-		<div id="currentOrders">
+	<div id="currentOrders"> <?php
+ $id = 1;
+//Loops trough the result of the query and populates the html table on the page. 
+if ($result->num_rows > 0) { ?>
+
+		
 			<h1 id="historyText">Ongoing orders</h1>
 		
 			<table class="currentOrderTable">
@@ -63,14 +67,7 @@ if(isset($_SESSION['u_admin'])) {
 				<th class="orderTD">Passengers</th> 
 				<th class="orderTD">Booked from</th> 
 				<th class="orderTD">Until</th> 
-		<?php	/*	<th class="orderTD">First</th>
-				<th class="orderTD">Last</th>*/ ?>
-				<th class="orderTD">Order completed</th>
-<?php
-
- $id = 1;
-//Loops trough the result of the query and populates the html table on the page. 
-if ($result->num_rows > 0) {
+				<th class="orderTD">Order completed</th><?php
 
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -86,7 +83,7 @@ if ($result->num_rows > 0) {
 	<?php	/*		<td><?php echo $row['user_first'];?></td>
 				<td><?php echo $row['user_last'];?></td>   */ ?>
 				<?php //form for sending info about the booking to unBooking.inc.php  ?>
-				<td><div class="formOrders"><FORM METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+				<td style="background-color: white"><FORM id="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
 					<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
 					<input name="startDate" type="hidden" value="<?php echo $row['startDate'];?>">
@@ -94,15 +91,16 @@ if ($result->num_rows > 0) {
 					<input name="userID" type="hidden" value="<?php echo $row['userID'];?>">
 					<button type="submit" id="complete<?php echo $id;?>" name = "submit">Complete order</button>
 					</FORM>
-					</div>
 				</td>
 			</tr>
         </div>
 		<?php   
 		$id++;
     }
-} else {
-    echo "0 results";
+} else { ?>
+   		
+			<h1 id="historyText">No ongoing orders</h1>
+		 <?php
 }
 
 $conn->close();

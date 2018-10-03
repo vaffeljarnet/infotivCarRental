@@ -39,10 +39,18 @@ $result = $conn->query($sql);
 <div id="mainWrapperBody">
 	<div id="leftpane"></div>
 	<div id="middlepane">
-		<div id="history">
-			<h1 id="historyText">My bookings</h1>
-		</div>
-			<table class="orderTable">
+
+				
+<?php 
+$id=1;
+//Loops trough the result of the query and populates the html table on the page. 
+if ($result->num_rows > 0) {?>
+
+			<div id="history">
+				<h1 id="historyText">My bookings</h1>
+			</div>
+
+				<table class="orderTable">
  					<th class="orderTD">orderID</th> 
 					<th class="orderTD">Brand</th> 
 					<th class="orderTD">Model</th> 
@@ -50,11 +58,7 @@ $result = $conn->query($sql);
 					<th class="orderTD">Until</th> 
 					<th class="orderTD">Passengers</th> 
 					<th class="orderTD">License Number</th>
-					<th class="mediumTextCenter">Unbook car for</th>				
-<?php 
-$id=1;
-//Loops trough the result of the query and populates the html table on the page. 
-if ($result->num_rows > 0) {
+					<th class="mediumTextCenter">Unbook car for</th>	<?php
     // output data of each row
     while($row = $result->fetch_assoc()) {
 			?>
@@ -66,11 +70,10 @@ if ($result->num_rows > 0) {
 					<td id="endDate<?php echo $id;?>"><?php echo $row['endDate'];?></td>
 					<td id="passengers<?php echo $id;?>"><?php echo $row['passengers'];?></td>
 					<td id="licenseNumber<?php echo $id;?>"><?php echo $row['licenseNumber'];?></td>
-					<td><div class="formOrders"><FORM METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+					<td style="background-color: white"><FORM id="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 						<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
 						<button id ="unBook<?php echo $id;?>" type="submit" name = "submit">Cancel booking</button>
 						</FORM>
-						</div>	
 					</td>
 					
 				</tr>
@@ -78,9 +81,11 @@ if ($result->num_rows > 0) {
 	$id++;	
     }
 } else {
-    echo "No cars booked";
+    ?>	<div id="history">
+			<h1 id="historyText">You have no bookings</h1>
+		</div><?php
 }
-?>		
+?>	
 			</table>
 			<div id="historyButton">	
 						<button id="hide" type="submit" onclick="showHistory(this.value)">Hide history</button>			

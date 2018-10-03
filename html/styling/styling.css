@@ -984,7 +984,7 @@ table th {
 }
 /* Styling for cells in orderTable currentOrderTable historyTable and userTable on myPage and adminPage */
 .orderTD {
-    padding: 5px;
+    padding: 10px;
     text-align: center;
     word-break: normal;
 }
@@ -995,18 +995,10 @@ table th {
 }
 /* Styling for cells in orderTable currentOrderTable historyTable and userTable*/
 .orderTDg {
-    padding: 5px;
+    padding: 10px;
     text-align: center;
     background-color: lightgray;
     word-break: normal;
-}
-/* Styling for the forms unbooking/completed bookings on my/adminPage */ 
-.formOrders {
-    padding: 5px;
-    text-align: center;
-    background-color: white;
-    border-collapse: collapse;
-    height: 100%;
 }
 
  /* Styling history on myPage */
@@ -1033,7 +1025,7 @@ div [id="currentOrders"] {
 	margin-top: 160px;
 	text-align:center;
 	width: 100%;
-	height: 100%;
+	height: 50%;
 }
 
  /* Styling adminControl on adminPage */

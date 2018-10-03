@@ -13,7 +13,14 @@
 </head>	
 <header>
 	<!--Imports the header from getHeader.inc.php by including it with php-->
-	<?php include_once '../includes/getHeader.inc.php'; ?>
+	<?php include_once '../includes/getHeader.inc.php';
+	//checks if user is logged in, if NOT then return to index.
+	if(!isset($_SESSION['u_id'])) {
+		header('Location: index.php');
+		exit;
+	}
+
+	 ?>
 </header>
 <body>
 
@@ -31,14 +38,12 @@
 		is pressed and user is not signed in, the booking will not be possible.-->
 		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
-<?php
-			?><button class="bigButton" id="cancel" type="button" onclick="location.href='showCars.php'">Cancel</button><?php
-			if(isset($_SESSION['u_id'])) {
-				?><button id="confirm" class="bigButton" type="Submit">Confirm</button><?php
-			} else {
-				?><button id="confirm" class="bigButton" type="button" onclick="pls();">Confirm</button><?php
-			}
-		?>
+			<input id="cardNum" class="bigInputFields" type="text" required="required" pattern="[a-zA-Z]{2,30}" title="card info" placeholder="Card number"><br>
+
+
+			<button class="bigButton" id="cancel" type="button" onclick="location.href='showCars.php'">Cancel</button>
+			<button id="confirm" class="bigButton" type="Submit">Confirm</button>
+
 			</form>
 		</div>
 	</div>
@@ -46,11 +51,5 @@
 </div>		
 
 </body>
-
-<script>
-    function pls(){
-        alert("You need to be logged in to book a car.");
-    }
-</script>
 
 </html>

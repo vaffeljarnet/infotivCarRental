@@ -198,13 +198,17 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 											<form name ="form1" method ="POST" action = "/infotivCarRental/html/cookies/setCookiesCar.php">
 												<input name="make" type="hidden" value="<?php echo $row['make'];?>">
 												<input name="model" type="hidden" value="<?php echo $row['model'];?>">
-												<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
-												<INPUT id="<?php echo carSelect . $idCounter;?>"type = "submit" Name = "submit" value = "Select">
+												<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>"><?php
+												if(isset($_SESSION['u_id'])) { ?>
+													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "submit" Name = "submit" value = "Select"><?php
+												} else { ?>
+													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "button" onclick="pls();" Name = "submit" value = "Select"> <?php
+												} ?>
+
 											</form>
 										</td>
 									</tr>
-								
-												
+														
 			<?php
 			++$idCounter;
 			
@@ -326,6 +330,10 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 			}
 		});
 	}
+    
+    function pls(){
+        alert("You need to be logged in to continue.");
+    }
 
 </script>
 </body>
