@@ -24,19 +24,19 @@
 	and the selected start and end dates.-->
 		<div id="confirmQuestion">
 			<h1 id="questionText">Confirm booking of <?php echo $_COOKIE['selectedMake']." ".$_COOKIE['selectedModel']; ?></h1></br>
-			<label class="mediumText" for="start">Pickup date: <?php echo $_COOKIE['startDate'] ?></label>
-			<label class="mediumText" for="start">Return date: <?php echo $_COOKIE['endDate'] ?></label></br>
+			<label id="startDate" class="mediumText" for="start">Pickup date: <?php echo $_COOKIE['startDate'] ?></label>
+			<label id="endDate" class="mediumText" for="start">Return date: <?php echo $_COOKIE['endDate'] ?></label></br>
 		</div>
 		<!-- Inputs buttons for canceling the booking and confirming it. If confirm button
 		is pressed and user is not signed in, the booking will not be possible.-->
 		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
 <?php
-			?><button class="bigButton" id="input" type="button" onclick="location.href='showCars.php'">Cancel</button><?php
+			?><button class="bigButton" id="cancel" type="button" onclick="location.href='showCars.php'">Cancel</button><?php
 			if(isset($_SESSION['u_id'])) {
-				?><button class="bigButton" type="Submit">Confirm</button><?php
+				?><button id="confirm" class="bigButton" type="Submit">Confirm</button><?php
 			} else {
-				?><button class="bigButton" type="button" onclick="pls();">Confirm</button><?php
+				?><button id="confirm" class="bigButton" type="button" onclick="pls();">Confirm</button><?php
 			}
 		?>
 			</form>

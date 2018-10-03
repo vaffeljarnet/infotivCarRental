@@ -44,10 +44,10 @@ $result = $conn->query($sql);
 if(isset($_SESSION['u_admin'])) {
 ?>
 	<div id="adminControl">
-		<button id="input" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
-		<button onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">Delete all bookings</button>
+		<button id="addCar" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
+		<button id="delete" onclick="return confirm('Warning proceeding will remove all bookings!')" type="button" value="addCar" onclick="location.href='../admin/deleteBookings.php'">Delete all bookings</button>
 
-		<input name="users" placeholder="Find user info" onchange ="showUser(this.value)">
+		<input id="showUserInfo" name="users" placeholder="Find user info" onchange ="showUser(this.value)">
 	</div>
 		<div id="showUser"></div>
 <?php	
@@ -67,6 +67,8 @@ if(isset($_SESSION['u_admin'])) {
 				<th class="orderTD">Last</th>*/ ?>
 				<th class="orderTD">Order completed</th>
 <?php
+
+ $id = 1;
 //Loops trough the result of the query and populates the html table on the page. 
 if ($result->num_rows > 0) {
 
@@ -74,33 +76,35 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 			?>
 			<tr>
-				<td><?php echo $row['orderID'];?></td>
-				<td><?php echo $row['licenseNumber'];?></td>
-				<td><?php echo $row['make'];?></td>
-				<td><?php echo $row['model'];?></td>
-				<td><?php echo $row['passengers'];?></td>
-				<td><?php echo $row['startDate'];?></td>
-				<td><?php echo $row['endDate'];?></td>
+				<td id="order<?php echo $id;?>"><?php echo $row['orderID'];?></td>
+				<td id="licenseNumber<?php echo $id;?>"><?php echo $row['licenseNumber'];?></td>
+				<td id="make<?php echo $id;?>"><?php echo $row['make'];?></td>
+				<td id="model<?php echo $id;?>"><?php echo $row['model'];?></td>
+				<td id="passengers<?php echo $id;?>"><?php echo $row['passengers'];?></td>
+				<td id="startDate<?php echo $id;?>"><?php echo $row['startDate'];?></td>
+				<td id="endDate<?php echo $id;?>"><?php echo $row['endDate'];?></td>
 	<?php	/*		<td><?php echo $row['user_first'];?></td>
 				<td><?php echo $row['user_last'];?></td>   */ ?>
 				<?php //form for sending info about the booking to unBooking.inc.php  ?>
-				<td><div class="formOrders"><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+				<td><div class="formOrders"><FORM METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 					<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
 					<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
 					<input name="startDate" type="hidden" value="<?php echo $row['startDate'];?>">
 					<input name="endDate" type="hidden" value="<?php echo $row['endDate'];?>">
 					<input name="userID" type="hidden" value="<?php echo $row['userID'];?>">
-					<button type="submit" name = "submit">Complete order</button>
+					<button type="submit" id="complete<?php echo $id;?>" name = "submit">Complete order</button>
 					</FORM>
 					</div>
 				</td>
 			</tr>
         </div>
 		<?php   
+		$id++;
     }
 } else {
     echo "0 results";
 }
+
 $conn->close();
 ?>		
 			</table>

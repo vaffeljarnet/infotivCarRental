@@ -52,28 +52,30 @@ $result = $conn->query($sql);
 					<th class="orderTD">License Number</th>
 					<th class="mediumTextCenter">Unbook car for</th>				
 <?php 
+$id=1;
 //Loops trough the result of the query and populates the html table on the page. 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 			?>
 				<tr>
-					<td><?php echo $row['orderID'];?></td>
-					<td><?php echo $row['make'];?></td>
-					<td><?php echo $row['model'];?></td>
-					<td><?php echo $row['startDate'];?></td>
-					<td><?php echo $row['endDate'];?></td>
-					<td><?php echo $row['passengers'];?></td>
-					<td><?php echo $row['licenseNumber'];?></td>
-					<td><div class="formOrders"><FORM id ="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+					<td id="order<?php echo $id;?>"><?php echo $row['orderID'];?></td>
+					<td id="make<?php echo $id;?>"><?php echo $row['make'];?></td>
+					<td id="model<?php echo $id;?>"><?php echo $row['model'];?></td>
+					<td id="startDate<?php echo $id;?>"><?php echo $row['startDate'];?></td>
+					<td id="endDate<?php echo $id;?>"><?php echo $row['endDate'];?></td>
+					<td id="passengers<?php echo $id;?>"><?php echo $row['passengers'];?></td>
+					<td id="licenseNumber<?php echo $id;?>"><?php echo $row['licenseNumber'];?></td>
+					<td><div class="formOrders"><FORM METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
 						<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
-						<button type="submit" name = "submit">Cancel booking</button>
+						<button id ="unBook<?php echo $id;?>" type="submit" name = "submit">Cancel booking</button>
 						</FORM>
 						</div>	
 					</td>
 					
 				</tr>
 		<?php   
+	$id++;	
     }
 } else {
     echo "No cars booked";
@@ -81,8 +83,8 @@ if ($result->num_rows > 0) {
 ?>		
 			</table>
 			<div id="historyButton">	
-						<button type="submit" onclick="showHistory(this.value)">Hide history</button>			
- 						<button type="submit" value="<?php echo $var?>" onclick="showHistory(this.value);">Show history</input>				
+						<button id="hide" type="submit" onclick="showHistory(this.value)">Hide history</button>			
+ 						<button id="show" type="submit" value="<?php echo $var?>" onclick="showHistory(this.value);">Show history</button>				
  			</div>
  				<div id="orderHistory"></B></div>		
 	</div>

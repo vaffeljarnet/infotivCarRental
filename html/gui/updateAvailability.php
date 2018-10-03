@@ -67,8 +67,8 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 					<label class="mediumText">You can view your booking on your page</label>
 				</div>
 				<div id="backToStart">
-					<button class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Home</button>
-					<button class="bigButton" onclick="location.href='myPage.php'">My page</button>
+					<button id="home" class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Home</button>
+					<button id="mypage" class="bigButton" onclick="location.href='myPage.php'">My page</button>
 				</div>
 			</div>
 			<div id="rightpane"></div>
@@ -85,7 +85,7 @@ if($_COOKIE['previousLocation'] == "confirmBook"){
 					<label class="mediumText">Error: <?php echo $sql . $conn->error;?></label>
 				</div>
 				<div id="backToStart">
-					<button class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Home</button>
+					<button id="home" class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Home</button>
 				</div>
 			</div>
 			<div id="rightpane"></div>

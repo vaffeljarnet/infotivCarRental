@@ -30,8 +30,8 @@
 			</div>
 			<!---Inputs buttons for reseting date selectors and continuing to next page.-->
 			<div id="dateButtons">
-				<button class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'">Reset</button>
-				<button class="bigButton" type="submit" Name = "submit">Continue</button>
+				<button id="reset" class="bigButton" onclick="location.href='/infotivCarRental/html/gui/index.php'">Reset</button>
+				<button id="continue" class="bigButton" type="submit" Name = "submit">Continue</button>
 			</div>
 		</form>
 	</div>

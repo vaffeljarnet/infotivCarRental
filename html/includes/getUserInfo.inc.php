@@ -29,13 +29,13 @@ $result = mysqli_query($conn, $sql); */
 // while loop that fetches all matching data from db and puts it into a table.
 while($row = mysqli_fetch_array($result)) {
 ?>	<tr class="orderTDg">
-		<td><?php echo $row['userFirst'];?></td>
-		<td class="orderTD"><?php echo $row['userLast'];?></td>
-		<td class="orderTD"><?php echo $row['userPhone'];?></td>
-		<td class="orderTD"><?php echo $row['userEmail'];?></td>
-		<td class="orderTD"><?php echo $row['startDate'];?></td>
-		<td class="orderTD"><?php echo $row['endDate'];?></td>
-		<td class="orderTD"><?php echo $row['licenseNumber'];?></td>
+		<td id="userFirst" class="orderTD"><?php echo $row['userFirst'];?></td>
+		<td id="userLast" class="orderTD"><?php echo $row['userLast'];?></td>
+		<td id="userPhone" class="orderTD"><?php echo $row['userPhone'];?></td>
+		<td id="userEmail" class="orderTD"><?php echo $row['userEmail'];?></td>
+		<td id="startDate" class="orderTD"><?php echo $row['startDate'];?></td>
+		<td id="endDate" class="orderTD"><?php echo $row['endDate'];?></td>
+		<td id="licenseNumber" class="orderTD"><?php echo $row['licenseNumber'];?></td>
     </tr>  <?php
 }
 ?> </table> <br> <?php
