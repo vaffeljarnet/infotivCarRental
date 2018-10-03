@@ -245,7 +245,7 @@ layout above this threshold*/
 	
 		/*Div for empty left pane*/
 		div[id="leftpane"]{
-			width: 10%;
+			width: 5%;
 			height: 100%;
 			float: left;
 			border-collapse: collapse;
@@ -253,7 +253,7 @@ layout above this threshold*/
 		
 		/*Div for main content mid pane*/
 		div[id="middlepane"]{
-			width: 80%;
+			width: 90%;
 			height: 100%;
 			float: left;
 			border-collapse: collapse;
@@ -261,7 +261,7 @@ layout above this threshold*/
 		
 		/*Div for empty right pane*/
 		div[id="rightpane"]{
-			width: 10%;
+			width: 5%;
 			height: 100%;
 			position: relative;
 			float: right;
@@ -858,7 +858,14 @@ table[id="carTable"]{
 #carTable td{
 	text-align: center; 
     vertical-align: middle;
-	padding-bottom: 15px;
+	padding: 6px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.carRow{
+	background-color: white;
+	border-bottom:1px solid rgb(47,47,47);
 }
 
 /*Main styling for all input fields*/
@@ -984,7 +991,7 @@ table th {
 }
 /* Styling for cells in orderTable currentOrderTable historyTable and userTable on myPage and adminPage */
 .orderTD {
-    padding: 5px;
+    padding: 10px;
     text-align: center;
     word-break: normal;
 }

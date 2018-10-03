@@ -173,7 +173,6 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 		while($row = $result->fetch_assoc()) {
 			
 			
-			
 			if($row['model']== "S90"){
 				$carImage = "/infotivCarRental/img/s90.png";
 			}elseif($row['model']== "V40"){
@@ -182,6 +181,16 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 				$carImage = "/infotivCarRental/img/xc90.png";
 			}elseif($row['model']== "Model S"){
 				$carImage = "/infotivCarRental/img/modelS.png";
+			}elseif($row['model']== "Model X"){
+				$carImage = "/infotivCarRental/img/modelX.png";
+			}elseif($row['model']== "Roadster"){
+				$carImage = "/infotivCarRental/img/roadster.png";
+			}elseif($row['model']== "TT"){
+				$carImage = "/infotivCarRental/img/audiTT.png";
+			}elseif($row['model']== "Q7"){
+				$carImage = "/infotivCarRental/img/audiQ7.png";
+			}elseif($row['model']== "Vivaro"){
+				$carImage = "/infotivCarRental/img/vivaro.png";
 			}else{
 				$carImage = "/infotivCarRental/img/stockCar.png";
 			}
@@ -189,7 +198,7 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 			<!-- Switches back to html to format and alternates between 
 			that and php to populate the table with content from db-->
 									
-									<tr>										
+									<tr class="carRow">										
 										<td valign="top"class="mediumText"><?php echo $row['make'];?></td>
 										<td valign="top" class="mediumText"><?php echo $row['model'];?></td>
 										<td style="white-space: nowrap;" class="mediumText"><img src="/infotivCarRental/img/passengerIcon.png" height=24 width=15></img><?php echo $row['passengers'];?></td>											
@@ -326,7 +335,7 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 			}
 		});
 	}
-
+	
 </script>
 </body>
 </html>
@@ -346,7 +355,5 @@ function check_in_range($startDate, $endDate, $startFromUser, $endFromUser)
   // Check that user date is between start & end
   return (($userStartTs >= $startTs) && ($userStartTs <= $endTs) || ($userEndTs >= $startTs) && ($userEndTs <= $endTs));
 }
-
-
 
 ?>
