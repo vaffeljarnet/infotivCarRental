@@ -12,7 +12,7 @@
 	<div id="rightHeader">
 	<!---Inputs the About button to the left in the right part of the header-->
 		<div id="categories">
-			<a class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
+			<a id="about" class="categoryText" href="/infotivCarRental/html/gui/about.php">ABOUT</a>
 		</div>
 	<!---If user is logger in, inputs welcome phrase and buttons for logout and my page.
 	If not logged in, inputs email and password field, and log in and create user buttons.-->
@@ -25,8 +25,8 @@ if(isset($_SESSION['u_id'])) {
 			</div>
 			<div id="userInfoTopBottom">
 				<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
-					<button type="submit" name="submit">Logout</button>
-					<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/myPage.php'">My page</button>
+					<button id="logout" type="submit" name="submit">Logout</button>
+					<button id="mypage" type="button" onclick="location.href='/infotivCarRental/html/gui/myPage.php'">My page</button>
 				</form>
 			</div>
 		<?php
@@ -44,8 +44,8 @@ if(isset($_SESSION['u_id'])) {
 				unset($_SESSION['error']);
 				}
 				?>
-					<button type="submit" name="submit">Login</button>
-					<button id="input" type="button" onclick="location.href='/infotivCarRental/html/gui/userRegistration.php'">Create user</button>
+					<button id="login" type="submit" name="submit">Login</button>
+					<button id="createUser" type="button" onclick="location.href='/infotivCarRental/html/gui/userRegistration.php'">Create user</button>
 				</div>
 			</form>
 			<?php
