@@ -785,6 +785,10 @@ h1[id=questionTextSmall]{
 	font-weight: bold;
 }
 
+#filters button:hover{
+	background: rgb(237,110,28);
+}
+
 /*Main styling for all buttons, including sumbit and a refrences*/
 button, input[type=submit], input[type=button], a[id=linkButton] {
   display: inline-block;
@@ -849,6 +853,12 @@ input[type=date] {
 table[id="carTable"]{
 	margin: 0 auto;
 	width:50%
+}
+
+#carTable td{
+	text-align: center; 
+    vertical-align: middle;
+	padding-bottom: 15px;
 }
 
 /*Main styling for all input fields*/
