@@ -38,9 +38,26 @@
 		is pressed and user is not signed in, the booking will not be possible.-->
 		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
-			<input id="cardNum" class="bigInputFields" type="text" required="required" pattern="[a-zA-Z]{2,30}" title="card info" placeholder="Card number"><br>
+			<input id="cardNum" class="biggerInputFields" type="text" required="required" pattern="[0-9]{16}" title="16Numbers, real info only" placeholder="Card number"><br><br>
+			<input id="name" class="biggerInputFields" type="text" required="required" name="firstName" pattern="[a-zA-Z]{2,30}" title="Your name please Sir/M'am." placeholder="Name of card holder"><br><br>
+			
+			<select class="mediumInputFields">
 
+<?php   
+	for ($month = 0; $month <= 12; $month++) {  ?>
+		<option id="month<?php echo $month;?>"><?php echo $month;?></option><?php
+	} ?>
+			</select>
+			<select class="mediumInputFields">
 
+<?php
+	for ($year = 2018; $year <= 2025; $year++) {  ?>
+		<option id="month<?php echo $year;?>"><?php echo $year;?></option><?php
+	} ?>
+
+			</select>
+			<input id="cvc" class="mediumInputFields" type="text" required="required" pattern="[0-9]{3}" title="last 3digits on the back of your card" placeholder="cvc/cid"><br><br>
+			
 			<button class="bigButton" id="cancel" type="button" onclick="location.href='showCars.php'">Cancel</button>
 			<button id="confirm" class="bigButton" type="Submit">Confirm</button>
 
