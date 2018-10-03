@@ -299,25 +299,31 @@ layout above this threshold*/
 			/*Div for heading on showCars page*/
 			div[id="showQuestion"]{
 				width: 100%;
-				height: 20%;
+				height: 27%;
 				border-collapse: collapse;
 				text-align:center;
 			}
 			
 			/*Div for filter buttons on showCars page*/
-			div[id="backToDate"]{
-				width: 100%;
-				height: 5%;
-				position: relative;
-				border-collapse: collapse;
-				margin-top: 40px;
-				text-align:center;
+			div[id="filters"]{
+			width: 100%;
+			height: 5%;
+			border-collapse: collapse;
+			margin-top: 30px;
+			margin-bottom:20px;
+			text-align: center;
+			}
+			
+			/*Styling for filter buttons on showCars page*/
+			.filterHolder{
+				display: inline-block;
+				height:100%
 			}
 			
 			/*Div for cars table on showCars page*/
 			div[id="carSelection"]{
 				width: 100%;
-				height: 75%;
+				height: 68%;
 				border-collapse: collapse;
 				text-align:center;
 			}
@@ -668,25 +674,31 @@ layout beneath edit withing the @media tag above*/
 		/*Div for heading on showCars page*/
 		div[id="showQuestion"]{
 			width: 100%;
-			height: 10%;
+			height: 12%;
 			border-collapse: collapse;
 			text-align:center;
 		}
 		
 		/*Div for filter buttons on showCars page TODO update div name*/
-		div[id="backToDate"]{
+		div[id="filters"]{
 			width: 100%;
 			height: 5%;
-			position: relative;
 			border-collapse: collapse;
-			margin-top: 40px;
-			text-align:center;
+			margin-top: 30px;
+			margin-bottom:20px;
+			text-align: center;
+		}
+		
+		/*Styling for filter buttons on showCars page*/
+		.filterHolder{
+			display: inline-block;
+			height:100%
 		}
 
 		/*Div for cars table on showCars page*/
 		div[id="carSelection"]{
 			width: 100%;
-			height: 85%;
+			height: 83%;
 			border-collapse: collapse;
 			text-align:center;
 		}
@@ -773,6 +785,10 @@ h1[id=questionTextSmall]{
 	font-weight: bold;
 }
 
+#filters button:hover{
+	background: rgb(237,110,28);
+}
+
 /*Main styling for all buttons, including sumbit and a refrences*/
 button, input[type=submit], input[type=button], a[id=linkButton] {
   display: inline-block;
@@ -799,6 +815,7 @@ button, input[type=submit], input[type=button], a[id=linkButton] {
 }
 
 /*Hover styling for all buttons*/
+
 button:hover, input[type=submit]:hover, input[type=button]:hover, a[class=linkButton]:hover {
   background: rgb(239,129,54,1);
   text-decoration: none;
@@ -836,6 +853,12 @@ input[type=date] {
 table[id="carTable"]{
 	margin: 0 auto;
 	width:50%
+}
+
+#carTable td{
+	text-align: center; 
+    vertical-align: middle;
+	padding-bottom: 15px;
 }
 
 /*Main styling for all input fields*/
@@ -1074,6 +1097,9 @@ div [id="historyButton"] {
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
+input [type=checkbox]{
+	background-color:green;
+}
 
 /*TEST*/
 
