@@ -270,10 +270,11 @@
                             <div class="col-md-8">
                                 <h4 id="line2_3">Car Selection - <a href="#top">#back to top</a></h4>
                                 <p>On the car selection page, the user is required to pick a car model. The listed car models are based on whether a car of that model is available during the date range selected by the user. This is calculated with the table named bookings in the database, where every booking is registered with a date range paired with a license number of the selected car. </p>
+								<p>There are two filter selections for sorting the list based on make and passengers. If no car meets the selected filter criterias, a message asks the user to try a different selection</p>
 								<p>The cars in the list are given an image based on what model is listed, if the car model does not have a specific image available, a stock image will appear in that place.</p>
 								<p>The Select button will select the car model on the corresponding row and take the user to the confirm booking page. The Back to date selection button will take the user back to the date selection page.</p>
 								<p>If a user tries to get to this page without setting any dates, an error message will appear and no cars will be listed.</p>
-                            </div>
+							</div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
@@ -437,12 +438,13 @@
                                         -----------------------------------------------------------------------------------------
 
                                         - Database updates
-                                            - table 'users' containing user information.
-                                            - table 'orderhistory' contains information about finalized orders.
-                                            - updated table 'bookings' now contains a unique order id for each order.
+                                            - Table 'users' containing user information.
+                                            - Table 'orderhistory' contains information about finalized orders.
+                                            - Updated table 'bookings' now contains a unique order id for each order.
 
                                         - Added css styling
-                                            - css styling added for all pages.
+                                            - CSS styling added for all pages.
+											- Different styling when page is less than 821px
 
                                         - Added an about page
                                             - Contains information about the project and links to source code and documentation.
@@ -480,7 +482,12 @@
                                             - Contains a login form for the user to log in/ log out if already signed in.
                                             - Contains a link for create user page. If the user is logged in a link for
                                               mypage will appear instead.
-
+										
+										- Updates
+											- Added filter selection for make and passengers in car listing
+											- Cars are now listed by model and passengers (for same model with different passenger
+											  capabilities
+											- Indexing of directory restricted										
 										
                                         -----------------------------------------------------------------------------------------
                                         Version 0.1 - September 18th, 2018
@@ -521,6 +528,8 @@
                                 <p>Thanks to the creators below for some of the content used in this project!</p> 
 								<p>HTML Documentation Template by Surjith S M: <a href="https://github.com/surjithctly/documentation-html-template" target="_blank">Source code on GitHub</a></p>  
 								<p>Reset Stylsheet Template by Richard Clark: <a href="http://richclarkdesign.com" target="_blank">richclarkdesign.com</a> </p>
+								<p>JQuery Multiselect Library by Patrick Springstubbe: <a href="https://github.com/nobleclem/jQuery-MultiSelect" target="_blank">Source code on GitHub</a> </p>
+							
 							</div>
                         </div>
                         <!-- end row -->
