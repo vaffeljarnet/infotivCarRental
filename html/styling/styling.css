@@ -411,10 +411,10 @@ h1[id=historyText] {
  /* Styling currentOrders on adminPage */
 div [id="currentOrders"] {
 	float: left;
-	margin-top: 160px;
+
 	text-align:center;
 	width: 100%;
-	height: 100%;
+
 	border-collapse: collapse;
 }
 
@@ -454,13 +454,11 @@ h1[id=adminText] {
 
  /* Styling for adminControl on adminPage */
 div [id="showUser"] {
-	float: left;
+	float: top;
 	text-align:center;
 	border-collapse: collapse;
 	width: 100%;
-	height: 10%;
-	margin-top: 45px;
-	margin-bottom: 10px;
+	height: 20%;
 }
 
 	/*Styling button that opens/closes show history on myPage */
@@ -1053,15 +1051,6 @@ h1[id=historyText] {
 	font-weight: bold;
 }
 
- /* Styling currentOrders on adminPage */
-div [id="currentOrders"] {
-	float: left;
-	margin-top: 160px;
-	text-align:center;
-	width: 100%;
-	height: 85%;
-}
-
  /* Styling adminControl on adminPage */
 div [id="adminControl"] {
 	float: left;
@@ -1069,17 +1058,7 @@ div [id="adminControl"] {
 /*	border-collapse: collapse; */
 	text-align:center;
 	width: 100%;
-	height: 5%;
-}
-
- /* Styling for adminControl on adminPage */
-div [id="admin"] {
-	float: left;
-	margin-top: 10px;
-/*	border-collapse: collapse; */
-	text-align:center;
-	width: 100%;
-	height: 5%;
+	height: 25%;
 }
 
 /* Styling for h1 in adminPage. */
@@ -1094,15 +1073,6 @@ h1[id=adminText] {
 	text-align:center;
 	width: 100%;
 	height: 5%;
-}
-
- /* Styling for adminControl on adminPage */
-div [id="showUser"] {
-	float: left;
-	text-align:center;
-	width: 100%;
-	height: 5%;
-	margin-bottom: 10px;
 }
 
 	/*Styling button that opens/closes show history on myPage */

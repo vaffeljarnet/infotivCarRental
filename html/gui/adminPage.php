@@ -37,16 +37,21 @@ $result = $conn->query($sql);
 <div id="mainWrapperBody">
 	<div id="leftpane"></div>
 	<div id="middlepane">
-		<div id="admin">
-			<h1 id="adminText">Admin control</h1>
-		</div>
 <?php
 if(isset($_SESSION['u_admin'])) {
+	//Inputs the admin control buttons: Add car, which brings up the carRegistration.php page,
+	//Cancell all bookings that removes all content from database table bookings, and a order ID search
+	//that brings up the user information for the searched order ID.
 ?>
 	<div id="adminControl">
+		<h1 id="adminText">Admin control</h1></br></br>
 		<button id="addCar" type="button" value="addCar" onclick="location.href='/infotivCarRental/html/gui/carRegistration.php'">Add new car</button>
-		<button id="delete" onclick="return confirm('Warning proceeding will remove all bookings!')" type="submit" onsubmit="">Cancel all bookings</button>
-		<input id="showUserInfo" name="users" placeholder="Find user info" onchange ="showUser(this.value)">
+		<form id="unBook" METHOD ="POST" onsubmit="return confirm('Warning proceeding will remove all bookings!')" ACTION ="../includes/unBooking.inc.php">
+			<button id="delete" type="submit">Cancel all bookings</button>
+			<input name="cancelAll" type="hidden" value="yes">
+		</form>
+		<input class="inputFields" id="showUserInfo" name="users" placeholder="User Info by Order Id" onchange ="showUser(this.value)">
+		<button>Go</button>
 	</div>
 		<div id="showUser"></div>
 <?php	
