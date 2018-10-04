@@ -6,6 +6,7 @@
 ?>
 
 <!DOCTYPE html>
+<meta charset="UTF-8"> </meta>
 <html>
 <head>
 <title>Infotiv Car Rental</title>
@@ -13,7 +14,14 @@
 </head>	
 <header>
 	<!--Imports the header from getHeader.inc.php by including it with php-->
-	<?php include_once '../includes/getHeader.inc.php'; ?>
+	<?php include_once '../includes/getHeader.inc.php';
+	//checks if user is logged in, if NOT then return to index.
+	if(!isset($_SESSION['u_id'])) {
+		header('Location: index.php');
+		exit;
+	}
+
+	 ?>
 </header>
 <body>
 
@@ -31,14 +39,29 @@
 		is pressed and user is not signed in, the booking will not be possible.-->
 		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
+			<input id="cardNum" class="biggerInputFields" type="text" required="required" pattern="[0-9]{16}" title="16 Numbers, real info only" placeholder="Card number"><br><br>
+			<input id="name" class="biggerInputFields" type="text" required="required" name="firstName" pattern="[a-zA-Z]{2,30}" title="Your name please, Sir/M'am." placeholder="Name of card holder"><br><br>
+			
+			<select title="Month" class="mediumInputFields">
+
+<?php   
+	for ($month = 1; $month <= 12; $month++) {  ?>
+		<option id="month<?php echo $month;?>"><?php echo $month;?></option><?php
+	} ?>
+			</select>
+			<select title="Year" class="mediumInputFields">
+
 <?php
-			?><button class="bigButton" id="cancel" type="button" onclick="location.href='showCars.php'">Cancel</button><?php
-			if(isset($_SESSION['u_id'])) {
-				?><button id="confirm" class="bigButton" type="Submit">Confirm</button><?php
-			} else {
-				?><button id="confirm" class="bigButton" type="button" onclick="pls();">Confirm</button><?php
-			}
-		?>
+	for ($year = 2018; $year <= 2025; $year++) {  ?>
+		<option id="month<?php echo $year;?>"><?php echo $year;?></option><?php
+	} ?>
+
+			</select>
+			<input id="cvc" class="mediumInputFields" type="text" required="required" pattern="[0-9]{3}" title="last 3 digits on the back of your card" placeholder="cvc/cid"><br><br>
+			
+			<button class="bigButton" id="cancel" type="button" onclick="location.href='showCars.php'">Cancel</button>
+			<button id="confirm" class="bigButton" type="Submit">Confirm</button>
+
 			</form>
 		</div>
 	</div>
@@ -46,11 +69,5 @@
 </div>		
 
 </body>
-
-<script>
-    function pls(){
-        alert("You need to be logged in to book a car.");
-    }
-</script>
 
 </html>
