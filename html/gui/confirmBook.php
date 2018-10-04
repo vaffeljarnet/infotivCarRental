@@ -40,7 +40,7 @@
 		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
 			<input id="cardNum" class="biggerInputFields" type="text" required="required" pattern="[0-9]{16}" title="16 Numbers, real info only" placeholder="Card number" maxlength="16"><br><br>
-			<input id="name" class="biggerInputFields" type="text" required="required" name="firstName" pattern="[a-zA-Z]{2,30}+' '+[a-zA-Z]{2,30}" title="Your name please, Sir/M'am." placeholder="Name of card holder"><br><br>
+			<input id="fullName" class="biggerInputFields" type="text" required="required" name="fullName" pattern="^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,30}$" title="Your name please, Sir/M'am." placeholder="Name of card holder"><br><br>
 			
 			<select title="Month" class="mediumInputFields">
 
