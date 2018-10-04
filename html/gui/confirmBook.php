@@ -6,6 +6,7 @@
 ?>
 
 <!DOCTYPE html>
+<meta charset="UTF-8"> </meta>
 <html>
 <head>
 <title>Infotiv Car Rental</title>
@@ -38,17 +39,17 @@
 		is pressed and user is not signed in, the booking will not be possible.-->
 		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
-			<input id="cardNum" class="biggerInputFields" type="text" required="required" pattern="[0-9]{16}" title="16Numbers, real info only" placeholder="Card number"><br><br>
-			<input id="name" class="biggerInputFields" type="text" required="required" name="firstName" pattern="[a-zA-Z]{2,30}" title="Your name please Sir/M'am." placeholder="Name of card holder"><br><br>
+			<input id="cardNum" class="biggerInputFields" type="text" required="required" pattern="[0-9]{16}" title="16 Numbers, real info only" placeholder="Card number"><br><br>
+			<input id="name" class="biggerInputFields" type="text" required="required" name="firstName" pattern="[a-zA-Z]{2,30}" title="Your name please, Sir/M'am." placeholder="Name of card holder"><br><br>
 			
-			<select class="mediumInputFields">
+			<select title="Month" class="mediumInputFields">
 
 <?php   
-	for ($month = 0; $month <= 12; $month++) {  ?>
+	for ($month = 1; $month <= 12; $month++) {  ?>
 		<option id="month<?php echo $month;?>"><?php echo $month;?></option><?php
 	} ?>
 			</select>
-			<select class="mediumInputFields">
+			<select title="Year" class="mediumInputFields">
 
 <?php
 	for ($year = 2018; $year <= 2025; $year++) {  ?>
@@ -56,7 +57,7 @@
 	} ?>
 
 			</select>
-			<input id="cvc" class="mediumInputFields" type="text" required="required" pattern="[0-9]{3}" title="last 3digits on the back of your card" placeholder="cvc/cid"><br><br>
+			<input id="cvc" class="mediumInputFields" type="text" required="required" pattern="[0-9]{3}" title="last 3 digits on the back of your card" placeholder="cvc/cid"><br><br>
 			
 			<button class="bigButton" id="cancel" type="button" onclick="location.href='showCars.php'">Cancel</button>
 			<button id="confirm" class="bigButton" type="Submit">Confirm</button>
