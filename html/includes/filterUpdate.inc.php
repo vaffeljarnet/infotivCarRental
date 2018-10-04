@@ -170,7 +170,11 @@ if(!empty($filtersMake) && !empty($filtersPass)){
 												<input name="make" type="hidden" value="<?php echo $row['make'];?>">
 												<input name="model" type="hidden" value="<?php echo $row['model'];?>">
 												<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>">
-												<INPUT id="<?php echo carSelect . $idCounter;?>"type = "submit" Name = "submit" value = "Select">
+												<?php if(isset($_SESSION['u_id'])) { ?>
+													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "submit" Name = "submit" value = "Book"><?php
+												} else { ?>
+													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "button" onclick="pls();" Name = "submit" value = "Book"> <?php
+												} ?>
 											</form>
 										</td>
 									</tr>

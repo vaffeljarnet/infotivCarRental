@@ -44,7 +44,7 @@ $result = $conn->query($sql);
 if(isset($_SESSION['u_admin'])) {
 ?>
 	<div id="adminControl">
-		<button id="addCar" type="button" value="addCar" onclick="location.href='../admin/carRegistration.php'">Add new car</button>
+		<button id="addCar" type="button" value="addCar" onclick="location.href='/infotivCarRental/html/gui/carRegistration.php'">Add new car</button>
 		<button id="delete" onclick="return confirm('Warning proceeding will remove all bookings!')" type="submit" onsubmit="">Cancel all bookings</button>
 		<input id="showUserInfo" name="users" placeholder="Find user info" onchange ="showUser(this.value)">
 	</div>

@@ -35,11 +35,15 @@
 						<!--Simple HTML form with fields for each input. The submit button 
 						calls "insertInCarIndex.php" script that inputs the data in SQL db-->
 
-						<INPUT class="bigInputFields" type = "TEXT" required="required" style="text-transform:uppercase" pattern="[A-Za-z]{3}[0-9]{3}$" title="ABC123" maxlength="6" name="lcnsNr" placeholder="License Number"><br \>
-						<INPUT class="bigInputFields" type = "TEXT" required="required" name="make" placeholder="Make"><br \>
-						<INPUT class="bigInputFields" type = "TEXT" required="required" name="model" placeholder="Model"><br \>
-						<select class="bigInputFields" name="passengers" required="required">
-						  <option value="" selected disabled hidden>Passengers</option>
+						<INPUT class="bigInputFields" type = "TEXT" required="required" style="text-transform:uppercase" pattern="[A-Za-z]{3}[0-9]{3}$" title="ABC123" maxlength="6" name="lcnsNr" placeholder="License Number" value="<?php echo $_SESSION['carRegLcnsNr']?>"><br \>
+						<INPUT class="bigInputFields" type = "TEXT" required="required" name="make" placeholder="Make" value="<?php echo $_SESSION['carRegMake']?>"><br \>
+						<INPUT class="bigInputFields" type = "TEXT" required="required" name="model" placeholder="Model" value="<?php echo $_SESSION['carRegModel']?>"><br \>
+						<select class="bigInputFields" name="passengers" required="required" value="<?php echo $_SESSION['carRegPass']?>">
+						  <?php if(isset($_SESSION['carRegPass'])){
+									?><option value="<?php echo $_SESSION['carRegPass']?>" selected hidden><?php echo $_SESSION['carRegPass']?></option><?php 
+						  }else{
+								?><option value="Passengers" selected disabled hidden>Passengers</option><?php
+						  }?>
 						  <option value="1">1</option>
 						  <option value="2">2</option>
 						  <option value="3">3</option>
@@ -52,12 +56,11 @@
 						<?php 
 						if(isset($_SESSION['carRegStatus'])) {
 						?> <label id="signInError"><?php echo $_SESSION['carRegStatus']; ?> </label></br></br><?php
-						unset($_SESSION['carRegStatus']);
 						}
 						?>
 						
 						<button class="bigButton" type="button" value="addCar" onclick="location.href='../gui/myPage.php'">Back</button>
-						<button class="bigButton" type = "submit" name = "Submit1" value = "Add Car">Add Car</button>				
+						<button class="bigButton" type ="submit" name = "Submit1" value = "Add Car">Add Car</button>				
 					</FORM>
 				</div>
 			</div>

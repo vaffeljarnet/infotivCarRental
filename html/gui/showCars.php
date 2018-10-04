@@ -75,7 +75,7 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 			$startFromUser = $_COOKIE['startDate'];
 			$endFromUser = $_COOKIE['endDate'];
 			
-			if(check_in_range($startDate, $endDate, $startFromUser, $endFromUser)==true){
+			if(checkInRange($startDate, $endDate, $startFromUser, $endFromUser)==true){
 				array_push($licenseNumbers, $row['licenseNumber']);
 			}	
 		}
@@ -225,9 +225,9 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 												<input name="model" type="hidden" value="<?php echo $row['model'];?>">
 												<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>"><?php
 												if(isset($_SESSION['u_id'])) { ?>
-													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "submit" Name = "submit" value = "Select"><?php
+													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "submit" Name = "submit" value = "Book"><?php
 												} else { ?>
-													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "button" onclick="pls();" Name = "submit" value = "Select"> <?php
+													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "button" onclick="pls();" Name = "submit" value = "Book"> <?php
 												} ?>
 
 											</form>
@@ -368,7 +368,7 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 
 //Function used to check if a pair of start and end dates are within the range 
 //of another pair of start and end dates.
-function check_in_range($startDate, $endDate, $startFromUser, $endFromUser)
+function checkInRange($startDate, $endDate, $startFromUser, $endFromUser)
 {
   // Convert to timestamp
   $startTs = strtotime($startDate);

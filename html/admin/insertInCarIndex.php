@@ -1,23 +1,11 @@
-﻿<html>
-<head>
-<title>Added to car rental index</title>
-</head>
-<body>
+﻿<?php 
 
-<?PHP
+session_start();
 
 $lcnsNr = strtoupper($_POST['lcnsNr']);
 $make = $_POST['make'];
 $model = $_POST['model'];
 $passengers = $_POST['passengers'];
-
-//Gives $avail variable the property of 1 if user has input yes
-// or 0 if the user has input no
-if($_POST['avail']== "yes"){
-	$avail = 1;
-}else{
-	$avail = 0;
-}
 
 $servername = "localhost";
 $username = "root";
@@ -31,19 +19,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 //Creates a SQL query with the information given on carRegistration.html
-$sql = "INSERT INTO cars (licenseNumber, make, model, passengers, availability) VALUES ('".$lcnsNr."','".$make."','".$model."','".$passengers."','".$avail."')";
+$sql = "INSERT INTO cars (licenseNumber, make, model, passengers, availability) VALUES ('".$lcnsNr."','".$make."','".$model."','".$passengers."', 1)";
 
 //Sends the query to SQL db and gives confirmation if the query was successfully
 	if ($conn->query($sql) === TRUE) {
-    	echo "Car added to database";
     	header('Location: ' . $_SERVER['HTTP_REFERER']);
+		$_SESSION['carRegStatus'] = "Car added successfully";
 	} else {
-    	echo "Error: " . $sql . "<br>" . $conn->error;
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		$_SESSION['carRegStatus'] = "Error when adding car: ". $sql . "<br>" . $conn->error;
 	}
 	
 $conn->close();
 
 ?>
-<br \>
-</body>
-</html>

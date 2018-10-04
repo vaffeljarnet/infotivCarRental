@@ -70,9 +70,10 @@ if ($result->num_rows > 0) {?>
 					<td id="endDate<?php echo $id;?>"><?php echo $row['endDate'];?></td>
 					<td id="passengers<?php echo $id;?>"><?php echo $row['passengers'];?></td>
 					<td id="licenseNumber<?php echo $id;?>"><?php echo $row['licenseNumber'];?></td>
-					<td style="background-color: white"><FORM id="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
-						<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
-						<button id ="unBook<?php echo $id;?>" type="submit" name = "submit">Cancel booking</button>
+					<td style="background-color: white">
+						<FORM id="unBook" METHOD ="POST" onsubmit="return confirmUnbook('<?php echo $row['orderID'];?>');" ACTION ="../includes/unBooking.inc.php">
+							<input name="orderID" type="hidden" value="<?php echo $row['orderID'];?>">
+							<button id ="unBook<?php echo $id;?>" type="submit" name = "submit">Cancel booking</button>
 						</FORM>
 					</td>
 					
