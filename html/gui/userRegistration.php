@@ -32,8 +32,8 @@
 			<form NAME ="FORM" ACTION="../includes/registration.inc.php" method="POST">		
 				<div id="mainText">
 					
-						<input id="name" class="bigInputFields" type="text" required="required" name="firstName" pattern="[a-zA-Z]{2,30}" title="only characters a-Z allowed" placeholder="First name" value="<?php echo $_SESSION['firstNamePH'];?>"><br>
-						<input id="last" class="bigInputFields" type="text" required="required" name="lastName" pattern="[a-zA-Z]{2,30}" title="only characters a-Z allowed" placeholder="Last name" value="<?php echo $_SESSION['lastNamePH'];?>"><br>
+						<input id="name" class="bigInputFields" type="text" required="required" name="firstName" pattern="^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,30}$" title="only characters a-Z allowed" placeholder="First name" value="<?php echo $_SESSION['firstNamePH'];?>"><br>
+						<input id="last" class="bigInputFields" type="text" required="required" name="lastName" pattern="^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,30}$" title="only characters a-Z allowed" placeholder="Last name" value="<?php echo $_SESSION['lastNamePH'];?>"><br>
 						<input id="phone" class="bigInputFields" type="phone" required="required" name="phone" pattern="[0-9]{10,13}" title="only numbers, 10-13characters, 00 for +." placeholder="Phonenumber" value="<?php echo $_SESSION['phonePH'];?>"><br>
 						<input class="bigInputFields" type="email" id="emailCreate" required="required" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$" title="Characters@email.boi" placeholder="E-mail" value="<?php echo $_SESSION['emailPH'];?>">
 						<input class="bigInputFields" type="email" id="confirmEmail" required="required" name="emailCon" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}$" title="Characters@email.boi" placeholder="Confirm E-mail" value="<?php echo $_SESSION['emailPH'];?>"><br>
@@ -44,12 +44,7 @@
 								?> <label id="signInError"><?php echo $_SESSION['errorCreate']; ?> </label> <?php
 								unset($_SESSION['errorCreate']);
 							}
-							if (isset($_POST['submit'])) { 
- 								$_SESSION['firstNamePH'] = $_POST['firstName'];
- 								$_SESSION['lastNamePH'] = $_POST['lastName'];
- 								$_SESSION['phonePH'] = $_POST['phone'];
-					 			$_SESSION['emailPH'] = $_POST['email'];
- 							} 
+
 
 						 ?>
 				</div>
