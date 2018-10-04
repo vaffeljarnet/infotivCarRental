@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 28, 2018 at 11:15 AM
+-- Generation Time: Oct 04, 2018 at 08:43 AM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -36,16 +36,6 @@ CREATE TABLE `bookings` (
   `userID` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `bookings`
---
-
-INSERT INTO `bookings` (`orderID`, `licenseNumber`, `startDate`, `endDate`, `userID`) VALUES
-(239, 'ASD432', '2018-09-28', '2018-09-28', '85'),
-(240, 'BDE463', '2018-09-28', '2018-09-28', '85'),
-(241, 'BWE530', '2018-09-28', '2018-09-28', '85'),
-(242, 'DSA321', '2018-09-28', '2018-09-28', '1');
-
 -- --------------------------------------------------------
 
 --
@@ -65,30 +55,28 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`licenseNumber`, `make`, `model`, `passengers`, `availability`) VALUES
-('ASD432', 'audi', '123', 8, 1),
 ('BCD639', 'Volvo', 'S90', 5, 1),
-('BDE463', 'Tesla', 'Model S', 5, 0),
+('BDE463', 'Tesla', 'Model S', 5, 1),
 ('BNW013', 'Volvo', 'S90', 5, 1),
 ('BWE530', 'Volvo', 'V40', 5, 1),
 ('BWS902', 'Volvo', 'V40', 5, 1),
-('DSA321', 'audi', 'a12', 7, 1),
+('CEA328', 'Tesla', 'Roadster', 2, 1),
+('DQA442', 'Opel', 'Vivaro', 9, 1),
+('ERB203', 'Audi', 'Q7', 7, 1),
+('GTE432', 'Audi', 'TT', 2, 1),
+('HHW746', 'Tesla', 'Model X', 7, 1),
+('IED923', 'Audi', 'Q7', 5, 1),
 ('IEK382', 'Tesla', 'Model S', 5, 1),
-('ILE820', 'Tesla', 'Model S', 5, 1),
 ('JKI321', 'Volvo', 'XC90', 5, 1),
+('KLA821', 'Tesla', 'Model X', 6, 1),
 ('KLW531', 'Volvo', 'XC90', 5, 1),
-('LAW219', 'Volvo', 'V40', 5, 1),
-('OLW672', 'Volvo', 'V40', 5, 1),
-('PER352', 'Volvo', 'S90', 5, 1),
-('PQS746', 'Volvo', 'S90', 5, 1),
-('QOP532', 'Volvo', 'V40', 5, 1),
-('QWE123', 'audi', 'a12', 5, 1),
-('RFU342', 'Volvo', 'XC90', 5, 1),
-('TDS820', 'Volvo', 'XC90', 5, 1),
-('TRE543', 'audi', 'a12', 8, 1),
-('TRE576', 'Volvo', 'XC90', 5, 1),
-('UHE839', 'Tesla', 'Model S', 5, 1),
-('YTE362', 'Tesla', 'Model S', 5, 1),
-('YTR782', 'Volvo', 'S90', 5, 1);
+('OEB193', 'Tesla', 'Model X', 6, 1),
+('OES930', 'Audi', 'Q7', 5, 1),
+('PRE392', 'Audi', 'Q7', 7, 1),
+('UBD738', 'Audi', 'TT', 2, 1),
+('UWU227', 'Tesla', 'Model X', 7, 1),
+('UZO039', 'Opel', 'Vivaro', 9, 1),
+('VQW952', 'Tesla', 'Roadster', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -103,35 +91,6 @@ CREATE TABLE `orderhistory` (
   `endDate` varchar(255) DEFAULT NULL,
   `userID` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orderhistory`
---
-
-INSERT INTO `orderhistory` (`orderID`, `licenseNumber`, `startDate`, `endDate`, `userID`) VALUES
-(123, 'BCD639', '2018-09-24', '2018-09-24', '1'),
-(207, 'JKI321', '2018-09-24', '2018-09-24', '1'),
-(208, 'ASD432', '2018-09-25', '2018-09-25', '79'),
-(209, 'BDE463', '2018-09-25', '2018-09-25', '79'),
-(211, 'BWE530', '2018-09-25', '2018-09-25', '79'),
-(212, 'BDE463', '2018-09-25', '2018-09-25', '1'),
-(213, 'BCD639', '2018-09-25', '2018-09-25', '1'),
-(214, 'BWS902', '2018-09-25', '2018-09-25', '1'),
-(215, 'DSA321', '2018-09-25', '2018-09-25', '1'),
-(223, 'DSA321', '2018-09-25', '2018-09-25', '1'),
-(224, 'BCD639', '2018-09-25', '2018-09-25', '1'),
-(225, 'BWE530', '2018-09-25', '2018-09-25', '1'),
-(226, 'ASD432', '2018-09-25', '2018-09-25', '1'),
-(227, 'ASD432', '2018-09-26', '2018-09-26', '1'),
-(228, 'BDE463', '2018-09-26', '2018-09-26', '1'),
-(229, 'BDE463', '2018-09-28', '2018-09-28', '1'),
-(230, 'IEK382', '2018-09-28', '2018-09-28', '1'),
-(231, 'ASD432', '2018-09-28', '2018-09-28', '86'),
-(232, 'BWE530', '2018-09-28', '2018-09-28', '86'),
-(233, 'DSA321', '2018-09-28', '2018-09-28', '87'),
-(234, 'BDE463', '2018-09-28', '2018-09-28', '1'),
-(235, 'ASD432', '2018-09-28', '2018-09-28', '85'),
-(236, 'BWE530', '2018-09-28', '2018-09-28', '85');
 
 -- --------------------------------------------------------
 
@@ -154,17 +113,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `userFirst`, `userLast`, `userPhone`, `userEmail`, `userPass`, `Admin`) VALUES
-(0, '', '', '', 'Admin', '$2y$10$DsxIRZBwT35MRir2cZDThuM3Vw.o4t0Pcn5of6kK6mLPELvv/L1n6', 1),
-(1, 'mindre', 'kaffe', '123321', 'test@email.se', '$2y$10$RP3vaQ9uYWZfsCBLo6pvIOotzMeWj7eS3ftg325aAlfPm710RuM6e', NULL),
-(72, 'mer', 'te', '123123123', 'yay@email.se', '$2y$10$4D8pLlMs00GDRqf/ZM.ql.Rn6uVa5UrknD292R3NXIW4uciKj9vAu', NULL),
-(78, 'joakim', 'gustavsson', '4534534534', 'ema@email.se', '$2y$10$JxmAP3xuQgCtCNlb8EIzfurBH.W5H3jB.7EsCadCF1xhGGJSUZ3C6', NULL),
-(79, 'magnus', 'magnusson', '123321123', 'ny@email.se', '$2y$10$L0j.cKwys8u9F2.4oFSz/e3ihNuyl6BJxaDkMZHptghQm/hXv/.w.', NULL),
-(80, 'fel', 'tele', '+123123123', 'ful@email.se', '$2y$10$7n1.pxJ/Gh8ITkElbXHNn.xqGP7WiVzMIfjdWkquEvoGzOv6j/eI.', NULL),
-(81, '123123', '123123123', 'qweqweqwe', 'new@email.se', '$2y$10$q6CoTaHu0ftRISLnA.qdJekF/XrIi9r29ZjWAX3d1mVxDWCeSMu12', NULL),
-(82, 'falco', 'falcosson', 'asdfgweavarsgvsdyhsd', 'qwer@email.se', '$2y$10$pCjwCs.6GJK/VGJKcriOqu5bAVkwDYpsesFhDcsGHY5m6szL8Xi6.', NULL),
-(83, 'trwe', 'rewq', 'rewq', 'asd@email.se', '$2y$10$y8oPLCGNLJmkTsYup5krF.RuJJu6uIGhejQGuBw9ccYw0ArYH.tla', NULL),
-(84, 'qwewer', 'ewrwerwe', '+235457yrgdte45', 'fds@email.se', '$2y$10$vRLdknznGx0OO80uk2QxJeKCxAOHWht23ikfhW0igR6o1Cl0RMasS', NULL),
-(85, 'siffertest123', 'siffertest4321', '12344321', 'dbcheck@email.com', '$2y$10$RqFRB06m4chVEplV06l2TOitOZzYY73c86RAcjD2Pag85Gxp7ROJy', NULL);
+(0, '', '', '', 'Admin', '$2y$10$DsxIRZBwT35MRir2cZDThuM3Vw.o4t0Pcn5of6kK6mLPELvv/L1n6', 1);
 
 --
 -- Indexes for dumped tables
@@ -203,12 +152,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;COMMIT;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

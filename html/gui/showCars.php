@@ -11,6 +11,7 @@
 	<title>Infotiv Car Rental</title>
     <link href="/infotivCarRental/libs/css/jquery.multiselect.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="/infotivCarRental/html/styling/styling.css">
+	<meta charset='utf-8'>
 </head>
 <header>
 	<!--Imports the header from getHeader.inc.php by including it with php-->
@@ -50,6 +51,21 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 		</div>
 	<?php
 	$conn->close();
+}elseif(strpos($_COOKIE['startDate'], '-10-31') !== false && strpos($_COOKIE['endDate'], '-10-31') !== false){
+	?>
+		<div id="mainWrapperBody" style="background-color: rgb(47,47,47)">
+			<div id="leftpane"></div>
+			<div id="middlepane">
+				<div id="showQuestion">
+					<h1 id="questionText" style="color: rgb(237,110,28)">🎃 No car rentals this day, this one is on the road! 🎃</h1>
+				</div>
+				<div id="backToDate" style="text-align:center;">
+					<img style="border-radius: 15px; border: 5px solid rgb(237,110,28)" src="/infotivCarRental/img/duel.gif"></img>
+				</div>			
+			</div>
+		<div id="rightpane"></div>
+	<?php
+	$conn->close();
 }else{
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
@@ -63,7 +79,7 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 				array_push($licenseNumbers, $row['licenseNumber']);
 			}	
 		}
-	} else {
+	}else {
 		
 	}
 
