@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
 	}
 	?> </table> <?php
 }else{
-	?><h1 id="historyText">Order history empty</h1><?php
+	?><div style="text-align: center;"><h1 id="historyText">Order history empty</h1></div><?php
 }
 mysqli_close($conn);
 ?>

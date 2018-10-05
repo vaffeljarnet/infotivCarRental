@@ -41,11 +41,12 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 		<div id="mainWrapperBody">
 			<div id="leftpane"></div>
 			<div id="middlepane">
-			<div id="showQuestion">
-				<h1 id="questionText">No date set. Please return to date selection.</h1>
-			</div>
-			<div id="backToDate">
-			<button id="backToDateButton" class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
+				<div id="showQuestion">
+					<h1 id="questionText">No date set. Please return to date selection.</h1>
+				</div>
+				<div id="backToDate" style="text-align: center">
+				<button id="backToDateButton" class="bigButton" style="width:200px" onclick="location.href='/infotivCarRental/html/gui/index.php'" class="selectBtn">Back to date selection</button>
+				</div>
 			</div>
 			<div id="rightpane"></div>
 		</div>
