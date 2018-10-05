@@ -32,25 +32,25 @@ session_start();
 	//compares password and confrim passwords from the form, if no match then send user back with error.
 	if ($pass!=$passCon) {
 		$_SESSION['errorCreate'] = 'Passwords must match';
-		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
+		header("Location: /infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
 		exit();
     } else {
 	//compares email and confrim email from the form, if no match then send user back with error.
 	if ($email!=$emailCon) {
 		$_SESSION['errorCreate'] = 'Emails must match';
-		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
+		header("Location: /infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
 		exit();
     } else { 
 	// checks the email against the database and if it gets a result then exits script and sends user back with a error message.
 	if ($validEmail->num_rows > 0) {
 		$_SESSION['errorCreate'] = 'That E-mail is already taken';
-		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=email");
+		header("Location: /infotivCarRental/html/gui/userRegistration.php?userRegistration=email");
 		exit();
 	// checks the phone number against the database and if it gets a result then exits script and sends user back with a error message.
 	}else {
 		if ($validPhone->num_rows > 0) {
 		$_SESSION['errorCreate'] = 'That Phone number is already taken';
-		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=phone");
+		header("Location: /infotivCarRental/html/gui/userRegistration.php?userRegistration=phone");
 		} else {
 	//creates a sql statement containing the user info and creates a user in the db.
 		$sql = "INSERT INTO users (userFirst, userLast, userEmail, userPhone, userPass) VALUES('".$firstName."','".$lastName."','".$email."', '".$phone."', '".$hashedPass."');";
@@ -68,9 +68,9 @@ session_start();
 			}
    	//checks cookies to determine where to send the user after completed registration.
 			if(isset($_COOKIE['startDate'])) {
-				header("Location: http://localhost/infotivCarRental/html/gui/showCars.php");
+				header("Location: /infotivCarRental/html/gui/showCars.php");
 			} else {				
-				header("Location: http://localhost/infotivCarRental/html/gui/index.php");
+				header("Location: /infotivCarRental/html/gui/index.php");
 			}
 		}	
 		}

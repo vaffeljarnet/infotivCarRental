@@ -16,7 +16,7 @@
 	<!--Imports the header from getHeader.inc.php by including it with php-->
 	<?php include_once '../includes/getHeader.inc.php';
 	//checks if user is logged in, if NOT then return to index.
-	if(!isset($_SESSION['u_id']) || !isset($_COOKIE['selectedModel'])) {
+	if(!isset($_SESSION['u_id']) || !isset($_COOKIE['selectedModel']) || !isset($_COOKIE['startDate'])) {
 		header('Location: index.php');
 		exit;
 	}
