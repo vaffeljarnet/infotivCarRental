@@ -23,14 +23,14 @@ if(isset($_SESSION['u_id'])) {
 				<label id="welcomePhrase">You are signed in as <?php echo $_SESSION['u_first'];?></label>
 			</div>
 			<div id="userInfoTopBottom">
-				<form NAME ="logOut" ACTION="../includes/logout.inc.php" method="POST">
+				<form NAME ="logOut" ACTION="/infotivCarRental/html/includes/logout.inc.php" method="POST">
 					<button id="logout" type="submit" name="submit">Logout</button>
 					<button id="mypage" type="button" onclick="location.href='/infotivCarRental/html/gui/myPage.php'">My page</button>
 				</form>
 			</div>
 		<?php
 } else {
-			?><form NAME ="FORM" ACTION="../includes/login.inc.php" method="POST">
+			?><form NAME ="FORM" ACTION="/infotivCarRental/html/includes/login.inc.php" method="POST">
 				<div id="userInfoTop">
 					<input class="inputFields" type="text" id="email" required="required" name="email" placeholder="E-mail">
 					<input class="inputFields" type="password" id="password" required="required" name="pass" pattern=".{6,}" title="Six or more characters" placeholder="Password">
