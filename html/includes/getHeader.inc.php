@@ -1,4 +1,3 @@
-
 <div id="headerWrapper">
 <!---Inputs the logo and title of hompage to the left in the header-->
 	<a href="/infotivCarRental/html/gui/index.php">
