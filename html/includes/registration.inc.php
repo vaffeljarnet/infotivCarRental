@@ -40,13 +40,7 @@ session_start();
 		$_SESSION['errorCreate'] = 'Emails must match';
 		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
 		exit();
-    } else {    
-	//checks if first and last name contain any none regular characters and if it does then exits the script and send the user back with an error message.
-	if (!preg_match("/^([a-zA-Z]+)$/", $firstName) || !preg_match("/^([a-zA-Z]+)$/", $lastName)) {
-		$_SESSION['errorCreate'] = 'First and last name must be characters only';
-		header("Location: http://localhost/infotivCarRental/html/gui/userRegistration.php?userRegistration=name");
-		exit();
-	} else { 
+    } else { 
 	// checks the email against the database and if it gets a result then exits script and sends user back with a error message.
 	if ($validEmail->num_rows > 0) {
 		$_SESSION['errorCreate'] = 'That E-mail is already taken';
@@ -73,14 +67,13 @@ session_start();
 				$_SESSION['u_email'] = $row['userEmail'];
 			}
    	//checks cookies to determine where to send the user after completed registration.
-			if(isset($_COOKIE['selectedModel'])) {
-				header("Location: http://localhost/infotivCarRental/html/gui/confirmBook.php");
+			if(isset($_COOKIE['startDate'])) {
+				header("Location: http://localhost/infotivCarRental/html/gui/showCars.php");
 			} else {				
 				header("Location: http://localhost/infotivCarRental/html/gui/index.php");
 			}
 		}	
 		}
-	}
 	}
 	}
 	}
