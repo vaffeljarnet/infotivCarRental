@@ -16,7 +16,7 @@
 	<!--Imports the header from getHeader.inc.php by including it with php-->
 	<?php include_once '../includes/getHeader.inc.php';
 	//checks if user is logged in, if NOT then return to index.
-	if(!isset($_SESSION['u_id'])) {
+	if(!isset($_SESSION['u_id']) || !isset($_COOKIE['selectedModel'])) {
 		header('Location: index.php');
 		exit;
 	}
@@ -40,7 +40,7 @@
 		<div id="confirmSelection">
 			<form action="/infotivCarRental/html/gui/updateAvailability.php" method="GET">
 			<input id="cardNum" class="biggerInputFields" type="text" required="required" pattern="[0-9]{16}" title="16 Numbers, real info only" placeholder="Card number" maxlength="16"><br><br>
-			<input id="fullName" class="biggerInputFields" type="text" required="required" name="fullName" pattern="^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,30}$" title="Your name please, Sir/M'am." placeholder="Name of card holder"><br><br>
+			<input id="fullName" class="biggerInputFields" type="text" required="required" name="fullName" pattern="(?![\s',0-9]+$)^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.]{1,30}$" title="Your name please, Sir/M'am." placeholder="Name of card holder"><br><br>
 			
 			<select title="Month" class="mediumInputFields">
 
@@ -67,7 +67,6 @@
 	</div>
 	<div id="rightpane"></div>
 </div>		
-
 </body>
 
 </html>
