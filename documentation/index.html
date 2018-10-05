@@ -72,8 +72,9 @@
                         <ul class="nav">
                             <li><a href="#line1">How to run</a>
                                 <ul class="nav">
-                                    <li><a href="#line1_1">Local Server</a></li>
-                                    <li><a href="#line1_2">External Server</a></li>
+									<li><a href="#line1_1">Basic Usage</a></li>
+                                    <li><a href="#line1_2">Local Server</a></li>
+                                    <li><a href="#line1_3">External Server</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line2">Page Functionality</a>
@@ -96,8 +97,7 @@
                                 </ul>
 							</li>
                             <li><a href="#line4">Changelog</a></li>
-                            <li><a href="#line5">Credits</a></li>
-							<li><a href="#line6">Copyright and License</a></li>
+                            <li><a href="#line5">Credits</a></li>							
                         </ul>
                     </nav >
                 </div>
@@ -146,21 +146,32 @@
                         <div class="row">
                             <div class="col-md-12 left-align">
                                 <h2 class="dark-text">How To Run<a href="#top">#back to top</a><hr></h2>
-								<p>If you wish only to view the homepage, it's available here: <a href="http://35.234.77.201/" target="_blank">http://35.234.77.201/</a>
-								<p>If you want to further develop upon our groundwork, you'll find below our methods of setting up and running the homepage locally and on Google Cloud Platform. Off course there are alternatives to this, however, we will not go into these in this documentation, but on a basic ground level the requirements to run the homepage are:</p>
-								<ol>
-									<li>Source code: <a href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">GitHub</a></li></li>
-									<li>Server to host the files</li>
-									<li>MySQL database on that server</li>
-								</ol>
+								
                             </div>
                             <!-- end col -->
                         </div>
                         <!-- end row -->
 
+						<div class="row">                        
+                            <div class="col-md-12">
+                                <h4 id="line1_1">Basic Usage - <a href="#top">#back to top</a></h4>								
+									<p>If you wish only to view the homepage, it's available here: <a href="http://35.234.77.201/" target="_blank">http://35.234.77.201/</a>
+									<p>If you want to further develop upon our groundwork, you'll find below our methods of setting up and running the homepage locally and on Google Cloud Platform. Off course there are alternatives to this, however, we will not go into these in this documentation, but on a basic ground level the requirements to run the homepage are:</p>
+									<ol>
+										<li>Source code: <a href="https://github.com/vaffeljarnet/infotivCarRental" target="_blank">GitHub</a></li></li>
+										<li>Server to host the files</li>
+										<li>MySQL database on that server</li>
+									</ol>
+							</div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+						
                         <div class="row">                        
                             <div class="col-md-12">
-                                <h4 id="line1_1">Local Server - <a href="#top">#back to top</a></h4>								
+                                <h4 id="line1_2">Local Server - <a href="#top">#back to top</a></h4>								
                                 <p>When starting to develop this project we ran it locally using MAMP. This has proven to be useful to be able to test our changes before deploying them on a server. Below are instructions on how we set up our MAMP configuration.</p>
 								<ol>
 									<li>Download and install MAMP with default values:  </strong><a href="https://www.mamp.info/en/downloads/" target="_blank">MAMP Download</a></li></li>
@@ -190,7 +201,7 @@
 
                         <div class="row">                         
                             <div class="col-md-12">
-                                <h4 id="line1_2">External Server - <a href="#top">#back to top</a></h4>
+                                <h4 id="line1_3">External Server - <a href="#top">#back to top</a></h4>
                                 <p>When setting up our homepage on Google Cloud Platform the following step by step tutorial from Google was used: <a href="https://cloud.google.com/community/tutorials/setting-up-lamp" target="_blank">Setting Up LAMP on Compute Engine</a></p>
 								<p>It will instruct you on how to setup an Apache server with MySQL database on a compute engine, and for our purposes all the steps in the guide were appropriate.</p>
 								<p>Depending on your operating system, transfering the files to the compute engine might cause some issues. An alternative to the method used in the guide is to upload the files to a bucket on Google Cloud Platform and then transfering them to the compute engine. A tutorial for this can be found here: <a href="https://cloud.google.com/compute/docs/instances/transfer-files#gcstransfer" target="_blank">Transfering Files to Instances</a></p>
@@ -434,7 +445,7 @@
                                 <pre class="brush: html">
 										
 										-----------------------------------------------------------------------------------------
-                                        Version 0.5 - October 2nd, 2018
+                                        Version 0.5 - October 5th, 2018
                                         -----------------------------------------------------------------------------------------
 
                                         - Database updates
@@ -486,7 +497,7 @@
 										- Updates
 											- Added filter selection for make and passengers in car listing
 											- Cars are now listed by model and passengers (for same model with different passenger
-											  capabilities
+											  capabilities)
 											- Indexing of directory restricted										
 										
                                         -----------------------------------------------------------------------------------------
@@ -535,30 +546,7 @@
                         <!-- end row -->
 
                     </section>
-                    <!-- end section -->
-
-                    <section id="line6" class="section">
-
-                        <div class="row">
-                            <div class="col-md-12 left-align">
-                                <h2 class="dark-text">Copyright and License <a href="#top">#back to top</a><hr></h2>
-                            </div>
-                            <!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                
-                                <p>Code released under the <a href="#" target="_blank">Un License</a> License.</p>                        
-                                <p>For more information about copyright and license check <a href="https://choosealicense.com/" target="_blank">choosealicense.com</a>.</p>
-                            
-                            </div>
-                        </div>
-                        <!-- end row -->
-
-                    </section>
-                    <!-- end section -->
+                    <!-- end section -->                  
                 </div>
                 <!-- // end .col -->
 

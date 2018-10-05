@@ -56,11 +56,12 @@
 						<?php 
 						if(isset($_SESSION['carRegStatus'])) {
 						?> <label id="signInError"><?php echo $_SESSION['carRegStatus']; ?> </label></br></br><?php
+						unset($_SESSION['carRegStatus']);
 						}
 						?>
 						
 						<button class="bigButton" type="button" value="addCar" onclick="location.href='../gui/myPage.php'">Back</button>
-						<button class="bigButton" type ="submit" name = "Submit1" value = "Add Car">Add Car</button>				
+						<button class="bigButton" type ="submit" name ="addCar">Add Car</button>				
 					</FORM>
 				</div>
 			</div>

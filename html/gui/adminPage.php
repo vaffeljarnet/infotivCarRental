@@ -94,7 +94,7 @@ if ($result->num_rows > 0) { ?>
 					<input name="startDate" type="hidden" value="<?php echo $row['startDate'];?>">
 					<input name="endDate" type="hidden" value="<?php echo $row['endDate'];?>">
 					<input name="userID" type="hidden" value="<?php echo $row['userID'];?>">
-					<button type="submit" id="complete<?php echo $id;?>" name = "submit">Complete order</button>
+					<button type="submit" id="complete<?php echo $id;?>" name ="submit">Complete order</button>
 					</FORM>
 				</td>
 			</tr>
