@@ -174,7 +174,6 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 							<table id="carTable">
 								<tbody>	
 <?php
-		$idCounter = 1;
 		// The while loop swithes back and fort between html and php to 
 		//to format  the table with content from db		
 		while($row = $result->fetch_assoc()) {
@@ -214,18 +213,16 @@ if(!isset($_COOKIE['startDate']) || !isset($_COOKIE['endDate'])){
 												<input name="model" type="hidden" value="<?php echo $row['model'];?>">
 												<input name="licenseNumber" type="hidden" value="<?php echo $row['licenseNumber'];?>"><?php
 												if(isset($_SESSION['u_id'])) { ?>
-													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "submit" Name = "submit" value = "Book"><?php
+													<INPUT id="<?php echo "book" . str_replace(' ', '', $row['model']) . "pass" . $row['passengers'];?>"type = "submit" Name = "submit" value = "Book"><?php
 												} else { ?>
-													<INPUT id="<?php echo carSelect . $idCounter;?>"type = "button" onclick="pls();" Name = "submit" value = "Book"> <?php
+													<INPUT id="<?php echo "book" . str_replace(' ', '', $row['model']) . "pass" . $row['passengers'];?>"type = "button" onclick="pls();" Name = "submit" value = "Book"> <?php
 												} ?>
 
 											</form>
 										</td>
 									</tr>
 														
-			<?php
-			++$idCounter;
-			
+			<?php	
 		}
 		?>				
 								</tbody>
